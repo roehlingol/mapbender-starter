@@ -14,7 +14,11 @@ parameters:
             regionProperties: 
                 -
                     name: sidepane
-                    properties: {"name": "accordion", "label": "mb.manager.template.region.accordion.label"}
+                    properties:
+                        name: accordion
+                        # width: 250px
+                        # align: right
+                        label": mb.manager.template.region.accordion.label
             layersets:
                 main:
                     mapbender_users:
