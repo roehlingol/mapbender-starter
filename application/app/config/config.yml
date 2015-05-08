@@ -54,6 +54,18 @@ doctrine:
                 logging: false
                 profiling: false
 
+            search_db:
+                driver:   %database_searchdb_driver%
+                host:     %database_searchdb_host%
+                port:     %database_searchdb_port%
+                dbname:   %database_searchdb_name%
+                path:     %database_searchdb_path%
+                user:     %database_searchdb_user%
+                password: %database_searchdb_password%
+                charset:  UTF8
+                logging: false
+                profiling: false
+
             digi:
                 driver:   %database_digi_driver%
                 host:     %database_digi_host%

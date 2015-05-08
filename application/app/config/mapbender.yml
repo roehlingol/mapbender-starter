@@ -1054,6 +1054,112 @@ parameters:
                         title: Digitalisierung
                         target: map
                         schemes:
+
+
+                        # -----------------------
+
+                            poi:
+                                label: Poi Digitizing
+                                featureType:
+                                    connection: search_db
+                                    table: poi
+                                    uniqueId: gid
+                                    geomType: point
+                                    geomField: geom
+                                    srid: 4326
+                                    fields: [gid, name, type, abstract, public, date_favorite, title, firstname, lastname, email, interests, file, file_reference]
+                                openFormAfterEdit: true
+                                popup:
+                                    title: POI Test Suite
+                                    width: 500px
+                                tableFields:
+                                    gid:
+                                        label: Nr.
+                                    name:
+                                        label: Name
+                                formItems:
+                                     - type: tabs
+                                       children:
+                                           - type: form
+                                             title: Basics
+                                             children:
+                                                 - type: select
+                                                   title: Type
+                                                   name: type
+                                                   options:
+                                                       A: A
+                                                       B: B
+                                                       C: C
+                                                       D: D
+                                                       E: E
+
+                                                 - type: input
+                                                   title: Name
+                                                   mandatory: true
+                                                   name: name
+                                                   mandatoryText: Please give a name to the poi.
+
+                                                 - type: breakLine
+
+                                                 - type: fieldSet
+                                                   children:
+                                                       - type: date
+                                                         title: favorite Date
+                                                         name: date_favorite
+                                                         css: {width: 25%}
+                            line:
+                                label: Poi Digitizing
+                                featureType:
+                                    connection: search_db
+                                    table: poi
+                                    uniqueId: gid
+                                    geomType: point
+                                    geomField: geom
+                                    srid: 4326
+                                    fields: [gid, name, type, abstract, public, date_favorite, title, firstname, lastname, email, interests, file, file_reference]
+                                openFormAfterEdit: true
+                                popup:
+                                    title: POI  Test Suite
+                                    height: 607px
+                                    width: 500
+                                tableFields:
+                                    gid:
+                                        label: Nr.
+                                    name:
+                                        label: Name
+                                formItems:
+                                     - type: tabs
+                                       children:
+                                           - type: form
+                                             title: Basics
+                                             children:
+                                                 - type: select
+                                                   title: Type
+                                                   name: type
+                                                   options:
+                                                       A: A
+                                                       B: B
+                                                       C: C
+                                                       D: D
+                                                       E: E
+
+                                                 - type: input
+                                                   title: Name
+                                                   mandatory: true
+                                                   name: name
+                                                   mandatoryText: Please give a name to the poi.
+
+                                                 - type: breakLine
+
+                                                 - type: fieldSet
+                                                   children:
+                                                       - type: date
+                                                         title: favorite Date
+                                                         name: date_favorite
+                                                         css: {width: 25%}
+
+                        # -----------------------
+
                             ausstattung:
                                 label: Baumkataster
                                 featureType: baumkataster
@@ -1227,7 +1333,7 @@ parameters:
                                                        3: 3 - Erledigung ohne Zeitvorgabe
                                            - type: form
                                              title: Stammdaten
-                                             children:
+                                             children: 
                                                  - type: select
                                                    title: Beetsicherung
                                                    name: beetsicherung_id
