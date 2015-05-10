@@ -5,6 +5,19 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
+
+    private function loadElementBundles(&$bundles)
+    {
+        $name = __DIR__ . '/config/bundles.json';
+        if(file_exists($name)) {
+            $cfg = json_decode(file_get_contents($name));
+            foreach($cfg as $bundle) {
+                $bundles[] = new $bundle();
+            }
+        }
+    }
+
+
     public function registerBundles()
     {
         $bundles = array(
@@ -52,6 +65,8 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
+
+        $this->loadElementBundles($bundles);
 
         return $bundles;
     }
