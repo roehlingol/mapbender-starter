@@ -1057,9 +1057,9 @@ parameters:
 
 
                         # -----------------------
-
-                            poi:
-                                label: Poi Digitizing
+                            poi2:
+                                label: Poi Digitizing 1
+                                maxResults: 500
                                 featureType:
                                     connection: search_db
                                     table: poi
@@ -1067,96 +1067,47 @@ parameters:
                                     geomType: point
                                     geomField: geom
                                     srid: 4326
-                                    fields: [gid, name, type, abstract, public, date_favorite, title, firstname, lastname, email, interests, file, file_reference]
                                 openFormAfterEdit: true
                                 popup:
                                     title: POI Test Suite
                                     width: 500px
-                                tableFields:
-                                    gid:
-                                        label: Nr.
-                                    name:
-                                        label: Name
+                                tableFields: {gid: {label: Nr.}, name: {label: Name}}
                                 formItems:
-                                     - type: tabs
-                                       children:
-                                           - type: form
-                                             title: Basics
-                                             children:
-                                                 - type: select
-                                                   title: Type
-                                                   name: type
-                                                   options:
-                                                       A: A
-                                                       B: B
-                                                       C: C
-                                                       D: D
-                                                       E: E
-
-                                                 - type: input
-                                                   title: Name
-                                                   mandatory: true
-                                                   name: name
-                                                   mandatoryText: Please give a name to the poi.
-
-                                                 - type: breakLine
-
-                                                 - type: fieldSet
-                                                   children:
-                                                       - type: date
-                                                         title: favorite Date
-                                                         name: date_favorite
-                                                         css: {width: 25%}
-                            line:
-                                label: Poi Digitizing
-                                featureType:
-                                    connection: search_db
-                                    table: poi
-                                    uniqueId: gid
-                                    geomType: point
-                                    geomField: geom
-                                    srid: 4326
-                                    fields: [gid, name, type, abstract, public, date_favorite, title, firstname, lastname, email, interests, file, file_reference]
-                                openFormAfterEdit: true
-                                popup:
-                                    title: POI  Test Suite
-                                    height: 607px
-                                    width: 500
-                                tableFields:
-                                    gid:
-                                        label: Nr.
-                                    name:
-                                        label: Name
-                                formItems:
-                                     - type: tabs
-                                       children:
-                                           - type: form
-                                             title: Basics
-                                             children:
-                                                 - type: select
-                                                   title: Type
-                                                   name: type
-                                                   options:
-                                                       A: A
-                                                       B: B
-                                                       C: C
-                                                       D: D
-                                                       E: E
-
-                                                 - type: input
-                                                   title: Name
-                                                   mandatory: true
-                                                   name: name
-                                                   mandatoryText: Please give a name to the poi.
-
-                                                 - type: breakLine
-
-                                                 - type: fieldSet
-                                                   children:
-                                                       - type: date
-                                                         title: favorite Date
-                                                         name: date_favorite
-                                                         css: {width: 25%}
+                                   - type: form
+                                     css: {padding: 10px}
+                                     children:
+                                         - type: select
+                                           title: Type
+                                           name: type
+                                           options: {A:A, B:B, C:C, D:D, E:E}
+                                         - type: input
+                                           title: Name
+                                           mandatory: true
+                                           name: name
+                                           mandatoryText: Please give a name to the poi.
+                                         - type: breakLine
+                                         - type: fieldSet
+                                           children:
+                                               - type: date
+                                                 title: favorite Date
+                                                 name: date_favorite
+                                                 mandatory: true
+                                                 css: {width: 25%}
+                                         - type: breakLine
+                                         - type: fieldSet
+                                           children:
+                                               - type: input
+                                                 title: Firstname
+                                                 name: firstname
+                                                 css: {width: 30%}
+                                               - type: input
+                                                 title: Lastname
+                                                 name: lastname
+                                                 css: {width: 30%}
+                                               - type: input
+                                                 title: E-Mail
+                                                 name: email
+                                                 css: {width: 40%}
 
                         # -----------------------
 
