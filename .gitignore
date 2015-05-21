@@ -15,6 +15,10 @@ application/web/xmlschemas/*
 # Composer assets
 application/web/components
 
+# Index
+application/web/index.php
+
+
 !*/web/uploads/mapbender_user
 !*/web/uploads/mapbender_user_basic
 */web/assets/*.trans
