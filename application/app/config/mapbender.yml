@@ -763,303 +763,59 @@ parameters:
                         title: Digitalisierung
                         target: map
                         schemes:
-                            ausstattung:
-                                label: Ausstattung
-                                featureType: 
-                                    connection: digi
-                                    table: verkehr.ausstattung
-                                    uniqueId: ausst_id
-                                    geomType: point
-                                    geomField: the_geom
-                                    srid: 31466
-                                    fields: [ausst_id,ausst_bem,ausst_jahr,totholz,pilzbefall,ausst_merkmal_1,schadensmerkmal_id]
+                            line:
+                                label: Lines
+                                featureType:
+                                    connection: search_db
+                                    table: lines
+                                    uniqueId: gid
+                                    geomType: line
+                                    geomField: geom
+                                    srid: 4326
+                                    fields: "*"
                                 openFormAfterEdit: true
+                                popup:
+                                    title: POI  Test Suite
+                                    width: 500
                                 tableFields:
-                                    ausst_id:
-                                        label: Id
-                                    ausst_bem:
-                                        label: Bemerkung
+                                    gid:
+                                        label: Nr.
+                                    name:
+                                        label: Name
                                 formItems:
                                      - type: tabs
                                        children:
                                            - type: form
-                                             title: Kontrolle
+                                             title: Basics
                                              children:
                                                  - type: select
-                                                   title: Schadensmerkmal
-                                                   name: schadensmerkmal_id
-                                                   options: { 10: klein, 20: mittel, 30: groß }
-#                                                   options:
-#                                                       10: klein
-#                                                       20: mittel
-#                                                       30: groß
-                                                 - type: input
-                                                   title: Bemerkung
-                                                   name: ausst_bem
-                                                 - type: input
-                                                   title: Pflanzjahr
-                                                   name: ausst_jahr
-                                                 - type:  checkbox
-                                                   name:  totholz
-                                                   value: false
-                                                   title: Totholz
-                                                 - type:  checkbox
-                                                   name:  pilzbefall
-                                                   value: false
-                                                   title: Pilzbefall
-                                           - type: form
-                                             title: Stammdaten
-                                             children:
-                                                 - type: input
-                                                   title: Pflanzgröße
-                                                   name: ausst_merkmal_1
-                                                   
-                            table1:
-                                label: Tabelle mit Punkten
-                                featureType: 
-                                    connection: digi2
-                                    table: punkte
-                                    uniqueId: id
-                                    geomType: point
-                                    geomField: geom
-                                    srid: 25832
-                                    fields: [id,titel,bemerkung,feld1,feld2]
-                                tableFields:
-                                    id:
-                                        label: Id
-                                    titel:
-                                        label: Titel
-                                formItems:
-                                    - type: form
-                                      children:
-                                          - type: input
-                                            title: Titel
-                                            name: titel
-                                          - type: input
-                                            title: Bemerkung
-                                            name: bemerkung
-                            table2:
-                                label: Tabelle mit Linien
-                                featureType: 
-                                    connection: digi2
-                                    table: linien
-                                    uniqueId: id
-                                    geomType: line
-                                    geomField: geom
-                                    srid: 25832
-                                    fields: [id,titel,bemerkung,feld1,feld2]
-                                tableFields:
-                                    id:
-                                        label: Id
-                                    titel:
-                                        label: Titel
-                                formItems:
-                                    - type: form
-                                      children:
-                                          - type: input
-                                            title: Titel
-                                            name: titel
-                                          - type: input
-                                            title: Bemerkung
-                                            name: bemerkung
-                footer:
-                    activityindicator:
-                        class: Mapbender\CoreBundle\Element\ActivityIndicator
-                        title: Activity Indicator
-                        activityClass: mb-activity
-                        ajaxActivityClass: mb-activity-ajax
-                        tileActivityClass: mb-activity-tile
-                    coordinates:
-                        class: Mapbender\CoreBundle\Element\CoordinatesDisplay
-                        title: Coordinates Display
-                        tooltip: Coordinates Display
-                        target: map
-                        label: false
-                        empty:  "x: - y: -"
-                        prefix: "x: "
-                        separator:  " y: "
-                    srs:
-                        class: Mapbender\CoreBundle\Element\SrsSelector
-                        title: SRS Selector
-                        tooltip: SRS Selector
-                        label: false
-                        target: map
-                    scaleselector:
-                        class: Mapbender\CoreBundle\Element\ScaleSelector
-                        title: Scale Selector
-                        tooltip: Scale Selector
-                        label: false
-                        target: map
-        digitest_wesseling_baumkataster:
-            title: Digitalisierung Wesseling Baumkataster
-            screenshot: 'mapbender_user.png'
-            description: "Testumgebung Digitalisierung"
-            published: true
-            template:  Mapbender\CoreBundle\Template\Fullscreen
-            regionProperties: 
-                -
-                    name: sidepane
-                    properties: {"name": "accordion", "label": "mb.manager.template.region.accordion.label"}
-            layersets:
-                main:
-                    baeume:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: Baumkataster Hostingrechner
-                        url: http://wesseling.wheregroup.com/cgi-bin/mapserv566?map=/data/umn/wesseling/map/verkehr/baumkataster_admin.map
-                        layers:
-                            30: { name: Ausstattung,    title : Bäume,  visible: true, queryable: true }
-                        info_format: text/html
-                        visible: true
-                        format: image/png
-                        transparent: true
-                        tiled: true
-                        opacity: 100
-                    luftbilder:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: Luftbilder
-                        url: https://wesseling-luftbilder.wheregroup.com/cgi-bin/grunddaten/luftbild.xml
-                        layers:
-                            30: { name: Orthophoto2010,    title : Orthophoto2010,  visible: true }
-                        info_format: text/html
-                        visible: false
-                        format: image/png
-                        transparent: true
-                        tiled: true
-                        opacity: 60
-                    osm:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: OSM Demo
-                        url: http://osm-demo.wheregroup.com/service
-                        layers:
-                            30: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
-                        info_format: text/html
-                        visible: true
-                        format: image/png
-                        transparent: true
-                        tiled: true
-                        opacity: 100
-                overview:
-                    osm_overview:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: OSM Demo
-                        url: http://osm-demo.wheregroup.com/service
-                        layers:
-                            40: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
-                        tiled: false
-                        format: image/png
-                        transparent: true
-                        visible: true
-                        opacity: 100
-            elements:
-                toolbar:
-                    layertree-button:
-                        title: Layertree
-                        tooltip: Layertree
-                        class: Mapbender\CoreBundle\Element\Button
-                        label: true
-                        icon: icon-layer-tree
-                        target: layertreedialog
-                        action: open
-                    legend-button:
-                        title: Legend
-                        tooltip: Legend
-                        class: Mapbender\CoreBundle\Element\Button
-                        target: legend
-                        icon: icon-legend
-                        action: open
-                    fi-button:
-                        title: Feature Info
-                        tooltip: Feature Info
-                        class: Mapbender\CoreBundle\Element\Button
-                        icon: icon-feature-info
-                        label: true
-                        target: featureinfo
-                        deactivate: deactivate
-                        group: featureinfo
-                content:
-                    map:
-                        title: Main Map
-                        class: Mapbender\CoreBundle\Element\Map
-                        layersets: [main]
-                        srs: EPSG:31466
-                        units: m
-                        extents:
-                            start: [2565320,5629090,2572730,5634870]
-                            max: [2565320,5629090,2572730,5634870]
-                        scales: [50000,25000,10000,7500,5000,2500,1000,500]
-                        maxResolution: 'auto'
-                        otherSrs: ["EPSG:25833","EPSG:31466","EPSG:31467","EPSG:900913","EPSG:4326"]
-                    zoombar:
-                        class: Mapbender\CoreBundle\Element\ZoomBar
-                        target: map
-                        components: ["pan","history","zoom_box","zoom_max","zoom_slider"]
-                        position: [15em, 3em]
-                        stepsize: 50
-                        stepbypixel: true
-                        anchor: right-top
-                        position: [200,40]
-                        draggable: false
-                    legend:
-                        class: Mapbender\CoreBundle\Element\Legend
-                        target: map
-                        title: Legend
-                        elementType: dialog
-                        autoOpen: false
-                        displayType: list
-                        hideEmptyLayers: true
-                        noLegend: "No legend available"
-                        generateLegendGraphic: false
-                        showWmsTitle: true
-                        showLayerTitle: true
-                        showGroupedLayerTitle: true
-                    featureinfo:
-                        class: Mapbender\CoreBundle\Element\FeatureInfo
-                        title: FeatureInfo
-                        target: map
-                        deactivateOnClose: false
-                    scalebar:
-                        class: Mapbender\CoreBundle\Element\ScaleBar
-                        target: map
-                        anchor: 'left-bottom'
-                        position: ['10px', '10px']
-                        maxWidth: 200
-                        units: ['km']
-                    layertreedialog:
-                        title: Layertree
-                        class: Mapbender\CoreBundle\Element\Layertree
-                        target: map
-                        type: dialog
-                        displaytype: tree
-                        useAccordion: false
-                        autoOpen: false
-                        titleMaxLength: 20
-                        showBaseSource: true
-                        layerRemove: false
-                        menu: []
-                    overview:
-                        title: Overview
-                        class: Mapbender\CoreBundle\Element\Overview
-                        tooltip: 'Overview'
-                        target: map
-                        layerset: overview
-                        width: 200
-                        height: 100
-                        anchor: 'right-bottom'
-                        position: ['0px', '0px']
-                        maximized: true
-                        fixed: false
-                sidepane:
-                    digitizer:
-                        class: Mapbender\DigitizerBundle\Element\Digitizer
-                        title: Digitalisierung
-                        target: map
-                        schemes:
+                                                   title: Type
+                                                   name: type
+                                                   options:
+                                                       A: A
+                                                       B: B
+                                                       C: C
+                                                       D: D
+                                                       E: E
 
+                                                 - type: input
+                                                   title: Name
+                                                   mandatory: true
+                                                   name: name
+                                                   mandatoryText: Please give a name to the poi.
 
-                        # -----------------------
-                            poi2:
-                                label: Poi Digitizing 1
-                                maxResults: 500
+                                                 - type: breakLine
+
+                                                 - type: fieldSet
+                                                   children:
+                                                       - type: date
+                                                         title: favorite Date
+                                                         name: date_favorite
+                                                         css: {width: 25%}
+
+                            poi:
+                                label: POI
+                                maxResults: 1500
                                 featureType:
                                     connection: search_db
                                     table: poi
@@ -1109,258 +865,6 @@ parameters:
                                                  name: email
                                                  css: {width: 40%}
 
-                        # -----------------------
-
-                            ausstattung:
-                                label: Baumkataster
-                                featureType: baumkataster
-                                openFormAfterEdit: true
-                                popup: 
-                                    # Options description:
-                                    # http://api.jqueryui.com/dialog/
-                                    title: Baumkataster
-#                                    height: 607px
-                                    width: 500
-                                    # modal: true
-                                    # position: {at: "left+20px",  my: "left top-460px"}
-                                tableFields:
-                                    ausst_id:
-                                        label: Nr.
-                                    info:
-                                        label: Info
-                                formItems:
-                                     - type: tabs
-                                       children:
-                                           - type: form
-                                             title: Kontrolle
-                                             children:
-
-                                                 - type: select
-                                                   title: Baumart
-                                                   name: a_id
-                                                   connection: digi
-                                                   sql: SELECT a_id, a_lat_bez || ' (' || a_deu_bez || ')' FROM "verkehr"."artikel" ORDER BY a_lat_bez ASC
-
-                                                 - type: input
-                                                   title: Standort Bemerkung
-                                                   mandatory: true
-                                                   name: bemerkungen_standort
-                                                   mandatoryText: Bitte geben sie die Bemerkung ein!
-
-                                                 - type: breakLine
-
-                                                 - type: fieldSet
-                                                   children:
-                                                       - type: date
-                                                         title: Letzte Kontrolle
-                                                         name: letzte_kontrolle_datum
-                                                         css: {width: 25%}
-
-                                                       - type: select
-                                                         title: Zustand
-                                                         name: ausst_zustand
-                                                         css: {width: 75%}
-                                                         connection: digi
-                                                         sql: SELECT ausst_zustand_id, ausst_zustand_text FROM verkehr.ausstattung_zustand
-
-                                                 - type: select
-                                                   title: Kontrollintervall Stufe
-                                                   name: kontrollintervall_stufe
-                                                   options:
-                                                       A: A - Problembäume mit umfangreichen Schäden - halbjährlich
-                                                       B: B - Bäume, die zwar Schäden aufweisen, die jedoch weniger umfangreich sind - jährlich
-                                                       C: C - Bäume (ab 15. Jahr nach Pflanzung) überwiegend ohne Schäden - 2 Jahre
-                                                       D: D - Jungbäume (bis 15. Jahr nach Pflanzung - Pflegekontrolle
-                                                       E: E - Bäume, die aufgrund besonderer Umstände, zu einem bestimmten Zeitpunkt kontrolliert werden müssen - anlassbezogen
-
-
-
-                                                 - type: textArea
-                                                   title: Bestandsaufnahme Bemerkung
-                                                   # Check if input is a number
-#                                                   mandatory: /^[0-9]+$/
-#                                                   mandatoryText: Bitte die Zahl Eingeben!
-                                                   #mandatory: true #/[a-z]{3}/g
-                                                   mandatory: true
-                                                   name: letzte_kontrolle_bestandsaufnahme_bemerkung
-
-                                                 - type: fieldSet
-                                                   children:
-                                                       - type: date
-                                                         title: Pflanzjahr
-                                                         name: ausst_jahr
-                                                         dateFormat: yy
-                                                         css: {width: 30%}
-
-                                                       - type: select
-                                                         title: Untergrund
-                                                         name: ug_id
-                                                         sql: SELECT ug_id, ug_bez  FROM verkehr.untergrund
-                                                         connection: digi
-                                                         css: {width: 35%}
-
-                                                       - type: input
-                                                         title: Pflanzgröße (STU)
-                                                         name: ausst_merkmal_1
-                                                         css: {width: 35%}
-
-                                                 - type: textArea
-                                                   title: Info
-                                                   name: info
-                                           - type: form
-                                             title: Pflege
-                                             children:
-                                                 - type: fieldSet
-                                                   children:
-                                                       - type: select
-                                                         title: Vitalität
-                                                         name: schadensmerkmal_id
-                                                         options:
-                                                             8: Betonbaumscheibe
-                                                             0: ohne Schadensmerkmal
-                                                             1: schwach geschädigt
-                                                             2: mittelstark geschädigt
-                                                             3: stark geschädigt
-                                                             4: abgestorben
-                                                         css: {width: 50%}
-                                                       - type: select
-                                                         title: Resultat
-                                                         name: letzte_kontrolle_resultat
-                                                         options:
-                                                             entfernen / fällen: entfernen / fällen
-                                                             keine Maßnahme: keine Maßnahme
-                                                             externe Prüfung durchführen: externe Prüfung durchführen
-                                                             Standsicherheitsprüfung: Standsicherheitsprüfung
-                                                             Pflegemaßnahme: Pflegemaßnahme
-                                                         css: {width: 50%}
-                                                 - type: breakLine
-
-                                                 - type: fieldSet
-                                                   children:
-
-                                                       - type: checkbox
-                                                         title: Totholz
-                                                         name: totholz
-                                                         value: Totholz
-
-                                                       - type: checkbox
-                                                         title: Lichtraumprofil
-                                                         name: lichtraumprofil
-                                                         value: Lichtraumprofil
-
-                                                       - type: checkbox
-                                                         title: Pilzbefall
-                                                         name: pilzbefall
-                                                         value: Pilzbefall
-
-                                                       - type: checkbox
-                                                         title: Insektenbefall
-                                                         name: insektenbefall
-                                                         value: Insektenbefall
-
-                                                       - type: checkbox
-                                                         title: Beschädigung am Stamm
-                                                         name: beschaedigung_stamm
-                                                         value: Beschädigung am Stamm
-
-                                                       - type: checkbox
-                                                         title: Beschädigung an der Wurzel
-                                                         name: beschaedigung_wurzel
-                                                         value: Beschädigung an der
-
-                                                 - type: breakLine
-                                                 - type: textArea
-                                                   title: Resultat Bemerkung
-                                                   name: letzte_kontrolle_resultat_bemerkung
-                                                 - type: input
-                                                   title: Bewirtschaftung
-                                                   name: bewirtschaftung
-                                                 - type: select
-                                                   title: Maßnahme Dringlichkeit
-                                                   name: dringlichkeit_massnahme
-                                                   options:
-                                                       1: 1 - Erledigung innerhalb von 14 Tagen
-                                                       2: 2 - Erledigung im Rahmen des normalen Prozedere
-                                                       3: 3 - Erledigung ohne Zeitvorgabe
-                                           - type: form
-                                             title: Stammdaten
-                                             children: 
-                                                 - type: select
-                                                   title: Beetsicherung
-                                                   name: beetsicherung_id
-                                                   options:
-                                                       1: keine Angabe                                   
-                                                       2: ohne                                   
-                                                       3: Baumschutzbügel                                   
-                                                       4: Holzpoller                                   
-                                                       5: Findling
-                                                 - type: select
-                                                   title: Bilanzkonto
-                                                   name: bilanzkonto_id
-                                                   sql: SELECT bilanzkonto, produkt || ' (' || bilanzkonto || ')'  FROM verkehr.bilanzkonto ORDER BY produkt ASC
-                                                   connection: digi
-                                                 - type: fieldSet
-                                                   children:
-                                                       - type: input
-                                                         title: Preis
-                                                         name: ausst_preis
-                                                         css: {width: 40%}
-                                                       - type: input
-                                                         title: Baumscheibe Größe
-                                                         name: ausst_merkmal_2
-                                                         css: {width: 60%}
-                                                 - type: file
-                                                   formats: ['jpg', 'png']
-                                                   title: Bild
-                                                   name: bild
-#                            table1:
-#                                label: Tabelle mit Punkten
-#                                featureType:
-#                                    connection: digi2
-#                                    table: punkte
-#                                    uniqueId: id
-#                                    geomType: point
-#                                    geomField: geom
-#                                    srid: 25832
-#                                    fields: [id,titel,bemerkung,feld1,feld2]
-#                                tableFields:
-#                                    id:
-#                                        label: Id
-#                                    titel:
-#                                        label: Titel
-#                                formItems:
-#                                    - type: form
-#                                      children:
-#                                          - type: input
-#                                            title: Titel
-#                                            name: titel
-#                                          - type: input
-#                                            title: Bemerkung
-#                                            name: bemerkung
-#                            table2:
-#                                label: Tabelle mit Linien
-#                                featureType:
-#                                    connection: digi2
-#                                    table: linien
-#                                    uniqueId: id
-#                                    geomType: line
-#                                    geomField: geom
-#                                    srid: 25832
-#                                    fields: [id,titel,bemerkung,feld1,feld2]
-#                                tableFields:
-#                                    id:
-#                                        label: Id
-#                                    titel:
-#                                        label: Titel
-#                                formItems:
-#                                    - type: form
-#                                      children:
-#                                          - type: input
-#                                            title: Titel
-#                                            name: titel
-#                                          - type: input
-#                                            title: Bemerkung
-#                                            name: bemerkung
                 footer:
                     activityindicator:
                         class: Mapbender\CoreBundle\Element\ActivityIndicator

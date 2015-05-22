@@ -54,18 +54,6 @@ doctrine:
                 logging: false
                 profiling: false
 
-            search_db:
-                driver:   %database_searchdb_driver%
-                host:     %database_searchdb_host%
-                port:     %database_searchdb_port%
-                dbname:   %database_searchdb_name%
-                path:     %database_searchdb_path%
-                user:     %database_searchdb_user%
-                password: %database_searchdb_password%
-                charset:  UTF8
-                logging: false
-                profiling: false
-
             digi:
                 driver:   %database_digi_driver%
                 host:     %database_digi_host%
@@ -77,14 +65,15 @@ doctrine:
                 charset:  UTF8
                 logging: false
                 profiling: false
-            digi2:
-                driver:   %database_digi2_driver%
-                host:     %database_digi2_host%
-                port:     %database_digi2_port%
-                dbname:   %database_digi2_name%
-                path:     %database_digi2_path%
-                user:     %database_digi2_user%
-                password: %database_digi2_password%
+
+            search_db:
+                driver:   %database_digi_driver%
+                host:     %database_digi_host%
+                port:     %database_digi_port%
+                dbname:   %database_digi_name%
+                path:     %database_digi_path%
+                user:     %database_digi_user%
+                password: %database_digi_password%
                 charset:  UTF8
                 logging: false
                 profiling: false
