@@ -1,7 +1,40 @@
 # Changelog
-* **v3.0.x.x** - 201x-xx-xx
+* **v3.0.5.0** - 201x-xx-xx
+    - a map parameter "layerset" is renamed into "layersets" and represets a list of layersets
+    - WMS Update
+    - Digitize Functionality
+    - Print with legend
+    - configurable Layertree
+    - Mobile Template
+    - SASS Compiler
+    - addvendorspecific
+    - advanced features for HTML element through formgenerator
+    - New button collection
+    - advanced behaviour of featureInfo dialog (keep styles, only open tabs for hits, width and height for FeatureInfo dialog)
+    - add prameter on start of a Mapbender3 application (change srs, poi, bbox, center)
+    - Symfony Update 2.3.27
 
 #Release
+* **v3.0.4.1** - 2015-01-23
+    - option 'removelayer' added into layertree menu
+    - parameter 'layerRemove' removed from layertree configuration
+    - container accordion structure changed
+    - import / export from applications added (without acls)
+    - display layer metadata
+    - Frontend: Sidepane Accordeon Legend is displayed without horizontal Scrollbar
+    - Backend: WMS Instanz configuration - contextmenu for layers shows wrong ID (only instance ID)
+    - Frontend: Legend - displays WMS Information although the checkbox Show
+    - Frontend: Layertree - contextmenu zoomlayer does not use the layer extent
+    - Backend: Add Source with user/password - informations is added to field originUrl not to fields user and password
+    - app/console mapbender:generate:element fixed errors
+    - bug visiblelayers fixed
+    - WMS with authentication saves in table mb_wms_wmssource username and password
+    - no metadata for applications coming from mapbender.yml definition (no entry in context menu)
+    - copy an application via button on application fixed
+    - print template resize northarrow, overview added
+    - improved screenshot for application handling
+    - https://github.com/mapbender/mapbender/milestones/3.0.4.1
+
 * **v3.0.4.0** - 2014-09-12
     - Switched to MIT license
     - Added parameter group for element BaseSourceSwitcher to be able to create a menu bar with groupname as title of the menu
