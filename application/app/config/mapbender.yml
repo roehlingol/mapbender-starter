@@ -777,6 +777,11 @@ parameters:
                                 popup:
                                     title: POI  Test Suite
                                     width: 500
+                                toolset:
+                                    - type: drawPolygon
+                                    - type: drawRectangle
+                                    - type: drawDonut
+                                    - type: removeSelected
                                 tableFields:
                                     gid:
                                         label: Nr.
