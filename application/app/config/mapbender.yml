@@ -4,6 +4,62 @@ services:
     arguments: [ "@service_container" ]
 
 parameters:
+    schemes:
+        lineScheme: &lineScheme
+            label: &lines Lines
+            featureType:
+                connection: search_db
+                table: lines
+                uniqueId: gid
+                geomType: line
+                geomField: geom
+                srid: 4326
+                fields: "*"
+            openFormAfterEdit: true
+            popup:
+                title: *lines
+                width: 500
+            toolset:
+                - type: drawPoint
+                - type: modifyFeature
+                - type: selectFeature
+                - type: removeSelected
+            tableFields:
+                gid:
+                    label: Nr.
+                name:
+                    label: Name
+            formItems:
+                 - type: tabs
+                   children:
+                       - type: form
+                         title: Basics
+                         children:
+                             - type: select
+                               title: Type
+                               name: type
+                               options:
+                                   A: A
+                                   B: B
+                                   C: C
+                                   D: D
+                                   E: E
+
+                             - type: input
+                               title: Name
+                               mandatory: true
+                               name: name
+                               mandatoryText: Please give a name to the poi.
+
+                             - type: breakLine
+
+                             - type: fieldSet
+                               children:
+                                   - type: date
+                                     title: favorite Date
+                                     name: date_favorite
+                                     css: {width: 25%}
+
     featureTypes:
 
         ausstattung:
@@ -624,31 +680,31 @@ parameters:
                     properties: {"name": "accordion", "label": "mb.manager.template.region.accordion.label"}
             layersets:
                 main:
-                    mapbender_users:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: Mapbender Users
-                        url: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml
-                        layers:
-                            10: { name: Mapbender_User,    title : User, visible: true, legendurl: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml?REQUEST=GetLegendGraphic&VERSION=1.1.1&SERVICE=WMS&Layer=Mapbender_User&FORMAT=image/png }
-                            22: { name: Mapbender_Names,   title : Name, visible: true, queryable: true}
-                        info_format: text/html
-                        visible: true
-                        format: image/png
-                        transparent: true
-                        tiled: false
-                        opacity: 85
-                    baumkataster:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: Baumkataster
-                        url: https://wesseling-verkehr.wheregroup.com/cgi-local/verkehr/baumkataster.xml
-                        layers:
-                            30: { name: Ausstattung,    title : Ausstattung,  visible: true }
-                        info_format: text/html
-                        visible: true
-                        format: image/png
-                        transparent: true
-                        tiled: true
-                        opacity: 100
+#                    mapbender_users:
+#                        class: Mapbender\WmsBundle\Entity\WmsInstance
+#                        title: Mapbender Users
+#                        url: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml
+#                        layers:
+#                            10: { name: Mapbender_User,    title : User, visible: true, legendurl: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml?REQUEST=GetLegendGraphic&VERSION=1.1.1&SERVICE=WMS&Layer=Mapbender_User&FORMAT=image/png }
+#                            22: { name: Mapbender_Names,   title : Name, visible: true, queryable: true}
+#                        info_format: text/html
+#                        visible: true
+#                        format: image/png
+#                        transparent: true
+#                        tiled: false
+#                        opacity: 85
+#                    baumkataster:
+#                        class: Mapbender\WmsBundle\Entity\WmsInstance
+#                        title: Baumkataster
+#                        url: https://wesseling-verkehr.wheregroup.com/cgi-local/verkehr/baumkataster.xml
+#                        layers:
+#                            30: { name: Ausstattung,    title : Ausstattung,  visible: true }
+#                        info_format: text/html
+#                        visible: true
+#                        format: image/png
+#                        transparent: true
+#                        tiled: true
+#                        opacity: 100
                     osm:
                         class: Mapbender\WmsBundle\Entity\WmsInstance
                         title: OSM Demo
@@ -763,61 +819,7 @@ parameters:
                         title: Digitalisierung
                         target: map
                         schemes:
-                            line:
-                                label: Lines
-                                featureType:
-                                    connection: search_db
-                                    table: lines
-                                    uniqueId: gid
-                                    geomType: line
-                                    geomField: geom
-                                    srid: 4326
-                                    fields: "*"
-                                openFormAfterEdit: true
-                                popup:
-                                    title: POI  Test Suite
-                                    width: 500
-                                toolset:
-                                    - type: drawPolygon
-                                    - type: drawRectangle
-                                    - type: drawDonut
-                                    - type: removeSelected
-                                tableFields:
-                                    gid:
-                                        label: Nr.
-                                    name:
-                                        label: Name
-                                formItems:
-                                     - type: tabs
-                                       children:
-                                           - type: form
-                                             title: Basics
-                                             children:
-                                                 - type: select
-                                                   title: Type
-                                                   name: type
-                                                   options:
-                                                       A: A
-                                                       B: B
-                                                       C: C
-                                                       D: D
-                                                       E: E
-
-                                                 - type: input
-                                                   title: Name
-                                                   mandatory: true
-                                                   name: name
-                                                   mandatoryText: Please give a name to the poi.
-
-                                                 - type: breakLine
-
-                                                 - type: fieldSet
-                                                   children:
-                                                       - type: date
-                                                         title: favorite Date
-                                                         name: date_favorite
-                                                         css: {width: 25%}
-
+                            line: *lineScheme
                             poi:
                                 label: POI
                                 maxResults: 1500
