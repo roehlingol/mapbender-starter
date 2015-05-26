@@ -47,7 +47,7 @@ parameters:
 
     schemes:
         lineScheme: &lineScheme
-            searchType # all|currentExtend
+            searchType: currentExtent # all|currentExtent
             label: &lines Lines
             featureType:
                 connection: search_db
@@ -62,7 +62,7 @@ parameters:
                 title: *lines
                 width: 500
             toolset:
-                - type: drawPoint
+                - type: drawLine
                 - type: modifyFeature
                 - type: selectFeature
                 - type: removeSelected
