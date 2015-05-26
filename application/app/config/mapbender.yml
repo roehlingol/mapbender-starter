@@ -4,8 +4,50 @@ services:
     arguments: [ "@service_container" ]
 
 parameters:
+    layerSets:
+        mapbenderUsers: &mapbenderUsers
+            class: Mapbender\WmsBundle\Entity\WmsInstance
+            title: Mapbender Users
+            url: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml
+            layers:
+                10: { name: Mapbender_User,    title : User, visible: true, legendurl: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml?REQUEST=GetLegendGraphic&VERSION=1.1.1&SERVICE=WMS&Layer=Mapbender_User&FORMAT=image/png }
+                22: { name: Mapbender_Names,   title : Name, visible: true, queryable: true}
+            info_format: text/html
+            visible: true
+            format: image/png
+            transparent: true
+            tiled: false
+            opacity: 85
+
+        osm_overview: &osm_overview
+            class: Mapbender\WmsBundle\Entity\WmsInstance
+            title: OSM Demo
+            url: http://osm-demo.wheregroup.com/service
+            layers:
+                30: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
+            info_format: text/html
+            visible: true
+            format: image/png
+            transparent: true
+            tiled: true
+            opacity: 100
+
+#        baumkataster: &baumkatasterLayerSet
+#            class: Mapbender\WmsBundle\Entity\WmsInstance
+#            title: Baumkataster
+#            url: https://wesseling-verkehr.wheregroup.com/cgi-local/verkehr/baumkataster.xml
+#            layers:
+#                30: { name: Ausstattung,    title : Ausstattung,  visible: true }
+#            info_format: text/html
+#            visible: true
+#            format: image/png
+#            transparent: true
+#            tiled: true
+#            opacity: 100
+
     schemes:
         lineScheme: &lineScheme
+            searchType # all|currentExtend
             label: &lines Lines
             featureType:
                 connection: search_db
@@ -59,6 +101,58 @@ parameters:
                                      title: favorite Date
                                      name: date_favorite
                                      css: {width: 25%}
+    poiScheme: &poiScheme
+        label: POI
+        maxResults: 1500
+        featureType:
+            connection: search_db
+            table: poi
+            uniqueId: gid
+            geomType: point
+            geomField: geom
+            srid: 4326
+        openFormAfterEdit: true
+        popup:
+            title: POI Test Suite
+            width: 500px
+        tableFields: {gid: {label: Nr.}, name: {label: Name}}
+        formItems:
+           - type: form
+             css: {padding: 10px}
+             children:
+                 - type: select
+                   title: Type
+                   name: type
+                   options: {A:A, B:B, C:C, D:D, E:E}
+                 - type: input
+                   title: Name
+                   mandatory: true
+                   name: name
+                   mandatoryText: Please give a name to the poi.
+                 - type: breakLine
+                 - type: fieldSet
+                   children:
+                       - type: date
+                         title: favorite Date
+                         name: date_favorite
+                         mandatory: true
+                         css: {width: 25%}
+                 - type: breakLine
+                 - type: fieldSet
+                   children:
+                       - type: input
+                         title: Firstname
+                         name: firstname
+                         css: {width: 30%}
+                       - type: input
+                         title: Lastname
+                         name: lastname
+                         css: {width: 30%}
+                       - type: input
+                         title: E-Mail
+                         name: email
+                         css: {width: 40%}
+
 
     featureTypes:
 
@@ -102,43 +196,10 @@ parameters:
                   properties: {name: accordion, label: mb.manager.template.region.accordion.label}
             layersets:
                 main:
-                    mapbender_users:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: Mapbender Users
-                        url: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml
-                        layers:
-                            10: { name: Mapbender_User,    title : User, visible: true, legendurl: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml?REQUEST=GetLegendGraphic&VERSION=1.1.1&SERVICE=WMS&Layer=Mapbender_User&FORMAT=image/png }
-                            22: { name: Mapbender_Names,   title : Name, visible: true, queryable: true}
-                        info_format: text/html
-                        visible: true
-                        format: image/png
-                        transparent: true
-                        tiled: false
-                        opacity: 85
-                    osm:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: OSM Demo
-                        url: http://osm-demo.wheregroup.com/service
-                        layers:
-                            30: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
-                        info_format: text/html
-                        visible: true
-                        format: image/png
-                        transparent: true
-                        tiled: true
-                        opacity: 100
+                    mapbender_users: *mapbenderUsers
+                    osm: *osm_overview
                 overview:
-                    osm_overview:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: OSM Demo
-                        url: http://osm-demo.wheregroup.com/service
-                        layers:
-                            40: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
-                        tiled: false
-                        format: image/png
-                        transparent: true
-                        visible: true
-                        opacity: 100
+                    osm_overview: *osm_overview
             elements:
                 toolbar:
                     layertree-button:
@@ -413,42 +474,10 @@ parameters:
             template:  Mapbender\CoreBundle\Template\Fullscreen
             layersets:
                 main:
-                    mapbender_users:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: Mapbender Users
-                        url: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml
-                        layers:
-                            10: { name: Mapbender_User,    title : User, visible: true, legendurl: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml?REQUEST=GetLegendGraphic&VERSION=1.1.1&SERVICE=WMS&Layer=Mapbender_User&FORMAT=image/png }
-                            22: { name: Mapbender_Names,   title : Name, visible: true, queryable: true}
-                        info_format: text/html
-                        visible: true
-                        format: image/png
-                        transparent: true
-                        tiled: false
-                        opacity: 85
-                    osm:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: OSM Demo
-                        url: http://osm-demo.wheregroup.com/service
-                        layers:
-                            30: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
-                        info_format: text/html
-                        visible: true
-                        format: image/png
-                        transparent: true
-                        tiled: true
-                        opacity: 100
+                    mapbender_users: *mapbenderUsers
+                    osm: *osm_overview
                 overview:
-                    osm_overview:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: OSM Demo
-                        url: http://osm-demo.wheregroup.com/service
-                        layers:
-                            40: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
-                        tiled: false
-                        format: image/png
-                        transparent: true
-                        visible: true
+                    osm_overview: *osm_overview
             elements:
                 toolbar:
                     layertree-button:
@@ -680,55 +709,9 @@ parameters:
                     properties: {"name": "accordion", "label": "mb.manager.template.region.accordion.label"}
             layersets:
                 main:
-#                    mapbender_users:
-#                        class: Mapbender\WmsBundle\Entity\WmsInstance
-#                        title: Mapbender Users
-#                        url: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml
-#                        layers:
-#                            10: { name: Mapbender_User,    title : User, visible: true, legendurl: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml?REQUEST=GetLegendGraphic&VERSION=1.1.1&SERVICE=WMS&Layer=Mapbender_User&FORMAT=image/png }
-#                            22: { name: Mapbender_Names,   title : Name, visible: true, queryable: true}
-#                        info_format: text/html
-#                        visible: true
-#                        format: image/png
-#                        transparent: true
-#                        tiled: false
-#                        opacity: 85
-#                    baumkataster:
-#                        class: Mapbender\WmsBundle\Entity\WmsInstance
-#                        title: Baumkataster
-#                        url: https://wesseling-verkehr.wheregroup.com/cgi-local/verkehr/baumkataster.xml
-#                        layers:
-#                            30: { name: Ausstattung,    title : Ausstattung,  visible: true }
-#                        info_format: text/html
-#                        visible: true
-#                        format: image/png
-#                        transparent: true
-#                        tiled: true
-#                        opacity: 100
-                    osm:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: OSM Demo
-                        url: http://osm-demo.wheregroup.com/service
-                        layers:
-                            30: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
-                        info_format: text/html
-                        visible: true
-                        format: image/png
-                        transparent: true
-                        tiled: true
-                        opacity: 100
+                    osm: *osm_overview
                 overview:
-                    osm_overview:
-                        class: Mapbender\WmsBundle\Entity\WmsInstance
-                        title: OSM Demo
-                        url: http://osm-demo.wheregroup.com/service
-                        layers:
-                            40: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
-                        tiled: false
-                        format: image/png
-                        transparent: true
-                        visible: true
-                        opacity: 100
+                    osm_overview: *osm_overview
             elements:
                 toolbar:
                     layertree-button:
@@ -820,57 +803,7 @@ parameters:
                         target: map
                         schemes:
                             line: *lineScheme
-                            poi:
-                                label: POI
-                                maxResults: 1500
-                                featureType:
-                                    connection: search_db
-                                    table: poi
-                                    uniqueId: gid
-                                    geomType: point
-                                    geomField: geom
-                                    srid: 4326
-                                openFormAfterEdit: true
-                                popup:
-                                    title: POI Test Suite
-                                    width: 500px
-                                tableFields: {gid: {label: Nr.}, name: {label: Name}}
-                                formItems:
-                                   - type: form
-                                     css: {padding: 10px}
-                                     children:
-                                         - type: select
-                                           title: Type
-                                           name: type
-                                           options: {A:A, B:B, C:C, D:D, E:E}
-                                         - type: input
-                                           title: Name
-                                           mandatory: true
-                                           name: name
-                                           mandatoryText: Please give a name to the poi.
-                                         - type: breakLine
-                                         - type: fieldSet
-                                           children:
-                                               - type: date
-                                                 title: favorite Date
-                                                 name: date_favorite
-                                                 mandatory: true
-                                                 css: {width: 25%}
-                                         - type: breakLine
-                                         - type: fieldSet
-                                           children:
-                                               - type: input
-                                                 title: Firstname
-                                                 name: firstname
-                                                 css: {width: 30%}
-                                               - type: input
-                                                 title: Lastname
-                                                 name: lastname
-                                                 css: {width: 30%}
-                                               - type: input
-                                                 title: E-Mail
-                                                 name: email
-                                                 css: {width: 40%}
+                            poi: *poiScheme
 
                 footer:
                     activityindicator:
