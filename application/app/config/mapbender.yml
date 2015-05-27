@@ -16,7 +16,7 @@ parameters:
             visible: true
             format: image/png
             transparent: true
-            tiled: false
+            tiled: true
             opacity: 85
 
         osm_overview: &osm_overview
@@ -66,9 +66,14 @@ parameters:
                 - type: modifyFeature
                 - type: selectFeature
                 - type: removeSelected
+
             tableFields:
                 gid:
+                    # Columns
+                    # https://datatables.net/reference/option/#Columns
+
                     label: Nr.
+                    width: 46px
                 name:
                     label: Name
             formItems:
@@ -104,6 +109,7 @@ parameters:
     poiScheme: &poiScheme
         label: POI
         maxResults: 1500
+        allowDelete: false
         featureType:
             connection: search_db
             table: poi
@@ -112,6 +118,11 @@ parameters:
             geomField: geom
             srid: 4326
         openFormAfterEdit: true
+        toolset:
+            - type: drawPoint
+            - type: moveFeature
+            - type: selectFeature
+            - type: removeSelected
         popup:
             title: POI Test Suite
             width: 500px
