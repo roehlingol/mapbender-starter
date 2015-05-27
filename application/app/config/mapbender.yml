@@ -61,11 +61,11 @@ parameters:
             popup:
                 title: *lines
                 width: 500
-            toolset:
-                - type: drawLine
-                - type: modifyFeature
-                - type: selectFeature
-                - type: removeSelected
+#            toolset:
+#                - type: drawLine
+#                - type: modifyFeature
+#                - type: selectFeature
+#                - type: removeSelected
 
             tableFields:
                 gid:
@@ -104,6 +104,7 @@ parameters:
                                children:
                                    - type: date
                                      title: favorite Date
+                                     dateFormat: yy-mm-dd
                                      name: date_favorite
                                      css: {width: 25%}
     poiScheme: &poiScheme
@@ -118,11 +119,11 @@ parameters:
             geomField: geom
             srid: 4326
         openFormAfterEdit: true
-        toolset:
-            - type: drawPoint
-            - type: moveFeature
-            - type: selectFeature
-            - type: removeSelected
+#        toolset:
+#            - type: drawPoint
+#            - type: moveFeature
+#            - type: selectFeature
+#            - type: removeSelected
         popup:
             title: POI Test Suite
             width: 500px
@@ -147,6 +148,7 @@ parameters:
                          title: favorite Date
                          name: date_favorite
                          mandatory: true
+                         dateFormat: yy-mm-dd
                          css: {width: 25%}
                  - type: breakLine
                  - type: fieldSet
@@ -353,6 +355,7 @@ parameters:
                     printclient:
                         class: Mapbender\CoreBundle\Element\PrintClient
                         target: map
+                        autoOpen: false
                         file_prefix: mapbender3
                         templates:
                             - { template: a4portrait, label: A4 Portrait, format: a4}
@@ -364,7 +367,6 @@ parameters:
                             - { dpi: 72 , label: Draft (72dpi)}
                             - { dpi: 288,  label: Document (288dpi)}
                         rotatable: true
-                        legend: true
                         optional_fields:
                             title:
                                 label: Title              # label of the optional field
@@ -397,7 +399,7 @@ parameters:
                         displaytype: tree
                         useAccordion: false
                         autoOpen: false
-                        titlemaxlength: 30
+                        titleMaxLength: 20
                         showBaseSource: true
                         layerRemove: false
                         menu: []
@@ -434,7 +436,7 @@ parameters:
                         displaytype: tree
                         useAccordion: false
                         autoOpen: false
-                        titlemaxlength: 30
+                        titleMaxLength: 20
                         showBaseSource: true
                         layerRemove: true
                         menu: [opacity,zoomtolayer,metadata]
@@ -483,14 +485,12 @@ parameters:
             description: "Fullscreen style, simple buttons, simple map showing WMS use."
             published: true
             template:  Mapbender\CoreBundle\Template\Fullscreen
-            custom_css: ".sidePane {\r\n    width: 400px;\r\n}\r\n\r\n.toolBar {\r\n  background-color: rgba(0, 29, 122, 0.8) !important;\r\n}\r\n\r\n.toolPane {\r\n  background-color: rgba(0, 29, 122, 0.8) !important;\r\n}\r\n\r\n.pan{\r\n  background-color: rgba(0, 93, 83, 0.9);\r\n}\r\n\r\n.sidePane {\r\n  overflow: visible;\r\n  background-image: url(\"\");\r\n  background-color: #eff7e9;\r\n}\r\n\r\n.sidePane.opened {\r\n    width: 350px;\r\n}"
             layersets:
                 main:
                     mapbender_users: *mapbenderUsers
                     osm: *osm_overview
                 overview:
                     osm_overview: *osm_overview
-                        opacity: 100
             elements:
                 toolbar:
                     layertree-button:
@@ -610,12 +610,10 @@ parameters:
                         defaultFormat: 'image/png'
                         defaultInfoFormat: 'text/html'
                         splitLayers: false
-                    imageexport:
-                        class: Mapbender\PrintBundle\Element\ImageExport
-                        target: map
                     printclient:
                         class: Mapbender\CoreBundle\Element\PrintClient
                         target: map
+                        autoOpen: false
                         print_directly: true
                         templates:
                             - { template: a4portrait, label: A4 Portrait, format: a4}
@@ -623,7 +621,6 @@ parameters:
                             - { template: a3portrait, label: A3 Portrait, format: a3}
                             - { template: a3landscape, label: A3 Landscape, format: a3}
                         scales: [500, 1000, 5000, 10000, 25000]
-                        legend: true
                         quality_levels:
                             - { dpi: 72 , label: Draft (72dpi)}
                             - { dpi: 288,  label: Document (288dpi)}
@@ -656,7 +653,7 @@ parameters:
                         displaytype: tree
                         useAccordion: false
                         autoOpen: false
-                        titlemaxlength: 20
+                        titleMaxLength: 20
                         showBaseSource: true
                         showHeader: false
                         layerMenu: false
@@ -718,7 +715,7 @@ parameters:
             screenshot: 'mapbender_user.png'
             description: "Testumgebung Digitalisierung"
             published: true
-            template:  'Mapbender\MobileBundle\Template\Mobile'
+            template:  Mapbender\CoreBundle\Template\Fullscreen
             regionProperties: 
                 -
                     name: sidepane
@@ -729,55 +726,22 @@ parameters:
                 overview:
                     osm_overview: *osm_overview
             elements:
-                footer:
-                    # buttons parameters: action,activate,deactivate are ignored for elements at mobilePane
+                toolbar:
                     layertree-button:
-                        title: Themes
-                        tooltip: Themes
+                        title: Layertree
+                        tooltip: Layertree
                         class: Mapbender\CoreBundle\Element\Button
-                        label: false
-                        icon: iconLayertree
-                        target: layertree
-
-                    bss-button:
-                        title: 'Change Background'
-                        tooltip: 'Change Background Map'
-                        class: Mapbender\CoreBundle\Element\Button
-                        icon: iconLegend
-                        label: false
-                        target: basesourceswitcher
-
-                    gps-button:
-                        title: GPS
-                        tooltip: show GPS Position
-                        class: Mapbender\CoreBundle\Element\GpsPosition
-                        label: false
-                        target: map
+                        label: true
+                        icon: icon-layer-tree
+                        target: layertreedialog
                         action: open
-                        icon: iconGps
-                        refreshinterval: '5000'
-                        average: '1'
-                        follow: false
-                        centerOnFirstPosition: true
-                        zoomToAccuracy: false
-                        zoomToAccuracyOnFirstPosition: true
-
-                    imprint-button:
-                        title: Imprint
-                        tooltip: Imprint
+                    legend-button:
+                        title: Legend
+                        tooltip: Legend
                         class: Mapbender\CoreBundle\Element\Button
-                        label: false
-                        icon: iconInfoActive
-                        target: imprint
-
-                    help-button:
-                        title: Help
-                        tooltip: Help
-                        class: Mapbender\CoreBundle\Element\Button
-                        label: false
-                        icon: iconHelp
-                        target: help
-
+                        target: legend
+                        icon: icon-legend
+                        action: open
                 content:
                     map:
                         title: Main Map
@@ -794,10 +758,12 @@ parameters:
                     zoombar:
                         class: Mapbender\CoreBundle\Element\ZoomBar
                         target: map
-                        components: ["zoom_in_out"]
+                        components: ["pan","history","zoom_box","zoom_max","zoom_slider"]
+                        position: [15em, 3em]
                         stepsize: 50
                         stepbypixel: true
-                        anchor: left-top
+                        anchor: right-top
+                        position: [200,40]
                         draggable: false
                     legend:
                         class: Mapbender\CoreBundle\Element\Legend
@@ -852,46 +818,31 @@ parameters:
                             line: *lineScheme
                             poi: *poiScheme
 
-                        autoActivate: true
-                        printResult: false
-                        displayType: tabs
-
-                    imprint:
-                        title: Imprint
-                        class: Mapbender\CoreBundle\Element\HTMLElement
-                        content: '<div style="color: #6FB536; font-weight:bold" >powered by Mapbender. Read more about Mapbender3 at the <a href="http://mapbender3.org" target="_blank">Mapbender3 Project Page</a>.</div>'
-                        classes: html-element-inline
-
-                    help:
-                        title: Help
-                        class: Mapbender\CoreBundle\Element\HTMLElement
-                        content: 'Enjoy the new Mapbender mobile Template. Please note that not all elements can be used in the mobile application. <div style="color: #6FB536; font-weight:bold">Find out more about the Mapbender mobile in the <a href="http://doc.mapbender3.org/en/book/mapbender_templates.html" target="_blank">Template Documentation</a>.</div>'
-                        classes: html-element-inline
-
-                    basesourceswitcher:
-                        title: Change Background
-                        tooltip: Change Background
-                        class: Mapbender\CoreBundle\Element\BaseSourceSwitcher
+                footer:
+                    activityindicator:
+                        class: Mapbender\CoreBundle\Element\ActivityIndicator
+                        title: Activity Indicator
+                        activityClass: mb-activity
+                        ajaxActivityClass: mb-activity-ajax
+                        tileActivityClass: mb-activity-tile
+                    coordinates:
+                        class: Mapbender\CoreBundle\Element\CoordinatesDisplay
+                        title: Coordinates Display
+                        tooltip: Coordinates Display
+                        target: map
+                        label: false
                         empty:  "x: - y: -"
                         prefix: "x: "
                         separator:  " y: "
-                    srs:
-                        class: Mapbender\CoreBundle\Element\SrsSelector
-                        title: SRS Selector
-                        tooltip: SRS Selector
+#                    srs:
+#                        class: Mapbender\CoreBundle\Element\SrsSelector
+#                        title: SRS Selector
+#                        tooltip: SRS Selector
+#                        label: false
+#                        target: map
+                    scaleselector:
+                        class: Mapbender\CoreBundle\Element\ScaleSelector
+                        title: Scale Selector
+                        tooltip: Scale Selector
                         label: false
                         target: map
-                        display: mobile
-                        instancesets:
-                            is1:
-                                title: "OSM Demo (with opacity)"
-                                cprTitle: ~
-                                cprUrl: ~
-                                group: ~
-                                instances: [osm_2]
-                            is2:
-                                title: "OSM Demo"
-                                cprTitle: ~
-                                cprUrl: ~
-                                group: ~
-                                instances: [osm]
