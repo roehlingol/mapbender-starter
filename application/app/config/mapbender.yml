@@ -817,7 +817,23 @@ parameters:
                         schemes:
                             line: *lineScheme
                             poi: *poiScheme
-
+                            line2:
+                                label: 'line digitizing'
+                                maxResults: 1500
+                                featureType: { connection: search_db, table: lines, uniqueId: gid, geomType: line, geomField: geom, srid: 4326 }
+                                openFormAfterEdit: true
+                                popup: { title: 'line test suite', width: 500px }
+                                tableFields: { gid: { label: Nr. }, name: { label: Name } }
+                                formItems: [{ type: form, title: 'Basic information', css: { padding: 10px }, children: [{ type: label, title: 'Welcome to the digitize demo. Try the new Mapbender3 feature!' }, { type: input, title: Name, mandatory: true, name: name, mandatoryText: 'Please give a name to the new object.', infoText: 'Help: Please give a name to the new object.' }, { type: select, title: Type, name: type, options: { A: A, B: B, C: C, D: D, E: E } }] }]
+                            polygon:
+                                label: 'polygon digitizing'
+                                maxResults: 1500
+                                featureType: { connection: search_db, table: polygons, uniqueId: gid, geomType: polygon, geomField: geom, srid: 4326 }
+                                openFormAfterEdit: true
+                                allowDelete: true
+                                popup: { title: 'polygon test suite', width: 500px }
+                                tableFields: { gid: { label: Nr. }, name: { label: Name } }
+                                formItems: [{ type: form, title: 'Basic information', css: { padding: 10px }, children: [{ type: label, title: 'Welcome to the digitize demo. Try the new Mapbender3 feature!' }, { type: input, title: Name, mandatory: true, name: name, mandatoryText: 'Please give a name to the new object.', infoText: 'Help: Please give a name to the new object.' }, { type: select, title: Type, name: type, options: { A: A, B: B, C: C, D: D, E: E } }] }]
                 footer:
                     activityindicator:
                         class: Mapbender\CoreBundle\Element\ActivityIndicator
