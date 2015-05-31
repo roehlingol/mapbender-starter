@@ -721,10 +721,10 @@ parameters:
                     name: sidepane
                     properties: {"name": "accordion", "label": "mb.manager.template.region.accordion.label"}
             layersets:
-                main:
-                    osm: *osm_overview
-                overview:
-                    osm_overview: *osm_overview
+                main: []
+#                    osm: *osm_overview
+                overview: []
+#                    osm_overview: *osm_overview
             elements:
                 toolbar:
                     layertree-button:
@@ -815,8 +815,8 @@ parameters:
                         title: Digitalisierung
                         target: map
                         schemes:
-                            line: *lineScheme
-                            poi: *poiScheme
+#                            line: *lineScheme
+#                            poi: *poiScheme
                             line2:
                                 label: 'line digitizing'
                                 maxResults: 1500
