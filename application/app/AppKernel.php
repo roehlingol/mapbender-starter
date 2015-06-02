@@ -1,8 +1,8 @@
 <?php
 
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\HttpKernel\Kernel;
 
 class AppKernel extends Kernel
 {
@@ -49,6 +49,8 @@ class AppKernel extends Kernel
             new Mapbender\WmsBundle\MapbenderWmsBundle(),
             new Mapbender\ManagerBundle\MapbenderManagerBundle(),
             new Mapbender\PrintBundle\MapbenderPrintBundle(),
+            new Mapbender\DigitizerBundle\MapbenderDigitizerBundle(),
+            new Mapbender\MobileBundle\MapbenderMobileBundle(),
 
             // OWSProxy3 bundles
             new OwsProxy3\CoreBundle\OwsProxy3CoreBundle(),

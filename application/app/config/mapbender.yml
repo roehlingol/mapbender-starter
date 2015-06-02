@@ -11,7 +11,7 @@ parameters:
             description: "Fullscreen style, Simple map showing WMS use."
             published: true
             template:  Mapbender\CoreBundle\Template\Fullscreen
-            regionProperties: 
+            regionProperties:
                 -
                     name: sidepane
                     properties: {"name": "accordion", "label": "mb.manager.template.region.accordion.label"}
@@ -114,7 +114,7 @@ parameters:
                         title: Line Ruler
                         tooltip: Line Ruler
                         class: Mapbender\CoreBundle\Element\Button
-                        icon: iconAreaRuler
+                        icon: icon-line-ruler
                         label: true
                         target: lineruler
                         deactivate: deactivate
@@ -123,7 +123,7 @@ parameters:
                         title: Area Ruler
                         tooltip: Area Ruler
                         class: Mapbender\CoreBundle\Element\Button
-                        icon: iconAreaRuler
+                        icon: icon-area-ruler
                         label: true
                         target: arearuler
                         deactivate: deactivate
@@ -132,6 +132,7 @@ parameters:
                         title: About
                         tooltip: About
                         label: true
+                        icon: icon-about
                         class: Mapbender\CoreBundle\Element\AboutDialog
                     poiButton:
                         title: POI
@@ -144,7 +145,7 @@ parameters:
                     map:
                         title: Main Map
                         class: Mapbender\CoreBundle\Element\Map
-                        layerset: main
+                        layersets: [main]
                         srs: EPSG:25832
                         units: m
                         extents:
@@ -195,7 +196,6 @@ parameters:
                     printclient:
                         class: Mapbender\CoreBundle\Element\PrintClient
                         target: map
-                        autoOpen: false
                         file_prefix: mapbender3.pdf
                         templates:
                             - { template: a4portrait, label: A4 Portrait, format: a4}
@@ -207,6 +207,7 @@ parameters:
                             - { dpi: 72 , label: Draft (72dpi)}
                             - { dpi: 288,  label: Document (288dpi)}
                         rotatable: true
+                        legend: true
                         optional_fields:
                             title:
                                 label: Title              # label of the optional field
@@ -239,7 +240,7 @@ parameters:
                         displaytype: tree
                         useAccordion: false
                         autoOpen: false
-                        titleMaxLength: 20
+                        titlemaxlength: 30
                         showBaseSource: true
                         layerRemove: false
                         menu: []
@@ -276,7 +277,7 @@ parameters:
                         displaytype: tree
                         useAccordion: false
                         autoOpen: false
-                        titleMaxLength: 20
+                        titlemaxlength: 30
                         showBaseSource: true
                         layerRemove: true
                         menu: [opacity,zoomtolayer,metadata]
@@ -318,13 +319,14 @@ parameters:
                         title: HTML
                         class: Mapbender\CoreBundle\Element\HTMLElement
                         content: '<div style="color: #6FB536; font-weight:bold" >powered by Mapbender</div>'
-                        classes: html-element-inline                        
+                        classes: html-element-inline
         mapbender_user_basic:
             title: Mapbender Demo Map basic
             screenshot: 'mapbender_user_basic.png'
             description: "Fullscreen style, simple buttons, simple map showing WMS use."
             published: true
             template:  Mapbender\CoreBundle\Template\Fullscreen
+            custom_css: ".sidePane {\r\n    width: 400px;\r\n}\r\n\r\n.toolBar {\r\n  background-color: rgba(0, 29, 122, 0.8) !important;\r\n}\r\n\r\n.toolPane {\r\n  background-color: rgba(0, 29, 122, 0.8) !important;\r\n}\r\n\r\n.pan{\r\n  background-color: rgba(0, 93, 83, 0.9);\r\n}\r\n\r\n.sidePane {\r\n  overflow: visible;\r\n  background-image: url(\"\");\r\n  background-color: #eff7e9;\r\n}\r\n\r\n.sidePane.opened {\r\n    width: 350px;\r\n}"
             layersets:
                 main:
                     mapbender_users:
@@ -363,6 +365,7 @@ parameters:
                         format: image/png
                         transparent: true
                         visible: true
+                        opacity: 100
             elements:
                 toolbar:
                     layertree-button:
@@ -370,14 +373,14 @@ parameters:
                         tooltip: Layertree
                         class: Mapbender\CoreBundle\Element\Button
                         label: false
-                        icon: iconLayertree
+                        icon: icon-layer-tree
                         target: layertreedialog
                         action: open
                     fi-button:
                         title: Feature Info
                         tooltip: Feature Info
                         class: Mapbender\CoreBundle\Element\Button
-                        icon: iconInfoActive
+                        icon: icon-feature-info
                         label: false
                         target: featureinfo
                         deactivate: deactivate
@@ -390,13 +393,21 @@ parameters:
                         icon: iconPrint
                         target: printclient
                         action: open
+                    imageexport-button:
+                        title: Image Export
+                        tooltip: Image Export
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: false
+                        icon: icon-image-export
+                        target: imageexport
+                        action: open
                     legend-button:
                         title: Legend
                         tooltip: Legend
                         class: Mapbender\CoreBundle\Element\Button
                         label: false
                         target: legend
-                        icon: iconLegend
+                        icon: icon-legend
                         action: open
                     wmsloader-button:
                         title: WMS Loader
@@ -417,26 +428,27 @@ parameters:
                         title: Line Ruler
                         tooltip: Line Ruler
                         class: Mapbender\CoreBundle\Element\Button
-                        icon: iconAreaRuler
+                        icon: icon-line-ruler
                         label: false
                         target: lineruler
                     arearulerButton:
                         title: Area Ruler
                         tooltip: Area Ruler
                         class: Mapbender\CoreBundle\Element\Button
-                        icon: iconAreaRuler
+                        icon: icon-area-ruler
                         label: false
                         target: arearuler
                     about:
                         title: About
                         tooltip: About
+                        icon: icon-about
                         label: false
                         class: Mapbender\CoreBundle\Element\AboutDialog
                 content:
                     map:
                         title: Main Map
                         class: Mapbender\CoreBundle\Element\Map
-                        layerset: main
+                        layersets: [main]
                         srs: EPSG:25832
                         units: m
                         extents:
@@ -481,10 +493,12 @@ parameters:
                         defaultFormat: 'image/png'
                         defaultInfoFormat: 'text/html'
                         splitLayers: false
+                    imageexport:
+                        class: Mapbender\PrintBundle\Element\ImageExport
+                        target: map
                     printclient:
                         class: Mapbender\CoreBundle\Element\PrintClient
                         target: map
-                        autoOpen: false
                         print_directly: true
                         templates:
                             - { template: a4portrait, label: A4 Portrait, format: a4}
@@ -492,6 +506,7 @@ parameters:
                             - { template: a3portrait, label: A3 Portrait, format: a3}
                             - { template: a3landscape, label: A3 Landscape, format: a3}
                         scales: [500, 1000, 5000, 10000, 25000]
+                        legend: true
                         quality_levels:
                             - { dpi: 72 , label: Draft (72dpi)}
                             - { dpi: 288,  label: Document (288dpi)}
@@ -524,7 +539,7 @@ parameters:
                         displaytype: tree
                         useAccordion: false
                         autoOpen: false
-                        titleMaxLength: 20
+                        titlemaxlength: 20
                         showBaseSource: true
                         showHeader: false
                         layerMenu: false
@@ -580,4 +595,180 @@ parameters:
                         title: HTML
                         class: Mapbender\CoreBundle\Element\HTMLElement
                         content: '<div style="color: #6FB536; font-weight:bold" >powered by Mapbender</div>'
-                        classes: html-element-inline                        
+                        classes: html-element-inline
+
+        mapbender_mobile:
+            title: Mapbender mobile
+            screenshot: 'mapbender_mobile.png'
+            description: "Mapbender mobile Application"
+            published: true
+            template:  'Mapbender\MobileBundle\Template\Mobile'
+            layersets:
+                main:
+                    mapbender_users:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: Mapbender Users
+                        url: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml
+                        layers:
+                            10: { name: Mapbender_User,    title : User, visible: true, legendurl: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml?REQUEST=GetLegendGraphic&VERSION=1.1.1&SERVICE=WMS&Layer=Mapbender_User&FORMAT=image/png }
+                            22: { name: Mapbender_Names,   title : Name, visible: true, queryable: true}
+                        info_format: text/html
+                        visible: true
+                        format: image/png
+                        transparent: true
+                        tiled: false
+                        opacity: 100
+                        isBaseSource: false
+                    osm:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: OSM Demo
+                        url: http://osm-demo.wheregroup.com/service
+                        layers:
+                            30: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
+                        info_format: text/html
+                        visible: true
+                        format: image/png
+                        transparent: true
+                        tiled: true
+                        opacity: 100
+                        isBaseSource: true
+                    osm_2:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: OSM Demo (with Opacity)
+                        url: http://osm-demo.wheregroup.com/service
+                        layers:
+                            30: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
+                        info_format: text/html
+                        visible: true
+                        format: image/png
+                        transparent: true
+                        tiled: false
+                        opacity: 30
+                        isBaseSource: true
+            elements:
+                footer:
+                    # buttons parameters: action,activate,deactivate are ignored for elements at mobilePane
+                    layertree-button:
+                        title: Themes
+                        tooltip: Themes
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: false
+                        icon: iconLayertree
+                        target: layertree
+
+                    bss-button:
+                        title: 'Change Background'
+                        tooltip: 'Change Background Map'
+                        class: Mapbender\CoreBundle\Element\Button
+                        icon: iconLegend
+                        label: false
+                        target: basesourceswitcher
+
+                    gps-button:
+                        title: GPS
+                        tooltip: show GPS Position
+                        class: Mapbender\CoreBundle\Element\GpsPosition
+                        label: false
+                        target: map
+                        action: open
+                        icon: iconGps
+                        refreshinterval: '5000'
+                        average: '1'
+                        follow: false
+                        centerOnFirstPosition: true
+                        zoomToAccuracy: false
+                        zoomToAccuracyOnFirstPosition: true
+
+                    imprint-button:
+                        title: Imprint
+                        tooltip: Imprint
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: false
+                        icon: iconInfoActive
+                        target: imprint
+
+                    help-button:
+                        title: Help
+                        tooltip: Help
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: false
+                        icon: iconHelp
+                        target: help
+
+                content:
+                    map:
+                        title: Main Map
+                        class: Mapbender\CoreBundle\Element\Map
+                        layersets: [main]
+                        srs: EPSG:25832
+                        units: m
+                        extents:
+                            start: [361000,5619000,371150,5625000]
+                            max: [-500000,4350000,1600000,6850000]
+                        scales: [5000000,1000000,500000,100000,50000,25000,10000,7500,5000,2500,1000,500]
+                        maxResolution: 'auto'
+                        otherSrs: ["EPSG:25833","EPSG:31466","EPSG:31467","EPSG:900913","EPSG:4326"]
+                    zoombar:
+                        class: Mapbender\CoreBundle\Element\ZoomBar
+                        target: map
+                        components: ["zoom_in_out"]
+                        stepsize: 50
+                        stepbypixel: true
+                        anchor: left-top
+                        draggable: false
+
+                mobilePane:
+                    layertree:
+                        title: Themes
+                        class: Mapbender\CoreBundle\Element\Layertree
+                        target: map
+                        type: element
+                        displaytype: tree
+                        useAccordion: false
+                        autoOpen: false
+                        titlemaxlength: 100
+                        showBaseSource: true
+                        layerRemove: false
+                        menu: []
+
+                    featureinfo:
+                        class: Mapbender\CoreBundle\Element\FeatureInfo
+                        title: Information
+                        target: map
+                        type: element
+                        deactivateOnClose: false
+                        autoActivate: true
+                        printResult: false
+                        displayType: tabs
+
+                    imprint:
+                        title: Imprint
+                        class: Mapbender\CoreBundle\Element\HTMLElement
+                        content: '<div style="color: #6FB536; font-weight:bold" >powered by Mapbender. Read more about Mapbender3 at the <a href="http://mapbender3.org" target="_blank">Mapbender3 Project Page</a>.</div>'
+                        classes: html-element-inline
+
+                    help:
+                        title: Help
+                        class: Mapbender\CoreBundle\Element\HTMLElement
+                        content: 'Enjoy the new Mapbender mobile Template. Please note that not all elements can be used in the mobile application. <div style="color: #6FB536; font-weight:bold">Find out more about the Mapbender mobile in the <a href="http://doc.mapbender3.org/en/book/mapbender_templates.html" target="_blank">Template Documentation</a>.</div>'
+                        classes: html-element-inline
+
+                    basesourceswitcher:
+                        title: Change Background
+                        tooltip: Change Background
+                        class: Mapbender\CoreBundle\Element\BaseSourceSwitcher
+                        target: map
+                        display: mobile
+                        instancesets:
+                            is1:
+                                title: "OSM Demo (with opacity)"
+                                cprTitle: ~
+                                cprUrl: ~
+                                group: ~
+                                instances: [osm_2]
+                            is2:
+                                title: "OSM Demo"
+                                cprTitle: ~
+                                cprUrl: ~
+                                group: ~
+                                instances: [osm]
