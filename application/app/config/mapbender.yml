@@ -814,6 +814,7 @@ parameters:
                         class: Mapbender\DigitizerBundle\Element\Digitizer
                         title: Digitalisierung
                         target: map
+                        jsSrc: /components/vis-ui.js/src/js/elements/geo.toolset.js
                         schemes:
 #                            line: *lineScheme
 #                            poi: *poiScheme
