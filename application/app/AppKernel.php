@@ -2,15 +2,16 @@
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\Yaml\Yaml;
 
 class AppKernel extends Kernel
 {
 
     private function loadElementBundles(&$bundles)
     {
-        $name = __DIR__ . '/config/bundles.json';
+        $name = __DIR__ . '/config/bundles.yml';
         if(file_exists($name)) {
-            $cfg = json_decode(file_get_contents($name));
+            $cfg = Yaml::parse($name);
             foreach($cfg as $bundle) {
                 $bundles[] = new $bundle();
             }
