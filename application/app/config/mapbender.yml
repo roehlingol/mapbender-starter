@@ -133,7 +133,7 @@ parameters:
                         tooltip: About
                         label: true
                         icon: icon-about
-                        class: Mapbender\CoreBundle\Element\AboutDialog
+                        class: Mapbender\AboutBundle\Element\AboutDialog
                     poiButton:
                         title: POI
                         tooltip: Send POI
@@ -443,7 +443,7 @@ parameters:
                         tooltip: About
                         icon: icon-about
                         label: false
-                        class: Mapbender\CoreBundle\Element\AboutDialog
+                        class: Mapbender\AboutBundle\Element\AboutDialog
                 content:
                     map:
                         title: Main Map
@@ -772,3 +772,72 @@ parameters:
                                 cprUrl: ~
                                 group: ~
                                 instances: [osm]
+
+        mapbender_ol3:
+            title: Mapbender Demo Map OpenLayers 3
+            screenshot: 'mapbender_user.png'
+            description: "Fullscreen style, simple OpenLayers3 map showing WMS use."
+            published: true
+            template:  Mapbender\CoreBundle\Template\Fullscreen
+            # regionProperties:
+            #     -
+            #         name: sidepane
+            #         properties: {"name": "accordion", "label": "mb.manager.template.region.accordion.label"}
+            layersets:
+                main:
+                    mapbender_users:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: Mapbender Users
+                        url: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml
+                        layers:
+                            10: { name: Mapbender_User,    title : User, visible: true, legendurl: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml?REQUEST=GetLegendGraphic&VERSION=1.1.1&SERVICE=WMS&Layer=Mapbender_User&FORMAT=image/png }
+                            22: { name: Mapbender_Names,   title : Name, visible: true, queryable: true}
+                        info_format: text/html
+                        visible: true
+                        format: image/png
+                        transparent: true
+                        tiled: false
+                        opacity: 85
+                    osm:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: OSM Demo
+                        url: http://osm-demo.wheregroup.com/service
+                        layers:
+                            30: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
+                        info_format: text/html
+                        visible: true
+                        format: image/png
+                        transparent: true
+                        tiled: true
+                        opacity: 100
+                overview:
+                    osm_overview:
+                        class: Mapbender\WmsBundle\Entity\WmsInstance
+                        title: OSM Demo
+                        url: http://osm-demo.wheregroup.com/service
+                        layers:
+                            40: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
+                        tiled: false
+                        format: image/png
+                        transparent: true
+                        visible: true
+                        opacity: 100
+            elements:
+                toolbar: ~
+                content:
+                    map:
+                        title: Main Map
+                        class: Mapbender\OL3Bundle\Element\OL3Map
+                        layersets: [main]
+                        srs: EPSG:25832
+                        units: m
+                        center: [365961.40649504, 5622028.0631445]
+                        initialZoom: 15
+                        extents:
+                            start: [361000,5619000,371150,5625000]
+                            max: [-500000,4350000,1600000,6850000]
+                        scales: [5000000,1000000,500000,100000,50000,25000,10000,7500,5000,2500,1000,500]
+                        maxResolution: 'auto'
+                        otherSrs: ["EPSG:25833","EPSG:31466","EPSG:31467","EPSG:900913","EPSG:4326"]
+                sidepane: ~
+                footer: ~

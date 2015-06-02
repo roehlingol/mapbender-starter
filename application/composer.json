@@ -43,7 +43,10 @@
         "imag/ldap-bundle":  "dev-master",
         "mapbender/mapbender-icons": "dev-master",
         "components/underscore": "1.*",
-        "components/joii": "*"
+        "components/joii": "*",
+
+        "mapbender/about": "1.x",
+        "mapbender/ol3-map": "*"
     },
     "scripts": {
         "post-install-cmd": [
@@ -64,13 +67,33 @@
         "component-dir": "web/components",
         "component-baseurl": "/components"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
         "symfony-assets-install": "symlink"
     },
     "repositories": [
+        { "type": "git", "url": "https://github.com/mapbender/mapbender-about.git" },
+        { "type": "git", "url": "https://github.com/mapbender/mapbender-map-ol3.git" },
+        {
+            "type": "package",
+            "package": {
+                "name": "ohvitorino/openlayers3",
+                "type": "component",
+                "version": "3.5.0",
+                "dist": {
+                    "url": "http://github.com/ohvitorino/openlayers3/archive/3.5.0.zip",
+                    "type": "zip"
+                },
+                "extra": {
+                    "component": {
+                        "scripts": ["ol.js"],
+                        "styles": ["ol.css"]
+                    }
+                }
+            }
+        },
         {
             "type": "package",
             "package": {
