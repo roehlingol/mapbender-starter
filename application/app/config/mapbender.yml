@@ -824,7 +824,7 @@ parameters:
                                 openFormAfterEdit: true
                                 popup: { title: 'line test suite', width: 500px }
                                 tableFields: { gid: { label: Nr. }, name: { label: Name } }
-                                formItems: [{ type: form, title: 'Basic information', css: { padding: 10px }, children: [{ type: label, title: 'Welcome to the digitize demo. Try the new Mapbender3 feature!' }, { type: input, title: Name, mandatory: true, name: name, mandatoryText: 'Please give a name to the new object.', infoText: 'Help: Please give a name to the new object.' }, { type: select, title: Type, name: type, options: { A: A, B: B, C: C, D: D, E: E } }] }]
+                                formItems: [{ type: form, title: mb.basic.information, css: { padding: 10px }, children: [{ type: label, title: trans:mb.digitizer.feature.edit}, { type: input, title: Name, mandatory: true, name: name, mandatoryText: mb.digitizer.fiel.object.name, infoText: 'Help: Please give a name to the new object.' }, { type: select, title: Type, name: type, options: { A: A, B: B, C: C, D: D, E: E } }] }]
                             polygon:
                                 label: 'polygon digitizing'
                                 maxResults: 1500
