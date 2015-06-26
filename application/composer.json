@@ -43,7 +43,8 @@
         "imag/ldap-bundle":  "dev-master",
         "mapbender/mapbender-icons": "dev-master",
         "components/underscore": "1.*",
-        "components/joii": "*"
+        "components/joii": "*",
+        "components/tangram": "*"
     },
     "scripts": {
         "post-install-cmd": [
@@ -173,6 +174,25 @@
                 },
                 "require": {
                     "robloach/component-installer": "*"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "components/tangram",
+                "type": "component",
+                "version": "0.1.2",
+                "dist": {
+                    "url": "https://github.com/tangrams/tangram/archive/v0.1.2.zip",
+                    "type": "zip"
+                },
+                "extra": {
+                    "component": {
+                        "scripts": [
+                            "dist/tangram.min.js"
+                        ]
+                    }
                 }
             }
         }
