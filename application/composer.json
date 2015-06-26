@@ -46,6 +46,7 @@
         "components/joii": "*",
 
         "mapbender/about": "1.x",
+        "mapbender/mobile": "*",
         "mapbender/ol3-map": "*"
     },
     "scripts": {
@@ -75,6 +76,7 @@
     },
     "repositories": [
         { "type": "git", "url": "https://github.com/mapbender/mapbender-about.git" },
+        { "type": "git", "url": "https://github.com/mapbender/mapbender-mobile.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-map-ol3.git" },
         {
             "type": "package",
