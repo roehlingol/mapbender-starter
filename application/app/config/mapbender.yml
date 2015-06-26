@@ -721,20 +721,12 @@ parameters:
                     name: sidepane
                     properties: {"name": "accordion", "label": "mb.manager.template.region.accordion.label"}
             layersets:
-                main: []
-#                    osm: *osm_overview
+                main:
+                    osm: *osm_overview
                 overview: []
 #                    osm_overview: *osm_overview
             elements:
                 toolbar:
-                    layertree-button:
-                        title: Layertree
-                        tooltip: Layertree
-                        class: Mapbender\CoreBundle\Element\Button
-                        label: true
-                        icon: icon-layer-tree
-                        target: layertreedialog
-                        action: open
                     legend-button:
                         title: Legend
                         tooltip: Legend
@@ -785,18 +777,18 @@ parameters:
                         position: ['10px', '10px']
                         maxWidth: 200
                         units: ['km']
-                    layertreedialog:
-                        title: Layertree
-                        class: Mapbender\CoreBundle\Element\Layertree
-                        target: map
-                        type: dialog
-                        displaytype: tree
-                        useAccordion: false
-                        autoOpen: false
-                        titleMaxLength: 20
-                        showBaseSource: true
-                        layerRemove: false
-                        menu: []
+#                    layertreedialog:
+#                        title: Layertree
+#                        class: Mapbender\CoreBundle\Element\Layertree
+#                        target: map
+#                        type: dialog
+#                        displaytype: tree
+#                        useAccordion: false
+#                        autoOpen: false
+#                        titleMaxLength: 20
+#                        showBaseSource: true
+#                        layerRemove: false
+#                        menu: []
                     overview:
                         title: Overview
                         class: Mapbender\CoreBundle\Element\Overview
@@ -814,20 +806,52 @@ parameters:
                         class: Mapbender\DigitizerBundle\Element\Digitizer
                         title: Digitalisierung
                         target: map
-                        jsSrc: /components/vis-ui.js/src/js/elements/geo.toolset.js
+                        jsSrc:
+                            - /components/vis-ui.js/src/js/jquery.form.generator.js
+                            - /components/vis-ui.js/src/js/elements/geo.toolset.js
                         schemes:
 #                            line: *lineScheme
 #                            poi: *poiScheme
                             line2:
-                                label: 'line digitizing'
+                                label: line digitizing
                                 maxResults: 1500
                                 featureType: { connection: search_db, table: lines, uniqueId: gid, geomType: line, geomField: geom, srid: 4326 }
                                 openFormAfterEdit: true
-                                popup: { title: 'line test suite', width: 500px }
-                                tableFields: { gid: { label: Nr. }, name: { label: Name } }
-                                formItems: [{ type: form, title: mb.basic.information, css: { padding: 10px }, children: [{ type: label, title: trans:mb.digitizer.feature.edit}, { type: input, title: Name, mandatory: true, name: name, mandatoryText: mb.digitizer.fiel.object.name, infoText: 'Help: Please give a name to the new object.' }, { type: select, title: Type, name: type, options: { A: A, B: B, C: C, D: D, E: E } }] }]
+                                popup: { title: trans:mb.digitizer.feature.edit, width: 500px }
+                                tableFields: { gid: { label: Nr., width: 45px }, name: { label: Name } }
+                                formItems:
+                                    - type: tabs
+                                      children:
+
+                                          - type: form
+                                            title: Meta
+                                            css: { padding: 10px }
+                                            children:
+                                                - { type: label, title: trans:mb.digitizer.feature.edit}
+                                                - { type: input, title: Name, mandatory: true, name: name, mandatoryText: mb.digitizer.fiel.object.name, infoText: 'Help: Please give a name to the new object.' }
+                                                - { type: select, title: Type, name: type, options: { A: A, B: B, C: C, D: D, E: E } }
+
+                                          - type: map
+                                            title: 3D
+                                            layers:
+                                                - type: tile
+                                                  maxZoom: 20
+                                                  attribution: (c) Copyright; OSM, Mapbox
+                                                  id: tile1
+                                                  url: https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png
+                                            markers:
+                                                - position: [51.505, -0.09]
+                                            css:
+                                                height: 400px
+                                                position: relative
+                                            map:
+                                                click: |
+                                                    function(){
+                                                        "You clicked the map at " + e.latlng.toString()
+                                                    }
+
                             polygon:
-                                label: 'polygon digitizing'
+                                label: Polygon Digitizing
                                 maxResults: 1500
                                 featureType: { connection: search_db, table: polygons, uniqueId: gid, geomType: polygon, geomField: geom, srid: 4326 }
                                 openFormAfterEdit: true
