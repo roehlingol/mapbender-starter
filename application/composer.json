@@ -47,6 +47,7 @@
 
         "mapbender/about": "1.x",
         "mapbender/mobile": "*",
+        "mapbender/drupalintegration": "*",
         "mapbender/imageexport": "*",
         "mapbender/ol3-map": "*"
     },
@@ -78,6 +79,7 @@
     "repositories": [
         { "type": "git", "url": "https://github.com/mapbender/mapbender-about.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-mobile.git" },
+        { "type": "git", "url": "https://github.com/mapbender/mapbender-drupalIntegration.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-imageexport.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-map-ol3.git" },
         {
