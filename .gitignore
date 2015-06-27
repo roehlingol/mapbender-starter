@@ -37,3 +37,4 @@ application/bin/*
 
 # Composer asset components
 application/web/components/
+node_modules
