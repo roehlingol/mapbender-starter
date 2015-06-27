@@ -49,7 +49,8 @@
         "mapbender/mobile": "*",
         "mapbender/drupalintegration": "*",
         "mapbender/imageexport": "*",
-        "mapbender/ol3-map": "*"
+        "mapbender/ol3-map": "*",
+        "mapbender/digitizer": "1.x"
     },
     "scripts": {
         "post-install-cmd": [
@@ -74,9 +75,11 @@
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
+        "ATTENTION": "Symlinks creating under MS Windows works only if composer runs with admin permissions",
         "symfony-assets-install": "symlink"
     },
     "repositories": [
+<<<<<<< HEAD
         { "type": "git", "url": "https://github.com/mapbender/mapbender-about.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-mobile.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-drupalIntegration.git" },
@@ -100,6 +103,9 @@
                 }
             }
         },
+=======
+        { "type": "git", "url": "https://github.com/mapbender/mapbender-digitizer.git"},
+>>>>>>> release/3.0.5
         {
             "type": "package",
             "package": {
