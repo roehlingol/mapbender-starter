@@ -341,6 +341,7 @@ parameters:
                         title: FeatureInfo
                         target: map
                         deactivateOnClose: false
+                        onlyValid: true
                     wmsloader:
                         title: WMS Loader
                         class: Mapbender\WmsBundle\Element\WmsLoader
@@ -485,6 +486,7 @@ parameters:
             description: "Fullscreen style, simple buttons, simple map showing WMS use."
             published: true
             template:  Mapbender\CoreBundle\Template\Fullscreen
+            custom_css: ".toolBar {\r\n  background-color: rgba(0, 29, 122,0.9) !important;\r\n  border-bottom: solid 2px rgb(197,43,69)\r\n}\r\n\r\n.toolPane {\r\n  background-color: rgba(0, 29, 122, 0.9)!important;\r\n}\r\n\r\n.sidePane {\r\n  overflow: visible;\r\n  background:none;\r\n  background-color: #fff;\r\n}\r\n\r\n.mb-element-zoombar .pan {\r\nbackground-color: rgba(0, 29, 122, 0.9) ;\r\n    border-radius: 50%;\r\nborder: solid 1px #c0c0c0;\r\n    color: #fff;\r\n    position:relative;\r\n}\r\n\r\n.popup {\r\n   background-color: #FFFFFF;\r\nbackground-image: none;\r\n}"
             layersets:
                 main:
                     mapbender_users: *mapbenderUsers
@@ -602,6 +604,7 @@ parameters:
                         title: FeatureInfo
                         target: map
                         deactivateOnClose: false
+                        onlyValid: true
                     wmsloader:
                         title: WMS Loader
                         class: Mapbender\WmsBundle\Element\WmsLoader
@@ -721,10 +724,10 @@ parameters:
                     name: sidepane
                     properties: {"name": "accordion", "label": "mb.manager.template.region.accordion.label"}
             layersets:
-                main: []
-#                    osm: *osm_overview
-                overview: []
-#                    osm_overview: *osm_overview
+                main: #[]
+                    osm: *osm_overview
+                overview: #[]
+                    osm_overview: *osm_overview
             elements:
                 toolbar:
                     layertree-button:
@@ -794,7 +797,7 @@ parameters:
                         useAccordion: false
                         autoOpen: false
                         titleMaxLength: 20
-                        showBaseSource: true
+                        showBaseSource: false
                         layerRemove: false
                         menu: []
                     overview:
@@ -818,14 +821,6 @@ parameters:
                         schemes:
 #                            line: *lineScheme
 #                            poi: *poiScheme
-                            line2:
-                                label: 'line digitizing'
-                                maxResults: 1500
-                                featureType: { connection: search_db, table: lines, uniqueId: gid, geomType: line, geomField: geom, srid: 4326 }
-                                openFormAfterEdit: true
-                                popup: { title: 'line test suite', width: 500px }
-                                tableFields: { gid: { label: Nr. }, name: { label: Name } }
-                                formItems: [{ type: form, title: mb.basic.information, css: { padding: 10px }, children: [{ type: label, title: trans:mb.digitizer.feature.edit}, { type: input, title: Name, mandatory: true, name: name, mandatoryText: mb.digitizer.fiel.object.name, infoText: 'Help: Please give a name to the new object.' }, { type: select, title: Type, name: type, options: { A: A, B: B, C: C, D: D, E: E } }] }]
                             polygon:
                                 label: 'polygon digitizing'
                                 maxResults: 1500
@@ -835,6 +830,15 @@ parameters:
                                 popup: { title: 'polygon test suite', width: 500px }
                                 tableFields: { gid: { label: Nr. }, name: { label: Name } }
                                 formItems: [{ type: form, title: 'Basic information', css: { padding: 10px }, children: [{ type: label, title: 'Welcome to the digitize demo. Try the new Mapbender3 feature!' }, { type: input, title: Name, mandatory: true, name: name, mandatoryText: 'Please give a name to the new object.', infoText: 'Help: Please give a name to the new object.' }, { type: select, title: Type, name: type, options: { A: A, B: B, C: C, D: D, E: E } }] }]
+                            line2:
+                                label: 'line digitizing'
+                                maxResults: 1500
+                                featureType: { connection: search_db, table: lines, uniqueId: gid, geomType: line, geomField: geom, srid: 4326 }
+                                openFormAfterEdit: true
+                                popup: { title: 'line test suite', width: 500px }
+                                tableFields: { gid: { label: Nr. }, name: { label: Name } }
+                                formItems: [{ type: form, title: mb.basic.information, css: { padding: 10px }, children: [{ type: label, title: trans:mb.digitizer.feature.edit}, { type: input, title: Name, mandatory: true, name: name, mandatoryText: mb.digitizer.fiel.object.name, infoText: 'Help: Please give a name to the new object.' }, { type: select, title: Type, name: type, options: { A: A, B: B, C: C, D: D, E: E } }] }]
+
                 footer:
                     activityindicator:
                         class: Mapbender\CoreBundle\Element\ActivityIndicator
