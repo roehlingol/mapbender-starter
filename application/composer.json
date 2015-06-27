@@ -48,6 +48,7 @@
         "mapbender/about": "1.x",
         "mapbender/mobile": "*",
         "mapbender/drupalintegration": "*",
+        "mapbender/kml": "*",
         "mapbender/imageexport": "*",
         "mapbender/ol3-map": "*",
         "mapbender/digitizer": "1.x"
@@ -82,6 +83,7 @@
         { "type": "git", "url": "https://github.com/mapbender/mapbender-about.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-mobile.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-drupalIntegration.git" },
+        { "type": "git", "url": "https://github.com/mapbender/mapbender-kml.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-imageexport.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-map-ol3.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-digitizer.git"},

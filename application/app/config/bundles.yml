@@ -3,3 +3,4 @@ ol3map: Mapbender\OL3Bundle\MapbenderOL3Bundle
 imageexport: Mapbender\ImageexportBundle\MapbenderImageexportBundle
 mobile: Mapbender\MobileBundle\MapbenderMobileBundle
 #drupalintegration: Mapbender\DrupalIntegrationBundle\MapbenderDrupalIntegrationBundle
+kml: Mapbender\KmlBundle\MapbenderKmlBundle
