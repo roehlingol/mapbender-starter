@@ -51,7 +51,8 @@
         "mapbender/kml": "*",
         "mapbender/imageexport": "*",
         "mapbender/ol3-map": "*",
-        "mapbender/digitizer": "1.x"
+        "mapbender/digitizer": "1.x",
+        "mapbender/zoomcoordinate": "*"	
     },
     "scripts": {
         "post-install-cmd": [
@@ -87,6 +88,7 @@
         { "type": "git", "url": "https://github.com/mapbender/mapbender-imageexport.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-map-ol3.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-digitizer.git"},
+        { "type": "git", "url": "https://github.com/mapbender/mapbender-zoomcoordinate.git"},
         {
             "type": "package",
             "package": {
