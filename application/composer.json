@@ -52,6 +52,7 @@
         "mapbender/imageexport": "*",
         "mapbender/ol3-map": "*",
         "mapbender/digitizer": "1.x",
+        "mapbender/srsselector": "*"	,
         "mapbender/zoomcoordinate": "*"	
     },
     "scripts": {
@@ -88,6 +89,7 @@
         { "type": "git", "url": "https://github.com/mapbender/mapbender-imageexport.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-map-ol3.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-digitizer.git"},
+        { "type": "git", "url": "https://github.com/mapbender/mapbender-srsselector.git"},
         { "type": "git", "url": "https://github.com/mapbender/mapbender-zoomcoordinate.git"},
         {
             "type": "package",
