@@ -299,7 +299,7 @@ parameters:
                         prefix: "x: "
                         separator:  " y: "
                     srs:
-                        class: Mapbender\CoreBundle\Element\SrsSelector
+                        class: Mapbender\SrsSelectorBundle\Element\SrsSelector
                         title: SRS Selector
                         tooltip: SRS Selector
                         label: false
@@ -576,7 +576,7 @@ parameters:
                         prefix: "x: "
                         separator:  " y: "
                     srs:
-                        class: Mapbender\CoreBundle\Element\SrsSelector
+                        class: Mapbender\SrsSelectorBundle\Element\SrsSelector
                         title: SRS Selector
                         tooltip: SRS Selector
                         label: false

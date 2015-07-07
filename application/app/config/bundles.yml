@@ -1,4 +1,5 @@
 about: Mapbender\AboutBundle\MapbenderAboutBundle
+coordinatesdisplay: Mapbender\CoordinatesDisplayBundle\MapbenderCoordinatesDisplayBundle
 ol3map: Mapbender\OL3Bundle\MapbenderOL3Bundle
 imageexport: Mapbender\ImageexportBundle\MapbenderImageexportBundle
 mobile: Mapbender\MobileBundle\MapbenderMobileBundle
