@@ -759,7 +759,7 @@ parameters:
                     basesourceswitcher:
                         title: Change Background
                         tooltip: Change Background
-                        class: Mapbender\CoreBundle\Element\BaseSourceSwitcher
+                        class: Mapbender\BaseSourceSwitcherBundle\Element\BaseSourceSwitcher
                         target: map
                         display: mobile
                         instancesets:
