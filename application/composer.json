@@ -46,7 +46,9 @@
         "components/joii": "*",
 
         "mapbender/about": "1.x",
+        "mapbender/basesourceswitcher": "*",
         "mapbender/coordinatesdisplay": "*",
+        "mapbender/copyright": "*",
         "mapbender/mobile": "*",
         "mapbender/drupalintegration": "*",
         "mapbender/kml": "*",
@@ -85,7 +87,9 @@
     },
     "repositories": [
         { "type": "git", "url": "https://github.com/mapbender/mapbender-about.git" },
+        { "type": "git", "url": "https://github.com/mapbender/mapbender-basesourceswitcher.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-coordinatesdisplay.git"},
+        { "type": "git", "url": "https://github.com/mapbender/mapbender-copyright.git"},
         { "type": "git", "url": "https://github.com/mapbender/mapbender-mobile.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-drupalIntegration.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-kml.git" },
