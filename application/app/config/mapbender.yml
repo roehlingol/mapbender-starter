@@ -266,7 +266,7 @@ parameters:
                         scalePrefix: Scale
                         unitPrefix: true
                     poi:
-                        class: Mapbender\CoreBundle\Element\POI
+                        class: Mapbender\POIBundle\Element\POI
                         target: map
                         body: 'Please take a look at this POI'
                 sidepane:
@@ -290,7 +290,7 @@ parameters:
                         ajaxActivityClass: mb-activity-ajax
                         tileActivityClass: mb-activity-tile
                     coordinates:
-                        class: Mapbender\CoreBundle\Element\CoordinatesDisplay
+                        class: Mapbender\CoordinatesDisplayBundle\Element\CoordinatesDisplay
                         title: Coordinates Display
                         tooltip: Coordinates Display
                         target: map
@@ -567,7 +567,7 @@ parameters:
                         ajaxActivityClass: mb-activity-ajax
                         tileActivityClass: mb-activity-tile
                     coordinates:
-                        class: Mapbender\CoreBundle\Element\CoordinatesDisplay
+                        class: Mapbender\CoordinatesDisplayBundle\Element\CoordinatesDisplay
                         title: Coordinates Display
                         tooltip: Coordinates Display
                         target: map

@@ -5,5 +5,6 @@ imageexport: Mapbender\ImageexportBundle\MapbenderImageexportBundle
 mobile: Mapbender\MobileBundle\MapbenderMobileBundle
 #drupalintegration: Mapbender\DrupalIntegrationBundle\MapbenderDrupalIntegrationBundle
 kml: Mapbender\KmlBundle\MapbenderKmlBundle
+poi: Mapbender\POIBundle\MapbenderPOIBundle
 srsselector: Mapbender\SrsSelectorBundle\MapbenderSrsSelectorBundle
 zoomcoordinate: Mapbender\ZoomcoordinateBundle\MapbenderZoomcoordinateBundle
