@@ -284,7 +284,7 @@ parameters:
                         menu: [opacity,zoomtolayer,metadata]
                 footer:
                     activityindicator:
-                        class: Mapbender\CoreBundle\Element\ActivityIndicator
+                        class: Mapbender\ActivityIndicatorBundle\Element\ActivityIndicator
                         title: Activity Indicator
                         activityClass: mb-activity
                         ajaxActivityClass: mb-activity-ajax
@@ -561,7 +561,7 @@ parameters:
                         fixed: false
                 footer:
                     activityindicator:
-                        class: Mapbender\CoreBundle\Element\ActivityIndicator
+                        class: Mapbender\ActivityIndicatorBundle\Element\ActivityIndicator
                         title: activityindicator
                         activityClass: mb-activity
                         ajaxActivityClass: mb-activity-ajax

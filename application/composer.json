@@ -46,6 +46,7 @@
         "components/joii": "*",
 
         "mapbender/about": "1.x",
+        "mapbender/activityindicator": "*",
         "mapbender/basesourceswitcher": "*",
         "mapbender/coordinatesdisplay": "*",
         "mapbender/copyright": "*",
@@ -90,6 +91,7 @@
     },
     "repositories": [
         { "type": "git", "url": "https://github.com/mapbender/mapbender-about.git" },
+        { "type": "git", "url": "https://github.com/mapbender/mapbender-activityindicator.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-basesourceswitcher.git" },
         { "type": "git", "url": "https://github.com/mapbender/mapbender-coordinatesdisplay.git"},
         { "type": "git", "url": "https://github.com/mapbender/mapbender-copyright.git"},

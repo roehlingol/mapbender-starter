@@ -1,4 +1,5 @@
 about: Mapbender\AboutBundle\MapbenderAboutBundle
+activityindicator: Mapbender\ActivityIndicatorBundle\MapbenderActivityIndicatorBundle
 basesourceswitcher: Mapbender\BaseSourceSwitcherBundle\MapbenderBaseSourceSwitcherBundle
 coordinatesdisplay: Mapbender\CoordinatesDisplayBundle\MapbenderCoordinatesDisplayBundle
 copyright: Mapbender\CopyrightBundle\MapbenderCopyrightBundle
