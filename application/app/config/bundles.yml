@@ -3,6 +3,7 @@ basesourceswitcher: Mapbender\BaseSourceSwitcherBundle\MapbenderBaseSourceSwitch
 coordinatesdisplay: Mapbender\CoordinatesDisplayBundle\MapbenderCoordinatesDisplayBundle
 copyright: Mapbender\CopyrightBundle\MapbenderCopyrightBundle
 featureinfo: Mapbender\FeatureInfoBundle\MapbenderFeatureInfoBundle
+legend: Mapbender\LegendBundle\MapbenderLegendBundle
 ol3map: Mapbender\OL3Bundle\MapbenderOL3Bundle
 imageexport: Mapbender\ImageexportBundle\MapbenderImageexportBundle
 mobile: Mapbender\MobileBundle\MapbenderMobileBundle

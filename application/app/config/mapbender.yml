@@ -165,7 +165,7 @@ parameters:
                         position: [200,40]
                         draggable: false
                     legend:
-                        class: Mapbender\CoreBundle\Element\Legend
+                        class: Mapbender\LegendBundle\Element\Legend
                         target: map
                         title: Legend
                         elementType: dialog
@@ -469,7 +469,7 @@ parameters:
                         position: [200,40]
                         draggable: false
                     legend:
-                        class: Mapbender\CoreBundle\Element\Legend
+                        class: Mapbender\LegendBundle\Element\Legend
                         target: map
                         title: Legend
                         elementType: dialog
