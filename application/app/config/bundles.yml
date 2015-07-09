@@ -10,5 +10,6 @@ mobile: Mapbender\MobileBundle\MapbenderMobileBundle
 #drupalintegration: Mapbender\DrupalIntegrationBundle\MapbenderDrupalIntegrationBundle
 kml: Mapbender\KmlBundle\MapbenderKmlBundle
 poi: Mapbender\POIBundle\MapbenderPOIBundle
+ruler: Mapbender\RulerBundle\MapbenderRulerBundle
 srsselector: Mapbender\SrsSelectorBundle\MapbenderSrsSelectorBundle
 zoomcoordinate: Mapbender\ZoomcoordinateBundle\MapbenderZoomcoordinateBundle

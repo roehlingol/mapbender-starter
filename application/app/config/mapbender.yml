@@ -217,13 +217,13 @@ parameters:
                     lineruler:
                         title: Distance
                         tooltip: 'ruler'
-                        class: Mapbender\CoreBundle\Element\Ruler
+                        class: Mapbender\RulerBundle\Element\Ruler
                         target: map
                         type: line
                     arearuler:
                         title: Area
                         tooltip: 'area'
-                        class: Mapbender\CoreBundle\Element\Ruler
+                        class: Mapbender\RulerBundle\Element\Ruler
                         target: map
                         type: area
                     scalebar:
@@ -517,13 +517,13 @@ parameters:
                     lineruler:
                         title: Distance
                         tooltip: 'ruler'
-                        class: Mapbender\CoreBundle\Element\Ruler
+                        class: Mapbender\RulerBundle\Element\Ruler
                         target: map
                         type: line
                     arearuler:
                         title: Area
                         tooltip: 'area'
-                        class: Mapbender\CoreBundle\Element\Ruler
+                        class: Mapbender\RulerBundle\Element\Ruler
                         target: map
                         type: area
                     scalebar:
