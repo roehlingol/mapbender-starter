@@ -178,7 +178,7 @@ parameters:
                         showLayerTitle: true
                         showGroupedLayerTitle: true
                     featureinfo:
-                        class: Mapbender\CoreBundle\Element\FeatureInfo
+                        class: Mapbender\FeatureInfoBundle\Element\FeatureInfo
                         title: FeatureInfo
                         target: map
                         deactivateOnClose: false
@@ -482,7 +482,7 @@ parameters:
                         showLayerTitle: true
                         showGroupedLayerTitle: true
                     featureinfo:
-                        class: Mapbender\CoreBundle\Element\FeatureInfo
+                        class: Mapbender\FeatureInfoBundle\Element\FeatureInfo
                         title: FeatureInfo
                         target: map
                         deactivateOnClose: false
@@ -734,7 +734,7 @@ parameters:
                         menu: []
 
                     featureinfo:
-                        class: Mapbender\CoreBundle\Element\FeatureInfo
+                        class: Mapbender\FeatureInfoBundle\Element\FeatureInfo
                         title: Information
                         target: map
                         type: element
