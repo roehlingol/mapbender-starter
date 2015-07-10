@@ -318,7 +318,7 @@ parameters:
                         click: http://www.openstreetmap.org/copyright
                     HTML:
                         title: HTML
-                        class: Mapbender\CoreBundle\Element\HTMLElement
+                        class: Mapbender\HTMLElementBundle\Element\HTMLElement
                         content: '<div style="color: #6FB536; font-weight:bold" >powered by Mapbender</div>'
                         classes: html-element-inline
         mapbender_user_basic:
@@ -595,7 +595,7 @@ parameters:
                         click: http://www.openstreetmap.org/copyright
                     HTML:
                         title: HTML
-                        class: Mapbender\CoreBundle\Element\HTMLElement
+                        class: Mapbender\HTMLElementBundle\Element\HTMLElement
                         content: '<div style="color: #6FB536; font-weight:bold" >powered by Mapbender</div>'
                         classes: html-element-inline
 
@@ -746,13 +746,13 @@ parameters:
 
                     imprint:
                         title: Imprint
-                        class: Mapbender\CoreBundle\Element\HTMLElement
+                        class: Mapbender\HTMLElementBundle\Element\HTMLElement
                         content: '<div style="color: #6FB536; font-weight:bold" >powered by Mapbender. Read more about Mapbender3 at the <a href="http://mapbender3.org" target="_blank">Mapbender3 Project Page</a>.</div>'
                         classes: html-element-inline
 
                     help:
                         title: Help
-                        class: Mapbender\CoreBundle\Element\HTMLElement
+                        class: Mapbender\HTMLElementBundle\Element\HTMLElement
                         content: 'Enjoy the new Mapbender mobile Template. Please note that not all elements can be used in the mobile application. <div style="color: #6FB536; font-weight:bold">Find out more about the Mapbender mobile in the <a href="http://doc.mapbender3.org/en/book/mapbender_templates.html" target="_blank">Template Documentation</a>.</div>'
                         classes: html-element-inline
 

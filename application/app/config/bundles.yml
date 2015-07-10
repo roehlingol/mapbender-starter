@@ -5,12 +5,13 @@ coordinatesdisplay: Mapbender\CoordinatesDisplayBundle\MapbenderCoordinatesDispl
 copyright: Mapbender\CopyrightBundle\MapbenderCopyrightBundle
 featureinfo: Mapbender\FeatureInfoBundle\MapbenderFeatureInfoBundle
 gpsposition: Mapbender\GpsPositionBundle\MapbenderGpsPositionBundle
-legend: Mapbender\LegendBundle\MapbenderLegendBundle
-ol3map: Mapbender\OL3Bundle\MapbenderOL3Bundle
+htmlelement: Mapbender\HTMLElementBundle\MapbenderHTMLElementBundle
 imageexport: Mapbender\ImageexportBundle\MapbenderImageexportBundle
-mobile: Mapbender\MobileBundle\MapbenderMobileBundle
-#drupalintegration: Mapbender\DrupalIntegrationBundle\MapbenderDrupalIntegrationBundle
 kml: Mapbender\KmlBundle\MapbenderKmlBundle
+legend: Mapbender\LegendBundle\MapbenderLegendBundle
+mobile: Mapbender\MobileBundle\MapbenderMobileBundle
+ol3map: Mapbender\OL3Bundle\MapbenderOL3Bundle
+#drupalintegration: Mapbender\DrupalIntegrationBundle\MapbenderDrupalIntegrationBundle
 poi: Mapbender\POIBundle\MapbenderPOIBundle
 ruler: Mapbender\RulerBundle\MapbenderRulerBundle
 srsselector: Mapbender\SrsSelectorBundle\MapbenderSrsSelectorBundle
