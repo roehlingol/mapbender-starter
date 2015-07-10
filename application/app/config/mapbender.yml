@@ -106,7 +106,7 @@ parameters:
                     gps-button:
                         title: GPS
                         tooltip: Show GPS Position
-                        class: Mapbender\CoreBundle\Element\GpsPosition
+                        class: Mapbender\GpsPositionBundle\Element\GpsPosition
                         label: true
                         target: map
                         action: open
@@ -421,7 +421,7 @@ parameters:
                     gps-button:
                         title: GPS
                         tooltip: show GPS Position
-                        class: Mapbender\CoreBundle\Element\GpsPosition
+                        class: Mapbender\GpsPositionBundle\Element\GpsPosition
                         label: false
                         target: map
                         action: open
@@ -669,7 +669,7 @@ parameters:
                     gps-button:
                         title: GPS
                         tooltip: show GPS Position
-                        class: Mapbender\CoreBundle\Element\GpsPosition
+                        class: Mapbender\GpsPositionBundle\Element\GpsPosition
                         label: false
                         target: map
                         action: open
