@@ -227,7 +227,7 @@ parameters:
                         target: map
                         type: area
                     scalebar:
-                        class: Mapbender\CoreBundle\Element\ScaleBar
+                        class: Mapbender\ScaleBarBundle\Element\ScaleBar
                         target: map
                         anchor: 'left-bottom'
                         position: ['10px', '10px']
@@ -527,7 +527,7 @@ parameters:
                         target: map
                         type: area
                     scalebar:
-                        class: Mapbender\CoreBundle\Element\ScaleBar
+                        class: Mapbender\ScaleBarBundle\Element\ScaleBar
                         target: map
                         anchor: 'left-bottom'
                         position: ['10px', '10px']
