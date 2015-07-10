@@ -63,6 +63,7 @@
         "mapbender/poi": "*",
         "mapbender/ruler": "*",
         "mapbender/scalebar": "*",
+        "mapbender/scaledisplay": "*",
         "mapbender/srsselector": "*",
         "mapbender/zoomcoordinate": "*"	
     },
@@ -111,6 +112,7 @@
         { "type": "git", "url": "https://github.com/mapbender/mapbender-poi.git"},
         { "type": "git", "url": "https://github.com/mapbender/mapbender-ruler.git"},
         { "type": "git", "url": "https://github.com/mapbender/mapbender-scalebar.git"},
+        { "type": "git", "url": "https://github.com/mapbender/mapbender-scaledisplay.git"},
         { "type": "git", "url": "https://github.com/mapbender/mapbender-srsselector.git"},
         { "type": "git", "url": "https://github.com/mapbender/mapbender-zoomcoordinate.git"},
         {

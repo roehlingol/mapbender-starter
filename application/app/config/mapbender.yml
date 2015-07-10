@@ -259,7 +259,7 @@ parameters:
                         fixed: false
                     scaledisplay:
                         title: Scale Display
-                        class: Mapbender\CoreBundle\Element\ScaleDisplay
+                        class: Mapbender\ScaleDisplayBundle\Element\ScaleDisplay
                         tooltip: Scale
                         target: map
                         anchor: left-top
