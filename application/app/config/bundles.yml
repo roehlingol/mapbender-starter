@@ -16,5 +16,6 @@ poi: Mapbender\POIBundle\MapbenderPOIBundle
 ruler: Mapbender\RulerBundle\MapbenderRulerBundle
 scalebar: Mapbender\ScaleBarBundle\MapbenderScaleBarBundle
 scaledisplay: Mapbender\ScaleDisplayBundle\MapbenderScaleDisplayBundle
+scaleselector: Mapbender\ScaleSelectorBundle\MapbenderScaleSelectorBundle
 srsselector: Mapbender\SrsSelectorBundle\MapbenderSrsSelectorBundle
 zoomcoordinate: Mapbender\ZoomcoordinateBundle\MapbenderZoomcoordinateBundle
