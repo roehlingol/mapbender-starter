@@ -144,7 +144,7 @@ parameters:
                 content:
                     map:
                         title: Main Map
-                        class: Mapbender\CoreBundle\Element\Map
+                        class: Mapbender\MapBundle\Element\Map
                         layersets: [main]
                         srs: EPSG:25832
                         units: m
@@ -448,7 +448,7 @@ parameters:
                 content:
                     map:
                         title: Main Map
-                        class: Mapbender\CoreBundle\Element\Map
+                        class: Mapbender\MapBundle\Element\Map
                         layersets: [main]
                         srs: EPSG:25832
                         units: m
@@ -700,7 +700,7 @@ parameters:
                 content:
                     map:
                         title: Main Map
-                        class: Mapbender\CoreBundle\Element\Map
+                        class: Mapbender\MapBundle\Element\Map
                         layersets: [main]
                         srs: EPSG:25832
                         units: m
