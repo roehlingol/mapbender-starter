@@ -17,7 +17,7 @@ ruler: Mapbender\RulerBundle\MapbenderRulerBundle
 scalebar: Mapbender\ScaleBarBundle\MapbenderScaleBarBundle
 scaledisplay: Mapbender\ScaleDisplayBundle\MapbenderScaleDisplayBundle
 scaleselector: Mapbender\ScaleSelectorBundle\MapbenderScaleSelectorBundle
-#searchrouter: Mapbender\SearchRouterBundle\MapbenderSearchRouterBundle
+searchrouter: Mapbender\SearchRouterBundle\MapbenderSearchRouterBundle
 srsselector: Mapbender\SrsSelectorBundle\MapbenderSrsSelectorBundle
 zoombar: Mapbender\ZoomBarBundle\MapbenderZoomBarBundle
 zoomcoordinate: Mapbender\ZoomcoordinateBundle\MapbenderZoomcoordinateBundle
