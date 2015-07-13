@@ -66,6 +66,7 @@
         "mapbender/scaledisplay": "*",
         "mapbender/scaleselector": "*",
         "mapbender/srsselector": "*",
+        "mapbender/zoombar": "*",
         "mapbender/zoomcoordinate": "*"	
     },
     "scripts": {
@@ -116,6 +117,7 @@
         { "type": "git", "url": "https://github.com/mapbender/mapbender-scaledisplay.git"},
         { "type": "git", "url": "https://github.com/mapbender/mapbender-scaleselector.git"},
         { "type": "git", "url": "https://github.com/mapbender/mapbender-srsselector.git"},
+        { "type": "git", "url": "https://github.com/mapbender/mapbender-zoombar.git"},
         { "type": "git", "url": "https://github.com/mapbender/mapbender-zoomcoordinate.git"},
         {
             "type": "package",

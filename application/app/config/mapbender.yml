@@ -155,7 +155,7 @@ parameters:
                         maxResolution: 'auto'
                         otherSrs: ["EPSG:25833","EPSG:31466","EPSG:31467","EPSG:900913","EPSG:4326"]
                     zoombar:
-                        class: Mapbender\CoreBundle\Element\ZoomBar
+                        class: Mapbender\ZoomBarBundle\Element\ZoomBar
                         target: map
                         components: ["pan","history","zoom_box","zoom_max","zoom_slider"]
                         position: [15em, 3em]
@@ -459,7 +459,7 @@ parameters:
                         maxResolution: 'auto'
                         otherSrs: ["EPSG:25833","EPSG:31466","EPSG:31467","EPSG:900913","EPSG:4326"]
                     zoombar:
-                        class: Mapbender\CoreBundle\Element\ZoomBar
+                        class: Mapbender\ZoomBarBundle\Element\ZoomBar
                         target: map
                         components: ["pan","history","zoom_box","zoom_max","zoom_slider"]
                         position: [15em, 3em]
@@ -711,7 +711,7 @@ parameters:
                         maxResolution: 'auto'
                         otherSrs: ["EPSG:25833","EPSG:31466","EPSG:31467","EPSG:900913","EPSG:4326"]
                     zoombar:
-                        class: Mapbender\CoreBundle\Element\ZoomBar
+                        class: Mapbender\ZoomBarBundle\Element\ZoomBar
                         target: map
                         components: ["zoom_in_out", "zoom_max"]
                         stepsize: 50
