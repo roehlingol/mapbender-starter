@@ -58,7 +58,7 @@ class AppKernel extends Kernel
 
         // dev and ALL test environments get some extra sugar...
         $isDevKernel = false;
-        if('dev' == $this->getEnvironment() || strpos($this->getEnvironment(), 'test') == 0) {
+        if('dev' == $this->getEnvironment() || strpos($this->getEnvironment(), 'test') === 0) {
             $isDevKernel = true;
         }
 
