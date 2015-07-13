@@ -106,7 +106,7 @@ parameters:
                     gps-button:
                         title: GPS
                         tooltip: Show GPS Position
-                        class: Mapbender\CoreBundle\Element\GpsPosition
+                        class: Mapbender\GpsPositionBundle\Element\GpsPosition
                         label: true
                         target: map
                         action: open
@@ -165,7 +165,7 @@ parameters:
                         position: [200,40]
                         draggable: false
                     legend:
-                        class: Mapbender\CoreBundle\Element\Legend
+                        class: Mapbender\LegendBundle\Element\Legend
                         target: map
                         title: Legend
                         elementType: dialog
@@ -178,7 +178,7 @@ parameters:
                         showLayerTitle: true
                         showGroupedLayerTitle: true
                     featureinfo:
-                        class: Mapbender\CoreBundle\Element\FeatureInfo
+                        class: Mapbender\FeatureInfoBundle\Element\FeatureInfo
                         title: FeatureInfo
                         target: map
                         deactivateOnClose: false
@@ -217,17 +217,17 @@ parameters:
                     lineruler:
                         title: Distance
                         tooltip: 'ruler'
-                        class: Mapbender\CoreBundle\Element\Ruler
+                        class: Mapbender\RulerBundle\Element\Ruler
                         target: map
                         type: line
                     arearuler:
                         title: Area
                         tooltip: 'area'
-                        class: Mapbender\CoreBundle\Element\Ruler
+                        class: Mapbender\RulerBundle\Element\Ruler
                         target: map
                         type: area
                     scalebar:
-                        class: Mapbender\CoreBundle\Element\ScaleBar
+                        class: Mapbender\ScaleBarBundle\Element\ScaleBar
                         target: map
                         anchor: 'left-bottom'
                         position: ['10px', '10px']
@@ -259,14 +259,14 @@ parameters:
                         fixed: false
                     scaledisplay:
                         title: Scale Display
-                        class: Mapbender\CoreBundle\Element\ScaleDisplay
+                        class: Mapbender\ScaleDisplayBundle\Element\ScaleDisplay
                         tooltip: Scale
                         target: map
                         anchor: left-top
                         scalePrefix: Scale
                         unitPrefix: true
                     poi:
-                        class: Mapbender\CoreBundle\Element\POI
+                        class: Mapbender\POIBundle\Element\POI
                         target: map
                         body: 'Please take a look at this POI'
                 sidepane:
@@ -284,13 +284,13 @@ parameters:
                         menu: [opacity,zoomtolayer,metadata]
                 footer:
                     activityindicator:
-                        class: Mapbender\CoreBundle\Element\ActivityIndicator
+                        class: Mapbender\ActivityIndicatorBundle\Element\ActivityIndicator
                         title: Activity Indicator
                         activityClass: mb-activity
                         ajaxActivityClass: mb-activity-ajax
                         tileActivityClass: mb-activity-tile
                     coordinates:
-                        class: Mapbender\CoreBundle\Element\CoordinatesDisplay
+                        class: Mapbender\CoordinatesDisplayBundle\Element\CoordinatesDisplay
                         title: Coordinates Display
                         tooltip: Coordinates Display
                         target: map
@@ -299,13 +299,13 @@ parameters:
                         prefix: "x: "
                         separator:  " y: "
                     srs:
-                        class: Mapbender\CoreBundle\Element\SrsSelector
+                        class: Mapbender\SrsSelectorBundle\Element\SrsSelector
                         title: SRS Selector
                         tooltip: SRS Selector
                         label: false
                         target: map
                     scaleselector:
-                        class: Mapbender\CoreBundle\Element\ScaleSelector
+                        class: Mapbender\ScaleSelectorBundle\Element\ScaleSelector
                         title: Scale Selector
                         tooltip: Scale Selector
                         label: false
@@ -318,7 +318,7 @@ parameters:
                         click: http://www.openstreetmap.org/copyright
                     HTML:
                         title: HTML
-                        class: Mapbender\CoreBundle\Element\HTMLElement
+                        class: Mapbender\HTMLElementBundle\Element\HTMLElement
                         content: '<div style="color: #6FB536; font-weight:bold" >powered by Mapbender</div>'
                         classes: html-element-inline
         mapbender_user_basic:
@@ -421,7 +421,7 @@ parameters:
                     gps-button:
                         title: GPS
                         tooltip: show GPS Position
-                        class: Mapbender\CoreBundle\Element\GpsPosition
+                        class: Mapbender\GpsPositionBundle\Element\GpsPosition
                         label: false
                         target: map
                         action: open
@@ -469,7 +469,7 @@ parameters:
                         position: [200,40]
                         draggable: false
                     legend:
-                        class: Mapbender\CoreBundle\Element\Legend
+                        class: Mapbender\LegendBundle\Element\Legend
                         target: map
                         title: Legend
                         elementType: dialog
@@ -482,7 +482,7 @@ parameters:
                         showLayerTitle: true
                         showGroupedLayerTitle: true
                     featureinfo:
-                        class: Mapbender\CoreBundle\Element\FeatureInfo
+                        class: Mapbender\FeatureInfoBundle\Element\FeatureInfo
                         title: FeatureInfo
                         target: map
                         deactivateOnClose: false
@@ -517,17 +517,17 @@ parameters:
                     lineruler:
                         title: Distance
                         tooltip: 'ruler'
-                        class: Mapbender\CoreBundle\Element\Ruler
+                        class: Mapbender\RulerBundle\Element\Ruler
                         target: map
                         type: line
                     arearuler:
                         title: Area
                         tooltip: 'area'
-                        class: Mapbender\CoreBundle\Element\Ruler
+                        class: Mapbender\RulerBundle\Element\Ruler
                         target: map
                         type: area
                     scalebar:
-                        class: Mapbender\CoreBundle\Element\ScaleBar
+                        class: Mapbender\ScaleBarBundle\Element\ScaleBar
                         target: map
                         anchor: 'left-bottom'
                         position: ['10px', '10px']
@@ -561,13 +561,13 @@ parameters:
                         fixed: false
                 footer:
                     activityindicator:
-                        class: Mapbender\CoreBundle\Element\ActivityIndicator
+                        class: Mapbender\ActivityIndicatorBundle\Element\ActivityIndicator
                         title: activityindicator
                         activityClass: mb-activity
                         ajaxActivityClass: mb-activity-ajax
                         tileActivityClass: mb-activity-tile
                     coordinates:
-                        class: Mapbender\CoreBundle\Element\CoordinatesDisplay
+                        class: Mapbender\CoordinatesDisplayBundle\Element\CoordinatesDisplay
                         title: Coordinates Display
                         tooltip: Coordinates Display
                         target: map
@@ -576,13 +576,13 @@ parameters:
                         prefix: "x: "
                         separator:  " y: "
                     srs:
-                        class: Mapbender\CoreBundle\Element\SrsSelector
+                        class: Mapbender\SrsSelectorBundle\Element\SrsSelector
                         title: SRS Selector
                         tooltip: SRS Selector
                         label: false
                         target: map
                     scaleselector:
-                        class: Mapbender\CoreBundle\Element\ScaleSelector
+                        class: Mapbender\ScaleSelectorBundle\Element\ScaleSelector
                         title: Scale Selector
                         tooltip: Scale Selector
                         label: false
@@ -595,7 +595,7 @@ parameters:
                         click: http://www.openstreetmap.org/copyright
                     HTML:
                         title: HTML
-                        class: Mapbender\CoreBundle\Element\HTMLElement
+                        class: Mapbender\HTMLElementBundle\Element\HTMLElement
                         content: '<div style="color: #6FB536; font-weight:bold" >powered by Mapbender</div>'
                         classes: html-element-inline
 
@@ -669,7 +669,7 @@ parameters:
                     gps-button:
                         title: GPS
                         tooltip: show GPS Position
-                        class: Mapbender\CoreBundle\Element\GpsPosition
+                        class: Mapbender\GpsPositionBundle\Element\GpsPosition
                         label: false
                         target: map
                         action: open
@@ -734,7 +734,7 @@ parameters:
                         menu: []
 
                     featureinfo:
-                        class: Mapbender\CoreBundle\Element\FeatureInfo
+                        class: Mapbender\FeatureInfoBundle\Element\FeatureInfo
                         title: Information
                         target: map
                         type: element
@@ -746,20 +746,20 @@ parameters:
 
                     imprint:
                         title: Imprint
-                        class: Mapbender\CoreBundle\Element\HTMLElement
+                        class: Mapbender\HTMLElementBundle\Element\HTMLElement
                         content: '<div style="color: #6FB536; font-weight:bold" >powered by Mapbender. Read more about Mapbender3 at the <a href="http://mapbender3.org" target="_blank">Mapbender3 Project Page</a>.</div>'
                         classes: html-element-inline
 
                     help:
                         title: Help
-                        class: Mapbender\CoreBundle\Element\HTMLElement
+                        class: Mapbender\HTMLElementBundle\Element\HTMLElement
                         content: 'Enjoy the new Mapbender mobile Template. Please note that not all elements can be used in the mobile application. <div style="color: #6FB536; font-weight:bold">Find out more about the Mapbender mobile in the <a href="http://doc.mapbender3.org/en/book/mapbender_templates.html" target="_blank">Template Documentation</a>.</div>'
                         classes: html-element-inline
 
                     basesourceswitcher:
                         title: Change Background
                         tooltip: Change Background
-                        class: Mapbender\CoreBundle\Element\BaseSourceSwitcher
+                        class: Mapbender\BaseSourceSwitcherBundle\Element\BaseSourceSwitcher
                         target: map
                         display: mobile
                         instancesets:
