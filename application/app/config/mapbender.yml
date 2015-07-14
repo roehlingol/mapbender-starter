@@ -195,7 +195,7 @@ parameters:
                         class: Mapbender\ImageexportBundle\Element\ImageExport
                         target: map
                     printclient:
-                        class: Mapbender\CoreBundle\Element\PrintClient
+                        class: Mapbender\PrintClientBundle\Element\PrintClient
                         target: map
                         file_prefix: mapbender3
                         templates:
@@ -499,7 +499,7 @@ parameters:
                         class: Mapbender\ImageexportBundle\Element\ImageExport
                         target: map
                     printclient:
-                        class: Mapbender\CoreBundle\Element\PrintClient
+                        class: Mapbender\PrintClientBundle\Element\PrintClient
                         target: map
                         print_directly: true
                         templates:

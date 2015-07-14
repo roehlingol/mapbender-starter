@@ -15,6 +15,7 @@ ol3map: Mapbender\OL3Bundle\MapbenderOL3Bundle
 overview: Mapbender\OverviewBundle\MapbenderOverviewBundle
 #drupalintegration: Mapbender\DrupalIntegrationBundle\MapbenderDrupalIntegrationBundle
 poi: Mapbender\POIBundle\MapbenderPOIBundle
+printclient: Mapbender\PrintClientBundle\MapbenderPrintClientBundle
 ruler: Mapbender\RulerBundle\MapbenderRulerBundle
 scalebar: Mapbender\ScaleBarBundle\MapbenderScaleBarBundle
 scaledisplay: Mapbender\ScaleDisplayBundle\MapbenderScaleDisplayBundle
