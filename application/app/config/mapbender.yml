@@ -144,7 +144,7 @@ parameters:
                 content:
                     map:
                         title: Main Map
-                        class: Mapbender\MapBundle\Element\Map
+                        class: Mapbender\CoreBundle\Element\Map
                         layersets: [main]
                         srs: EPSG:25832
                         units: m
@@ -247,7 +247,7 @@ parameters:
                         menu: []
                     overview:
                         title: Overview
-                        class: Mapbender\CoreBundle\Element\Overview
+                        class: Mapbender\OverviewBundle\Element\Overview
                         tooltip: 'Overview'
                         target: map
                         layerset: overview
@@ -448,7 +448,7 @@ parameters:
                 content:
                     map:
                         title: Main Map
-                        class: Mapbender\MapBundle\Element\Map
+                        class: Mapbender\CoreBundle\Element\Map
                         layersets: [main]
                         srs: EPSG:25832
                         units: m
@@ -549,7 +549,7 @@ parameters:
                         menu: []
                     overview:
                         title: Overview
-                        class: Mapbender\CoreBundle\Element\Overview
+                        class: Mapbender\OverviewBundle\Element\Overview
                         tooltip: 'Overview'
                         target: map
                         layerset: overview
@@ -700,7 +700,7 @@ parameters:
                 content:
                     map:
                         title: Main Map
-                        class: Mapbender\MapBundle\Element\Map
+                        class: Mapbender\CoreBundle\Element\Map
                         layersets: [main]
                         srs: EPSG:25832
                         units: m

@@ -9,9 +9,9 @@ htmlelement: Mapbender\HTMLElementBundle\MapbenderHTMLElementBundle
 imageexport: Mapbender\ImageexportBundle\MapbenderImageexportBundle
 kml: Mapbender\KmlBundle\MapbenderKmlBundle
 legend: Mapbender\LegendBundle\MapbenderLegendBundle
-map: Mapbender\MapBundle\MapbenderMapBundle
 mobile: Mapbender\MobileBundle\MapbenderMobileBundle
 ol3map: Mapbender\OL3Bundle\MapbenderOL3Bundle
+overview: Mapbender\OverviewBundle\MapbenderOverviewBundle
 #drupalintegration: Mapbender\DrupalIntegrationBundle\MapbenderDrupalIntegrationBundle
 poi: Mapbender\POIBundle\MapbenderPOIBundle
 ruler: Mapbender\RulerBundle\MapbenderRulerBundle
