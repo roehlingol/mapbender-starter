@@ -235,7 +235,7 @@ parameters:
                         units: ['km']
                     layertreedialog:
                         title: Layertree
-                        class: Mapbender\CoreBundle\Element\Layertree
+                        class: Mapbender\LayertreeBundle\Element\Layertree
                         target: map
                         type: dialog
                         displaytype: tree
@@ -272,7 +272,7 @@ parameters:
                 sidepane:
                     layertree:
                         title: Layertree
-                        class: Mapbender\CoreBundle\Element\Layertree
+                        class: Mapbender\LayertreeBundle\Element\Layertree
                         target: map
                         type: element
                         displaytype: tree
@@ -535,7 +535,7 @@ parameters:
                         units: ['km']
                     layertreedialog:
                         title: Layertree
-                        class: Mapbender\CoreBundle\Element\Layertree
+                        class: Mapbender\LayertreeBundle\Element\Layertree
                         target: map
                         type: dialog
                         displaytype: tree
@@ -722,7 +722,7 @@ parameters:
                 mobilePane:
                     layertree:
                         title: Themes
-                        class: Mapbender\CoreBundle\Element\Layertree
+                        class: Mapbender\LayertreeBundle\Element\Layertree
                         target: map
                         type: element
                         displaytype: tree

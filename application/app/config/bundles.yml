@@ -8,6 +8,7 @@ gpsposition: Mapbender\GpsPositionBundle\MapbenderGpsPositionBundle
 htmlelement: Mapbender\HTMLElementBundle\MapbenderHTMLElementBundle
 imageexport: Mapbender\ImageexportBundle\MapbenderImageexportBundle
 kml: Mapbender\KmlBundle\MapbenderKmlBundle
+layertree: Mapbender\LayertreeBundle\MapbenderLayertreeBundle
 legend: Mapbender\LegendBundle\MapbenderLegendBundle
 mobile: Mapbender\MobileBundle\MapbenderMobileBundle
 ol3map: Mapbender\OL3Bundle\MapbenderOL3Bundle
