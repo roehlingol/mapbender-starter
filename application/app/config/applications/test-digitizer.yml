@@ -1,0 +1,431 @@
+parameters:
+    layerSets:
+        mapbenderUsers: &mapbenderUsers
+            class: Mapbender\WmsBundle\Entity\WmsInstance
+            title: Mapbender Users
+            url: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml
+            layers:
+                10: { name: Mapbender_User,    title : User, visible: true, legendurl: http://wms.wheregroup.com/cgi-bin/mapbender_user.xml?REQUEST=GetLegendGraphic&VERSION=1.1.1&SERVICE=WMS&Layer=Mapbender_User&FORMAT=image/png }
+                22: { name: Mapbender_Names,   title : Name, visible: true, queryable: true}
+            info_format: text/html
+            visible: true
+            format: image/png
+            transparent: true
+            tiled: true
+            opacity: 85
+
+        osm_overview: &osm_overview
+            class: Mapbender\WmsBundle\Entity\WmsInstance
+            title: OSM Demo
+            url: http://osm-demo.wheregroup.com/service
+            layers:
+                30: { name: osm,    title : Germany OSM Demo WhereGroup,  visible: true }
+            info_format: text/html
+            visible: true
+            format: image/png
+            transparent: true
+            tiled: true
+            opacity: 100
+    schemes:
+        lineScheme: &lineScheme
+            searchType: currentExtent # all|currentExtent
+            label: &lines Lines
+            featureType:
+                connection: search_db
+                table: lines
+                uniqueId: gid
+                geomType: line
+                geomField: geom
+                srid: 4326
+                fields: "*"
+            openFormAfterEdit: true
+            popup:
+                title: *lines
+                width: 500
+#            toolset:
+#                - type: drawLine
+#                - type: modifyFeature
+#                - type: selectFeature
+#                - type: removeSelected
+
+            tableFields:
+                gid:
+                    # Columns
+                    # https://datatables.net/reference/option/#Columns
+
+                    label: Nr.
+                    width: 46px
+                name:
+                    label: Name
+            formItems:
+                 - type: tabs
+                   children:
+                       - type: form
+                         title: Basics
+                         children:
+                             - type: select
+                               title: Type
+                               name: type
+                               options:
+                                   A: A
+                                   B: B
+                                   C: C
+                                   D: D
+                                   E: E
+
+                             - type: input
+                               title: Name
+                               mandatory: true
+                               name: name
+                               mandatoryText: Please give a name to the poi.
+
+                             - type: breakLine
+
+                             - type: fieldSet
+                               children:
+                                   - type: date
+                                     title: favorite Date
+                                     dateFormat: yy-mm-dd
+                                     name: date_favorite
+                                     css: {width: 25%}
+        poiScheme: &poiScheme
+            label: POI
+            maxResults: 1500
+            allowDelete: false
+            featureType:
+                connection: search_db
+                table: poi
+                uniqueId: gid
+                geomType: point
+                geomField: geom
+                srid: 4326
+            openFormAfterEdit: true
+    #        toolset:
+    #            - type: drawPoint
+    #            - type: moveFeature
+    #            - type: selectFeature
+    #            - type: removeSelected
+            popup:
+                title: POI Test Suite
+                width: 500px
+            tableFields: {gid: {label: Nr.}, name: {label: Name}}
+            formItems:
+               - type: form
+                 css: {padding: 10px}
+                 children:
+                     - type: select
+                       title: Type
+                       name: type
+                       options: {A:A, B:B, C:C, D:D, E:E}
+                     - type: input
+                       title: Name
+                       mandatory: true
+                       name: name
+                       mandatoryText: Please give a name to the poi.
+                     - type: breakLine
+                     - type: fieldSet
+                       children:
+                           - type: date
+                             title: favorite Date
+                             name: date_favorite
+                             mandatory: true
+                             dateFormat: yy-mm-dd
+                             css: {width: 25%}
+                     - type: breakLine
+                     - type: fieldSet
+                       children:
+                           - type: input
+                             title: Firstname
+                             name: firstname
+                             css: {width: 30%}
+                           - type: input
+                             title: Lastname
+                             name: lastname
+                             css: {width: 30%}
+                           - type: input
+                             title: E-Mail
+                             name: email
+                             css: {width: 40%}
+
+
+    featureTypes:
+
+        ausstattung:
+            connection: digi
+            table: verkehr.ausstattung
+            uniqueId: ausst_id
+            geomType: point
+            geomField: the_geom
+            srid: 31466
+            #fields: [ausst_id,ausst_bem,ausst_jahr]
+
+        ausstattung2:
+            connection: digi
+            table: verkehr.ausstattung
+            uniqueId: oid
+            geomType: polygon
+            geomField: the_geom
+            srid: 31466
+            fields: [ausst_bem,ausst_jahr]
+
+        baumkataster:
+            connection: digi
+            table: verkehr.ausstattung
+            uniqueId: ausst_id
+            geomType: point
+            geomField: the_geom
+            srid: 31466
+            filter: ausst_zustand = 1 AND kontrollintervall_stufe = 'A'
+            uploadPath: /data/wesseling/
+
+    applications:
+        digitest:
+            title: Digitest
+            screenshot: 'mapbender_user.png'
+            description: "Testumgebung Digitalisierung"
+            published: true
+            template:  Mapbender\CoreBundle\Template\Fullscreen
+            regionProperties:
+                -
+                    name: sidepane
+                    properties: {"name": "accordion", "label": "mb.manager.template.region.accordion.label"}
+            layersets:
+                main: #[]
+                    osm: *osm_overview
+                overview: #[]
+                    osm_overview: *osm_overview
+            elements:
+                toolbar:
+                    layertree-button:
+                        title: Layertree
+                        tooltip: Layertree
+                        class: Mapbender\CoreBundle\Element\Button
+                        label: true
+                        icon: icon-layer-tree
+                        target: layertreedialog
+                        action: open
+                    legend-button:
+                        title: Legend
+                        tooltip: Legend
+                        class: Mapbender\CoreBundle\Element\Button
+                        target: legend
+                        icon: icon-legend
+                        action: open
+                content:
+                    map:
+                        title: Main Map
+                        class: Mapbender\CoreBundle\Element\Map
+                        layersets: [main]
+                        srs: EPSG:25832
+                        units: m
+                        extents:
+                            start: [361000,5619000,371150,5625000]
+                            max: [-500000,4350000,1600000,6850000]
+                        scales: [5000000,1000000,500000,100000,50000,25000,10000,7500,5000,2500,1000,500]
+                        maxResolution: 'auto'
+                        otherSrs: ["EPSG:25833","EPSG:31466","EPSG:31467","EPSG:900913","EPSG:4326"]
+                    zoombar:
+                        class: Mapbender\CoreBundle\Element\ZoomBar
+                        target: map
+                        components: ["pan","history","zoom_box","zoom_max","zoom_slider"]
+                        position: [15em, 3em]
+                        stepsize: 50
+                        stepbypixel: true
+                        anchor: right-top
+                        position: [200,40]
+                        draggable: false
+                    legend:
+                        class: Mapbender\CoreBundle\Element\Legend
+                        target: map
+                        title: Legend
+                        elementType: dialog
+                        autoOpen: false
+                        displayType: list
+                        hideEmptyLayers: true
+                        noLegend: "No legend available"
+                        generateLegendGraphic: false
+                        showWmsTitle: true
+                        showLayerTitle: true
+                        showGroupedLayerTitle: true
+                    scalebar:
+                        class: Mapbender\CoreBundle\Element\ScaleBar
+                        target: map
+                        anchor: 'left-bottom'
+                        position: ['10px', '10px']
+                        maxWidth: 200
+                        units: ['km']
+                    layertreedialog:
+                        title: Layertree
+                        class: Mapbender\CoreBundle\Element\Layertree
+                        target: map
+                        type: dialog
+                        displaytype: tree
+                        useAccordion: false
+                        autoOpen: false
+                        titleMaxLength: 20
+                        showBaseSource: false
+                        layerRemove: false
+                        menu: []
+                    overview:
+                        title: Overview
+                        class: Mapbender\CoreBundle\Element\Overview
+                        tooltip: 'Overview'
+                        target: map
+                        layerset: overview
+                        width: 200
+                        height: 100
+                        anchor: 'right-bottom'
+                        position: ['0px', '0px']
+                        maximized: true
+                        fixed: false
+                sidepane:
+                    digitizer:
+                        class: Mapbender\DigitizerBundle\Element\Digitizer
+                        title: Digitalisierung
+                        target: map
+                        jsSrc: /components/vis-ui.js/src/js/elements/geo.toolset.js
+                        schemes:
+#                            line: *lineScheme
+#                            poi: *poiScheme
+                            polygon:
+                                label: 'polygon digitizing'
+                                maxResults: 1500
+                                featureType: { connection: search_db, table: polygons, uniqueId: gid, geomType: polygon, geomField: geom, srid: 4326 }
+                                openFormAfterEdit: true
+                                allowDelete: true
+                                popup: { title: 'polygon test suite', width: 500px }
+                                tableFields: { gid: { label: Nr. }, name: { label: Name } }
+
+                                formItems:
+                                    - type: tabs
+                                      children:
+                                            - type: form
+                                              title: Advanced information
+                                              css: { padding: 10px }
+                                              children:
+                                                  - type: input
+                                                    title: test
+                                                    placeholder: Hier eintippen
+                                                  - type: tabs
+                                                    children:
+                                                        - type: form
+                                                          title: Wichtig
+                                                          children:
+                                                                - type: fieldSet
+                                                                  children:
+                                                                      - type: input
+                                                                      - type: select
+                                                                      - type: checkbox
+                                                                        title: AGB
+
+                                                        - type: fieldSet
+                                                          title: Noch ein tab
+                                                          children:
+                                                              - type: input
+                                                              - type: select
+                                                              - type: checkbox
+                                                                title: Sonst was
+
+                                            - type: form
+                                              title: Basic information
+                                              css: { padding: 10px }
+                                              children:
+                                                  - type: fieldSet
+                                                    children:
+                                                      - type: input
+                                                        title: Trafo Fine
+                                                        name: trafo
+                                                        css: {width: 25%}
+                                                        placeholder: Hier trafo Nummer eingeben
+                                                        mandatory: true
+                                                        mandatoryText: Unbeding eingeben!
+
+                                                      - type: select
+                                                        title: Trafo First
+                                                        name: trafo1
+                                                        options: { A: A, B: B, C: C, D: D, E: E }
+                                                        css: {width: 25%}
+
+                                                      - type: input
+                                                        title: Trafo Second
+                                                        name: trafo
+                                                        css: {width: 25%}
+
+                                                      - type: input
+                                                        title: Trafo Over6
+                                                        name: trafo
+                                                        css: {width: 25%}
+
+                                                  - type: breakLine
+
+                                                  - type: label
+                                                    title: Welcome to the digitize demo. Try the new Mapbender3 feature!
+
+                                                  - type: input
+                                                    title: Name
+                                                    mandatory: true
+                                                    name: name
+                                                    mandatoryText: Please give a name to the new object.
+                                                    infoText: 'Help: Please give a name to the new object.'
+
+                                                  - type: select
+                                                    title: Type
+                                                    name: type
+                                                    options: { A: A, B: B, C: C, D: D, E: E }
+
+                            line2:
+                                label: 'line digitizing'
+                                maxResults: 1500
+                                featureType: { connection: search_db, table: lines, uniqueId: gid, geomType: line, geomField: geom, srid: 4326 }
+                                openFormAfterEdit: true
+                                popup: { title: 'line test suite', width: 500px }
+                                tableFields: { gid: { label: Nr. }, name: { label: Name } }
+                                formItems: [{ type: form, title: mb.basic.information, css: { padding: 10px }, children: [{ type: label, title: trans:mb.digitizer.feature.edit}, { type: input, title: Name, mandatory: true, name: name, mandatoryText: mb.digitizer.fiel.object.name, infoText: 'Help: Please give a name to the new object.' }, { type: select, title: Type, name: type, options: { A: A, B: B, C: C, D: D, E: E } }] }]
+                    printclient:
+                        class: Mapbender\CoreBundle\Element\PrintClient
+                        target: map
+                        autoOpen: false
+                        file_prefix: mapbender3
+                        templates:
+                            - { template: a4portrait, label: A4 Portrait, format: a4}
+                            - { template: a4landscape, label: A4 Landscape, format: a4}
+                            - { template: a3portrait, label: A3 Portrait, format: a3}
+                            - { template: a3landscape, label: A3 Landscape, format: a3}
+                        scales: [500, 1000, 5000, 10000, 25000, 50000]
+                        quality_levels:
+                            - { dpi: 72 , label: Draft (72dpi)}
+                            - { dpi: 288,  label: Document (288dpi)}
+                        rotatable: true
+                        optional_fields:
+                            title:
+                                label: Title              # label of the optional field
+                                options:                  #
+                                    required: true        # true or false
+                footer:
+                    activityindicator:
+                        class: Mapbender\CoreBundle\Element\ActivityIndicator
+                        title: Activity Indicator
+                        activityClass: mb-activity
+                        ajaxActivityClass: mb-activity-ajax
+                        tileActivityClass: mb-activity-tile
+                    coordinates:
+                        class: Mapbender\CoreBundle\Element\CoordinatesDisplay
+                        title: Coordinates Display
+                        tooltip: Coordinates Display
+                        target: map
+                        label: false
+                        empty:  "x: - y: -"
+                        prefix: "x: "
+                        separator:  " y: "
+#                    srs:
+#                        class: Mapbender\CoreBundle\Element\SrsSelector
+#                        title: SRS Selector
+#                        tooltip: SRS Selector
+#                        label: false
+#                        target: map
+                    scaleselector:
+                        class: Mapbender\CoreBundle\Element\ScaleSelector
+                        title: Scale Selector
+                        tooltip: Scale Selector
+                        label: false
+                        target: map

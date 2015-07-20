@@ -51,21 +51,8 @@ doctrine:
                 user:     %database_user%
                 password: %database_password%
                 charset:  UTF8
-                logging: false
-                profiling: false
-
-            digi:
-                driver:   %database_digi_driver%
-                host:     %database_digi_host%
-                port:     %database_digi_port%
-                dbname:   %database_digi_name%
-                path:     %database_digi_path%
-                user:     %database_digi_user%
-                password: %database_digi_password%
-                charset:  UTF8
-                logging: false
-                profiling: false
-
+                logging: %kernel.debug%
+                profiling: %kernel.debug%
             search_db:
                 driver:   %database_digi_driver%
                 host:     %database_digi_host%
@@ -75,8 +62,8 @@ doctrine:
                 user:     %database_digi_user%
                 password: %database_digi_password%
                 charset:  UTF8
-                logging: false
-                profiling: false
+                logging: %kernel.debug%
+                profiling: %kernel.debug%
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
