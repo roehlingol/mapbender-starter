@@ -44,7 +44,7 @@
         "mapbender/mapbender-icons": "dev-master",
         "components/underscore": "1.x",
         "components/joii": "*",
-        "mapbender/digitizer": "1.x"
+        "mapbender/digitizer": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -73,7 +73,6 @@
         "symfony-assets-install": "symlink"
     },
     "repositories": [
-        { "type": "git", "url": "https://github.com/mapbender/mapbender-digitizer.git"},
         {
             "type": "package",
             "package": {
