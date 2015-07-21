@@ -44,7 +44,8 @@
         "mapbender/mapbender-icons": "dev-master",
         "components/underscore": "1.x",
         "components/joii": "*",
-        "mapbender/digitizer": "dev-master"
+        "mapbender/digitizer": "dev-master",
+        "medialize/jquery-context-menu": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
