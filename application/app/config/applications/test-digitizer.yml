@@ -40,10 +40,23 @@ parameters:
 
     schemes:
         polygoneScheme: &polygoneScheme
+
+           # Die Beschriftung (Wird in Auswahl-Box angezeigt)
            label: Polygons
+
+           # Maximal anzahl der geladene Feature
+           # Default: 1000
            maxResults: 1500
+
+           # Feature type - die Datenquelle(Source)
            featureType: *polyTestFeature
+
+           # Nach dem die Feature auf der Karte digitalisiert ist, Datenformular eröfnen
+           # Default: true
            openFormAfterEdit: true
+
+           # Das Löschen von einzelnen Features erlauben
+           # Default: true
            allowDelete: true
 
            # Features Digitalisieren auf der Karte (Verändern und Erstellen)
@@ -65,7 +78,8 @@ parameters:
            # Default: true
            displayIfActive: true
 
-           # Tool set
+           # Die Definition und die Reinfolge einzelne Werkzeuge für das Digitalisieren.
+           # Deafult: alle vorhandene wernde angezeigt.
            toolset:
                - type: drawRectangle
                - type: drawCircle
@@ -76,32 +90,22 @@ parameters:
                - type: selectFeature
                - type: removeSelected
 
+           # Popup Definition
            popup:
+               # Die Beschriftung
                title: Polygon test suite
+
+               # Die Breite
                width: 500px
-           tableFields: { gid: { label: Nr., width: 70px}, name: { label: Name } }
+               resizible: true
+
+           # Tabellen Felder
+           tableFields:
+               gid: {label: Nr., width: 70px}
+               name: {label: Name }
            formItems:
                - type: tabs
                  children:
-#                       - type: form
-#                         title: Test 2a
-#                         children:
-#
-#                             - type: radio
-#                               title: Radio Cool Thing
-#
-#                             - type: breakLine
-#                             - type: tabs
-#                               children:
-#                                   - type: input
-#                                     title: Name
-#                                     placeholder: Hier nahme eingeben
-#                                     css: {width: 50%}
-#
-#                                   - type: select
-#                                     title: anrede
-#                                     options: ["Herr", "Fraulein", "Trans"]
-
                        - type: form
                          title: User profile
                          css: { padding: 10px }
