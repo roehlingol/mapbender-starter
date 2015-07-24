@@ -1,6 +1,7 @@
 parameters:
 
     featureTypes:
+
         polyTestFeature: &polyTestFeature
            connection: search_db
            table: polygons
@@ -17,6 +18,7 @@ parameters:
             geomField: the_geom
             srid: 31466
             #fields: [ausst_id,ausst_bem,ausst_jahr]
+
         ausstattung2:
             connection: digi
             table: verkehr.ausstattung
@@ -26,14 +28,14 @@ parameters:
             srid: 31466
             fields: [ausst_bem,ausst_jahr]
 
-        baumkataster:
+        hauses:
             connection: digi
             table: verkehr.ausstattung
             uniqueId: ausst_id
             geomType: point
             geomField: the_geom
             srid: 31466
-            filter: ausst_zustand = 1 AND kontrollintervall_stufe = 'A'
+            filter: ausst_zustand = 2
             uploadPath: /data/wesseling/
 
     schemes:
@@ -44,15 +46,36 @@ parameters:
            openFormAfterEdit: true
            allowDelete: true
 
+           # Features Digitalisieren auf der Karte (Verändern und Erstellen)
+           # Default: true
+           allowDigitize: true
+
+           # Formular Daten Änderungen
+           # Default: true
+           allowEditData: true
+
+           # Den Layer dauerhaft anzeigen.
+           # Oder nur wenn explicit über Select gewählt und nur wenn active ist
+           # Default: false
+           displayPermanent: true
+
+           # Layer Features erst wenn das Element active ist und Schema selectiert ist zeigen.
+           # Wenn auf "false" ist und Schema active ist, werden die Features, obwohl der Element selbst
+           # nicht active ist troztdem angezeigt.
+           # Default: true
+           displayIfActive: true
+
            # Tool set
            toolset:
                - type: drawRectangle
                - type: drawCircle
                - type: drawEllipse
+               - type: drawDonut
                - type: modifyFeature
                - type: moveFeature
                - type: selectFeature
                - type: removeSelected
+
            popup:
                title: Polygon test suite
                width: 500px
@@ -60,34 +83,129 @@ parameters:
            formItems:
                - type: tabs
                  children:
+#                       - type: form
+#                         title: Test 2a
+#                         children:
+#
+#                             - type: radio
+#                               title: Radio Cool Thing
+#
+#                             - type: breakLine
+#                             - type: tabs
+#                               children:
+#                                   - type: input
+#                                     title: Name
+#                                     placeholder: Hier nahme eingeben
+#                                     css: {width: 50%}
+#
+#                                   - type: select
+#                                     title: anrede
+#                                     options: ["Herr", "Fraulein", "Trans"]
+
                        - type: form
                          title: User profile
                          css: { padding: 10px }
                          children:
                            - type: label
                              title: Welcome to the digitize demo. Try the new Mapbender3 feature!
-
                            - type: breakLine
 
                            # Field set
                            # https://trac.wheregroup.com/cp/issues/3929
                            - type: fieldSet
                              children:
-                                - type: select
-                                  name: title
-                                  title: Anrede
-                                  options: [Herr, Frau]
-                                  css: {width: 33%}
+#                                - type: select
+#                                  name: title
+#                                  title: Anrede
+#                                  options: [Herr, Frau]
+#                                  css: {width: 33%}
 
                                 - type: input
                                   name: firstname
                                   title: Vorname
+                                  infoText: Die Vorname
                                   css: {width: 33%}
 
                                 - type: input
                                   name: lastname
                                   title: Nachname
+                                  infoText: Die Nachname
                                   css: {width: 33%}
+
+                           - type: breakLine
+
+                           - type: textArea
+                             title: Description
+                             infoText: Info text
+
+                           - type: textArea
+                             infoText: Info text
+
+                           - type: checkbox
+                             infoText: Info text
+                             title: "Checkbox #1"
+                             infoText: Info text
+
+                           - type: radio
+                             infoText: Info text
+                             title: "Radio #1"
+                             infoText: Info text
+
+                           - type: input
+                             infoText: Info text
+
+                           - type: select
+                             options: [1,2]
+                             infoText: Info text
+
+                           - type: select
+                             options: [1,2]
+                             infoText: Info text
+                             title: Noch ein select mit Titel
+
+                           - type: breakLine
+                           - type: fieldSet
+                             children:
+                               - type: textArea
+                                 title: Description
+                                 infoText: Info text
+                                 css: {width: 30%}
+
+                               - type: textArea
+                                 infoText: Info text
+                                 css: {width: 30%}
+
+                               - type: checkbox
+                                 infoText: Info text
+                                 title: "Checkbox #1"
+                                 infoText: Info text
+                                 css: {width: 30%}
+
+                               - type: radio
+                                 infoText: Info text
+                                 title: "Radio #1"
+                                 infoText: Info text
+                                 css: {width: 30%}
+
+                               - type: input
+                                 infoText: Info text
+                                 css: {width: 30%}
+
+                               - type: input
+                                 title: Bechreibung
+                                 infoText: Info text
+                                 css: {width: 30%}
+
+
+                               - type: select
+                                 options: [1,2]
+                                 css: {width: 30%}
+                                 infoText: Info text
+
+                               - type: select
+                                 options: [1,2]
+                                 infoText: Info text
+                                 title: Noch ein select mit Titel
 
                            - type: breakLine
 
@@ -100,6 +218,7 @@ parameters:
                                  name: date_favorite
                                  title: Birthdate
                                  placeholder: DD-MM-YYYY
+                                 infoText: Info Text
 
                                  # Datumsformat (optional)
                                  dateFormat: yy-mm-dd
@@ -109,6 +228,7 @@ parameters:
                                  name: email
                                  title: E-Mail
                                  css: {width: 70%}
+                                 infoText: Info Text
 
                        - type: form
                          title: Basic information
@@ -119,16 +239,20 @@ parameters:
                                title: Name
                                name: name
                                mandatoryText: Please give a name to the new object.
-                               infoText: Help: Please give a name to the new object.
+                               infoText: You need to give a name to the new object.
+                               mandatory: true
 
                              - type: breakLine
 
                              - type: select
-                               title: Type
-                               name: type
-                               connection: search_db
-                               sql: select distinct "type" from "polygons" order by type asc
-                               #options: { A: A, B: B, C: C, D: D, E: E }
+                               multiple: true
+                               name: category
+                               infoText: Info Text
+
+                               # array, text, json, serialize
+#                               fieldType: text
+                               separator: ,
+                               options:  ['Prof.','Dr.', 'med.', 'jur.','vet.','habil.']
 
         lineScheme: &lineScheme
             label: Lines
@@ -243,6 +367,7 @@ parameters:
             title: Digitalizer Test
             description: Digitalisierung Testumgebung
             published: true
+            initializeOnStart: true
             template:  Mapbender\CoreBundle\Template\Fullscreen
             regionProperties:
                 - name: sidepane
@@ -265,8 +390,8 @@ parameters:
                         jsSrc:
                             - /components/vis-ui.js/src/js/elements/geo.toolset.js
                             - /components/vis-ui.js/src/js/elements/date.selector.js
-                            - /components/vis-ui.js/src/js/jquery.form.generator.js
                             - /components/vis-ui.js/src/js/utils/fn.formData.js
+                            - /components/vis-ui.js/src/js/jquery.form.generator.js
                         schemes:
                             polygon: *polygoneScheme
                             line: *lineScheme
