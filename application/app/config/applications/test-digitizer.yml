@@ -74,9 +74,9 @@ parameters:
 
            # Layer Features erst wenn das Element active ist und Schema selectiert ist zeigen.
            # Wenn auf "false" ist und Schema active ist, werden die Features, obwohl der Element selbst
-           # nicht active ist troztdem angezeigt.
+           # nicht aktiv ist troztdem angezeigt.
            # Default: true
-           displayIfActive: true
+           displayOnSelect: true
 
            # Die Definition und die Reinfolge einzelne Werkzeuge für das Digitalisieren.
            # Deafult: alle vorhandene wernde angezeigt.
@@ -103,6 +103,31 @@ parameters:
            tableFields:
                gid: {label: Nr., width: 70px}
                name: {label: Name }
+
+           # Display digitize button
+           allowDigitize: true
+
+           # Display remove button
+           # Default: true
+           allowDelete: true
+
+           # Optin
+           openFormAfterEdit: false
+
+           # Edit feature in the samge popup or great number of popup's
+           # Default: true
+           oneInstanceEdit: false
+
+           # Search methods:
+           #  * currentExtent: search only by current extent geometry
+           # Default: currentExtent
+           searchType: currentExtent
+
+           # Search limit
+           # Default: 1000
+           maxResults: 1000
+
+           # Edit selected feature form elements
            formItems:
                - type: tabs
                  children:
@@ -120,7 +145,14 @@ parameters:
                                    title: Textfeld Beispiel
                                    infoText: Die Nachname
                                    text: |
-                                     'Die ID:' +  data.gid + ' und die Name ' + data.name + ' !'
+                                      (data.gid == 103 ?'YAY! ':' ') + 'Die ID:' +  data.gid + ' und die Name ' + data.name + ' !'
+                                   css: {width: 33%}
+
+                                 # https://trac.wheregroup.com/cp/issues/4574
+                                 - type: text
+                                   title: Textfeld Beispiel
+                                   infoText: Die Nachname
+                                   text: data.name
                                    css: {width: 33%}
 
 
