@@ -107,6 +107,31 @@ parameters:
                - type: tabs
                  children:
                        - type: form
+                         title: Text Fields
+                         children:
+                            # Field set
+                            # https://trac.wheregroup.com/cp/issues/3929
+                            - type: fieldSet
+                              children:
+
+                                 # Text only field
+                                 # https://trac.wheregroup.com/cp/issues/4574
+                                 - type: text
+                                   title: Textfeld Beispiel
+                                   infoText: Die Nachname
+                                   text: |
+                                     'Die ID:' +  data.gid + ' und die Name ' + data.name + ' !'
+                                   css: {width: 33%}
+
+
+                            - type: breakLine
+                            - type: text
+                              title: Textfeld Beispiel
+                              infoText: Die Nachname
+                              text: |
+                                'Die ID:' +  data.gid + ' und die Name ' + data.name + ' !'
+
+                       - type: form
                          title: User profile
                          css: { padding: 10px }
                          children:
@@ -114,29 +139,6 @@ parameters:
                              title: Welcome to the digitize demo. Try the new Mapbender3 feature!
                            - type: breakLine
 
-                           # Field set
-                           # https://trac.wheregroup.com/cp/issues/3929
-                           - type: fieldSet
-                             children:
-#                                - type: select
-#                                  name: title
-#                                  title: Anrede
-#                                  options: [Herr, Frau]
-#                                  css: {width: 33%}
-
-                                - type: input
-                                  name: firstname
-                                  title: Vorname
-                                  infoText: Die Vorname
-                                  css: {width: 33%}
-
-                                - type: input
-                                  name: lastname
-                                  title: Nachname
-                                  infoText: Die Nachname
-                                  css: {width: 33%}
-
-                           - type: breakLine
 
                            - type: textArea
                              title: Description
