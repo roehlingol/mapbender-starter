@@ -44,7 +44,9 @@
         "mapbender/mapbender-icons": "dev-master",
         "components/underscore": "1.x",
         "components/joii": "*",
-        "mapbender/digitizer": "1.0.*"
+        "components/jquery": "1.11.2",
+        "mapbender/digitizer": "1.0.*",
+        "blueimp/jquery-file-upload": "9.*"
     },
     "scripts": {
         "post-install-cmd": [

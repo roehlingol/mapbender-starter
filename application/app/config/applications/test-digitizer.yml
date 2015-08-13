@@ -1,6 +1,6 @@
 parameters:
 
-    featureTypes:
+    feature:
 
         polyTestFeature: &polyTestFeature
            connection: search_db
@@ -9,6 +9,31 @@ parameters:
            geomType: polygon
            geomField: geom
            srid: 4326
+
+           # Files definition
+           files:
+              # Field name
+            - field: file_reference
+
+              # File path, relative to web path or absolute. Optional.
+              path: uploads/somenewpath
+#
+#              # URI relative to web path. Optional.
+              # uri: uploads/somenewpath
+              uri: /mb3/application/web/uploads/somenewpath
+
+              # File format for saving (name ist file1, gid - ist ID Feld name)
+              # Don't working yet!
+              format: data.gid + '-' + data.name           # Field name
+
+              # Allowed file format. Optional.
+              formats: image/*, .eps
+
+            - field: abstract
+              path: uploads/abs
+              uri: uploads/abs
+
+#           filter: type LIKE 'C'
 
         ausstattung:
             connection: digi
@@ -53,7 +78,7 @@ parameters:
 
            # Nach dem die Feature auf der Karte digitalisiert ist, Datenformular eröfnen
            # Default: true
-           openFormAfterEdit: true
+           openFormAfterEdit: false
 
            # Das Löschen von einzelnen Features erlauben
            # Default: true
@@ -70,25 +95,25 @@ parameters:
            # Den Layer dauerhaft anzeigen.
            # Oder nur wenn explicit über Select gewählt und nur wenn active ist
            # Default: false
-           displayPermanent: true
+           displayPermanent: false
 
            # Layer Features erst wenn das Element active ist und Schema selectiert ist zeigen.
            # Wenn auf "false" ist und Schema active ist, werden die Features, obwohl der Element selbst
            # nicht aktiv ist troztdem angezeigt.
-           # Default: true
-           displayOnSelect: true
+           # Default: false
+           displayOnInactive: false
 
            # Die Definition und die Reinfolge einzelne Werkzeuge für das Digitalisieren.
            # Deafult: alle vorhandene wernde angezeigt.
            toolset:
                - type: drawRectangle
-               - type: drawCircle
                - type: drawEllipse
                - type: drawDonut
+               - type: drawCircle
                - type: modifyFeature
                - type: moveFeature
-               - type: selectFeature
-               - type: removeSelected
+#               - type: selectFeature
+#               - type: removeSelected
 
            # Popup Definition
            popup:
@@ -98,11 +123,17 @@ parameters:
                # Die Breite
                width: 500px
                resizible: true
+               height: 420
+
+           # Zoom scale denominator
+           # Used for zoomToScale
+           # Default: null
+           zoomScaleDenominator: 5000
 
            # Tabellen Felder
            tableFields:
                gid: {label: Nr., width: 70px}
-               name: {label: Name }
+               name: {label: Name, visible: false }
 
            # Display digitize button
            allowDigitize: true
@@ -112,7 +143,7 @@ parameters:
            allowDelete: true
 
            # Optin
-           openFormAfterEdit: false
+#           openFormAfterEdit: false
 
            # Edit feature in the samge popup or great number of popup's
            # Default: true
@@ -126,17 +157,137 @@ parameters:
 
            # Search limit
            # Default: 1000
-           maxResults: 1000
+           maxResults: 5000
 
            # Use context menu t o
            useContextMenu: true
+
+           # Allow search directly in the digitizer element table. Optional. Default = false
+           inlineSearch: true
+
+           # Feature styles
+           styles:
+              default:
+                 strokeWidth: 0
+                 strokeColor: "#0e6a9e"
+                 fillColor:   "#1289CD"
+                 fillOpacity: 0.7
+
+              # On select/mouse over
+              select:
+                 strokeWidth: 3
+                 fillColor:   "#F7F79A"
+                 strokeColor: "#0e6a9e"
+                 fillOpacity: 0.7
 
            # Edit selected feature form elements
            formItems:
                - type: tabs
                  children:
                        - type: form
-                         title: Text Fields
+                         title: Upload
+                         children:
+                            # Field set
+                            # https://trac.wheregroup.com/cp/issues/3929
+                            - type: fieldSet
+                              children:
+                                - type: image
+                                  src: bundles/mapbendercore/image/logo_mb3.png
+                                  imageCss: {width: 100%}
+                                  css: {width: 25%}
+                                  relative: true
+
+                                - type: container
+                                  children:
+
+                                    - type: image
+                                      name: file_reference
+                                      src: https://trac.wheregroup.com/cp/images/feed.png
+                                      imageCss: {width: 100%}
+                                      css: {height: 92px, width: 92px}
+#                                      relative: false
+
+                                    - type: file
+                                      name: file_reference
+#                                      accept: image/*, .jpg, .txt
+                                      text: Upload image
+                                      css: {width: 25%}
+
+                            - type: breakLine
+
+                            - type: image
+                              name: abstract
+                              src: https://trac.wheregroup.com/cp/images/feed.png
+                              imageCss: {width: 100%}
+                              css: {height: 92px, width: 92px}
+                              relative: true
+
+                            - type: file
+                              name: abstract
+                              formats: [jpg,png,gif,pdf]
+                              text: Upload image
+                              css: {width: 25%}
+
+
+#                                - type: file
+#                                  path: digitizer #(anfangsort ist "web/uploads", so werden daten unter "web/uploads/digitizer" gespeichert )
+#                                  format: data.gid + '-' + data.name #(name ist file1, gid - ist ID Feld name)
+#                                  url:  /baume/ # optional
+#                                  name: file
+#                                  css: {width: 25%}
+#                                  allowedFormats: [jpg,png,gif,pdf]
+#                                  title: Screenshot 2
+#
+#                                - type: image
+#                                  name: file
+#                                  src: https://trac.wheregroup.com/cp/images/feed.png
+##                                  path:  bundles/mapbendercore/
+##                                  path:  uploads/featureTypes/polygons/
+#                                  imageCss: {width: 100%}
+#                                  css: {height: 92px, width: 92px}
+#                                  relative: true
+
+#                            - type: breakLine
+#                            - type: file
+#                              path: digitizer #(anfangsort ist "web/uploads", so werden daten unter "web/uploads/digitizer" gespeichert )
+#                              format: data.gid + '-' + data.name #(name ist file1, gid - ist ID Feld name)
+#                              url:  /baume/ # optional
+##                              name: file3
+#                              allowedFormats: [jpg,png,gif,pdf]
+#                              title: Screenshot 3
+#
+#                            - type: breakLine
+#
+#                            - type: file
+#                              path: digitizer #(anfangsort ist "web/uploads", so werden daten unter "web/uploads/digitizer" gespeichert )
+#                              format: data.gid + '-' + data.name #(name ist file1, gid - ist ID Feld name)
+#                              url:  /baume/ # optional
+##                              name: file4
+#                              allowedFormats: [jpg,png,gif,pdf]
+#
+#                            - type: fieldSet
+#                              children:
+#
+#                                - type: file
+#                                  path: digitizer #(anfangsort ist "web/uploads", so werden daten unter "web/uploads/digitizer" gespeichert )
+#                                  format: data.gid + '-' + data.name #(name ist file1, gid - ist ID Feld name)
+#                                  url:  /baume/ # optional
+##                                  name: file5
+#                                  css: {width: 50%}
+#                                  allowedFormats: [jpg,png,gif,pdf]
+#                                  title: Screenshot 6
+#
+#                                - type: file
+#                                  path: digitizer #(anfangsort ist "web/uploads", so werden daten unter "web/uploads/digitizer" gespeichert )
+#                                  format: data.gid + '-' + data.name #(name ist file1, gid - ist ID Feld name)
+#                                  url:  /baume/ # optional
+##                                  name: file2
+#                                  css: {width: 50%}
+#                                  allowedFormats: [jpg,png,gif,pdf]
+#                                  title: Screenshot 7
+
+                       - type: form
+                         title: Text
                          children:
                             # Field set
                             # https://trac.wheregroup.com/cp/issues/3929
@@ -148,8 +299,7 @@ parameters:
                                  - type: text
                                    title: Textfeld Beispiel
                                    infoText: Die Nachname
-                                   text: |
-                                      (data.gid == 103 ?'YAY! ':' ') + 'Die ID:' +  data.gid + ' und die Name ' + data.name + ' !'
+                                   text:  "(data.gid == 103 ?'YAY! ':' ') + 'Die ID:' +  data.gid + ' und die Name ' + data.name + ' !'"
                                    css: {width: 33%}
 
                                  # https://trac.wheregroup.com/cp/issues/4574
@@ -167,6 +317,27 @@ parameters:
                               text: |
                                 'Die ID:' +  data.gid + ' und die Name ' + data.name + ' !'
 
+                            - type: breakLine
+
+                            - |
+                                <div class="form-group has-success has-feedback">
+                                  <label class="control-label" for="inputSuccess2">Input with success</label>
+                                  <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+                                  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                                  <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                                </div>
+
+                                <div class="form-group has-success has-feedback">
+                                  <label class="control-label" for="inputGroupSuccess1">Input group with success</label>
+                                  <div class="input-group">
+                                    <span class="input-group-addon">@</span>
+                                    <input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+                                  </div>
+                                  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                                  <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
+                                </div>
+
+
                        - type: form
                          title: User profile
                          css: { padding: 10px }
@@ -175,6 +346,11 @@ parameters:
                              title: Welcome to the digitize demo. Try the new Mapbender3 feature!
                            - type: breakLine
 
+                           - type: select
+                             options: {A: "A", B: "B"}
+
+                           - type: checkbox
+                             checked: false
 
                            - type: textArea
                              title: Description
@@ -206,22 +382,23 @@ parameters:
                              title: Noch ein select mit Titel
 
                            - type: breakLine
+
                            - type: fieldSet
                              children:
                                - type: textArea
                                  title: Description
                                  infoText: Info text
-                                 css: {width: 30%}
+                                 css: {width: 33%}
 
                                - type: textArea
                                  infoText: Info text
-                                 css: {width: 30%}
+                                 css: {width: 33%}
 
                                - type: checkbox
                                  infoText: Info text
                                  title: "Checkbox #1"
                                  infoText: Info text
-                                 css: {width: 30%}
+                                 css: {width: 33%}
 
                                - type: radio
                                  infoText: Info text
@@ -261,8 +438,6 @@ parameters:
                                  title: Birthdate
                                  placeholder: DD-MM-YYYY
                                  infoText: Info Text
-
-                                 # Datumsformat (optional)
                                  dateFormat: yy-mm-dd
                                  css: {width: 30%}
 
@@ -277,30 +452,43 @@ parameters:
                          css: { padding: 10px }
                          children:
 
-                             - type: input
-                               title: Name
-                               name: name
-                               mandatoryText: Please give a name to the new object.
-                               infoText: You need to give a name to the new object.
-                               mandatory: true
+                             - type: fieldSet
+                               children:
+                                 - type: input
+                                   title: Name
+                                   name: name
+                                   css: {width: 33%}
+                                   mandatoryText: Please give a name to the new object.
+    #                               infoText: You need to give a name to the new object.
+                                   mandatory: true
 
-                             - type: breakLine
+                                 - type: select
+                                   title: Type
+                                   connection: search_db
+                                   sql: SELECT DISTINCT "type" FROM polygons WHERE "type" IS NOT NULL ORDER BY "type" ASC
+                                   name: type
+                                   css: {width: 34%}
 
-                             - type: select
-                               multiple: true
-                               name: category
-                               infoText: Info Text
+                                 - type: select
+                                   multiple: true
+                                   name: category
+                                   infoText: Info Text
+                                   separator: ,
+                                   
+                                   options:  ['Prof.','Dr.', 'med.', 'jur.','vet.','habil.']
+                                   css: {width: 33%}
 
-                               # array, text, json, serialize
-#                               fieldType: text
-                               separator: ,
-                               options:  ['Prof.','Dr.', 'med.', 'jur.','vet.','habil.']
+
+
+
 
         lineScheme: &lineScheme
             label: Lines
+            displayPermanent: false
             maxResults: 1500
             allowDelete: false
             allowEditData: false
+            searchType: all
             featureType:
                 connection: search_db
                 table: lines
@@ -312,9 +500,11 @@ parameters:
             popup:
                 title: Line test suite
                 width: 500px
+                height: 400
             tableFields:
                 gid: { label: Nr. }
                 name: { label: Name }
+                type: { label: Typ }
             formItems:
                 - type: form
                   title: mb.basic.information
@@ -339,7 +529,7 @@ parameters:
             allowDelete: false
             allowEditData: false
             allowDigitize: false
-            searchType: ''
+            searchType: all
             featureType:
                 connection: search_db
                 table: lines
@@ -355,7 +545,8 @@ parameters:
                 resizible: false
             tableFields:
                 gid: { label: Nr. }
-                name: { label: Name }
+                name: { label: Name, visible: false }
+                type: { label: Typ, visible: false }
             formItems:
                 - type: fieldSet
                   css: { padding: 10px }
@@ -453,10 +644,15 @@ parameters:
                 - name: sidepane
                   properties: {"name": "accordion", "label": "mb.manager.template.region.accordion.label"}
             layersets:
-                main:
-                    osm: *osm_overview
+                main: []
+                    #osm: *osm_overview
             elements:
                 sidepane:
+#                    HTML2:
+#                        title: Test-Tab 1
+#                        class: Mapbender\CoreBundle\Element\HTMLElement
+#                        content: |
+#                          <div class="mb-element mb-element-searchrouter" id="940" title="Suchen"></div>
                     digitizer:
                         class: Mapbender\DigitizerBundle\Element\Digitizer
                         title: Digitalisierung
@@ -468,15 +664,63 @@ parameters:
                         # Loads JS files from "web" path.
                         # For tests only!
                         jsSrc:
+                            - /components/vis-ui.js/src/js/elements/data.result-table.js
                             - /components/vis-ui.js/src/js/elements/geo.toolset.js
                             - /components/vis-ui.js/src/js/elements/date.selector.js
+                            - /components/vis-ui.js/src/js/elements/data.result-table.js
                             - /components/vis-ui.js/src/js/utils/fn.formData.js
                             - /components/vis-ui.js/src/js/jquery.form.generator.js
+
+                        # custom SCSS at "web" directory
+                        css: /stadt_theme.scss
+#
+#                        # Table translation
+#                        tableTranslation:
+#
+#                            # Details the actions that will be taken when the user  into the filtering input text box. The variable "INPUT",
+#                            # if used in the string, is replaced with the HTML text box for the filtering input allowing control over where it appears in the string.
+#                            # If "INPUT" is not given then the input box is appended to the string automatically.
+#                            # Default:	Search:
+#                            sSearch: mb.digitizer.search.title
+#
+#                            # This string is shown in preference to sZeroRecords when the table is empty of data (regardless of filtering).
+#                            # Note that this is an optional parameter
+#                            # - if it is not given, the value of sZeroRecords will be used instead (either the default or given value).
+#                            # Default:	No data available in table
+#                            sEmptyTable:   mb.digitizer.search.table.empty #Keine Ergebnisse
+#
+#                            # Text shown inside the table records when the is no information to be displayed after filtering.
+#                            # sEmptyTable is shown when there is simply no information in the table at all (regardless of filtering).
+#                            sZeroRecords:  mb.digitizer.search.table.zerorecords # Nichts gefunden!
+#
+#                            # This string gives information to the end user about the information that is current on display on the page.
+#                            # The START, END and TOTAL variables are all dynamically replaced as the table display updates,
+#                            # and can be freely moved or removed as the language requirements change.
+#                            # Default:	No matching records found
+#                            sInfo:        mb.digitizer.search.table.info.status # _START_ bis _END_ von _TOTAL_
+#
+#                            # Display information string for when the table is empty.
+#                            # Typically the format of this string should match sInfo.
+#                            # Default:	Showing 0 to 0 of 0 entries
+#                            sInfoEmpty:   mb.digitizer.search.table.info.empty # Keine Ergebnisse
+#
+#                            # When a user filters the information in a table, this string is appended to the information (sInfo)
+#                            # to give an idea of how strong the filtering is. The variable MAX is dynamically updated.
+#                            # Default:	(filtered from _MAX_ total entries)
+#                            sInfoFiltered:  mb.digitizer.search.table.info.filtered #(gefiltert aus _MAX_ Objekte.)
+
                         schemes:
                             polygon: *polygoneScheme
                             line: *lineScheme
-                            featureInfo: *featureInfo1
+#                            featureInfo: *featureInfo1
 #                            poi: *poiScheme
+
+                    HTML:
+                        title: Test-Tab
+                        class: Mapbender\CoreBundle\Element\HTMLElement
+                        content: |
+                          <div class="mb-element mb-element-searchrouter" id="941" title="Suchen"></div>
+
                 content:
                     map:
                         title: Main Map
