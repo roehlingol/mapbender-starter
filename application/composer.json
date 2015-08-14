@@ -11,7 +11,7 @@
         "satooshi/php-coveralls": "0.6.x",
         "phpunit/phpunit-selenium": "1.2.x",
         "facebook/webdriver": "1.0.x",
-        "phpunit/phpunit": "4.7.x",
+        "phpunit/phpunit": "4.8.x",
         "sensio/generator-bundle": "2.5.x"
     },
     "require": {
@@ -36,7 +36,7 @@
         "toooni/fpdf": "dev-master",
         "arsgeografica/signing": "1.1.x",
         "phayes/geophp": "1.2",
-        "viscreation/vis-ui.js": "0.0.13",
+        "viscreation/vis-ui.js": "0.0.x",
         "igosuki/compass-mixins": "0.12.x",
         "fontfacekit/open-sans": "1.4.x",
         "eslider/sasscb":  "dev-master",
