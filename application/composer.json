@@ -9,7 +9,7 @@
     },
     "require-dev": {
         "satooshi/php-coveralls": "0.6.x",
-        "phpunit/phpunit-selenium": "1.2.x",
+        "phpunit/phpunit-selenium": "1.4.x",
         "facebook/webdriver": "1.0.x",
         "phpunit/phpunit": "4.8.x",
         "sensio/generator-bundle": "2.5.x"
