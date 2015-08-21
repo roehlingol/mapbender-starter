@@ -1,6 +1,6 @@
 parameters:
 
-    feature:
+    featureTypes:
 
         polyTestFeature: &polyTestFeature
            connection: search_db
