@@ -2,10 +2,10 @@ parameters:
     applications:
         mapbender_mobile:
             title: Mapbender mobile
-            screenshot: 'mapbender_mobile.png'
-            description: "Mapbender mobile Application"
+            screenshot: mapbender_mobile.png
+            description: Mapbender mobile Application
             published: true
-            template:  'Mapbender\MobileBundle\Template\Mobile'
+            template: Mapbender\MobileBundle\Template\Mobile
             layersets:
                 main:
                     mapbender_users:
@@ -50,7 +50,6 @@ parameters:
                         isBaseSource: true
             elements:
                 footer:
-                    # buttons parameters: action,activate,deactivate are ignored for elements at mobilePane
                     layertree-button:
                         title: Themes
                         tooltip: Themes
@@ -60,8 +59,8 @@ parameters:
                         target: layertree
 
                     bss-button:
-                        title: 'Change Background'
-                        tooltip: 'Change Background Map'
+                        title: Change Background
+                        tooltip: Change Background Map
                         class: Mapbender\CoreBundle\Element\Button
                         icon: iconLegend
                         label: false
@@ -75,8 +74,8 @@ parameters:
                         target: map
                         action: open
                         icon: iconGps
-                        refreshinterval: '5000'
-                        average: '1'
+                        refreshinterval: 5000
+                        average: 1
                         follow: false
                         centerOnFirstPosition: true
                         zoomToAccuracy: false
@@ -119,6 +118,14 @@ parameters:
                         stepbypixel: true
                         anchor: left-top
                         draggable: false
+#                    html:
+#                        class: Mapbender\CoreBundle\Element\HTMLElement
+#                        title: bloa
+#                        content: |
+#                            <div style="background-color: #ff0000; position: absolute; top: 0px; left: 0px; height: 50px; width: 50px; z-index: 1000"></div>
+#                            <div style="background-color: #ff0000; position: absolute; top: 0px; right: 0px; height: 50px; width: 50px; z-index: 1000"></div>
+#                            <div style="background-color: #ff0000; position: absolute; bottom: 0px; left: 0px; height: 50px; width: 50px; z-index: 1000"></div>
+#                            <div  style="background-color: #ff0000; position: absolute; bottom: 0px; right: 0px; height: 50px; width: 50px; z-index: 1000"></div>
 
                 mobilePane:
                     layertree:
@@ -176,3 +183,4 @@ parameters:
                                 cprUrl: ~
                                 group: ~
                                 instances: [osm]
+
