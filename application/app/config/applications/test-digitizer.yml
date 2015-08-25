@@ -61,7 +61,7 @@ parameters:
             geomField: the_geom
             srid: 31466
             filter: ausst_zustand = 2
-            uploadPath: /data/wesseling/
+            uploadPath: /data/geometries/
 
     schemes:
         polygoneScheme: &polygoneScheme
