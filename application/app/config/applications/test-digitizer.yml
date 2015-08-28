@@ -136,7 +136,7 @@ parameters:
                name: {label: Name, visible: false }
 
            # Display digitize button
-           allowDigitize: false
+           allowDigitize: true
 
            # Display remove button
            # Default: true
@@ -647,11 +647,11 @@ parameters:
                     #osm: *osm_overview
             elements:
                 sidepane:
-                    topHtml:
-                        title: Test-Tab 1
-                        class: Mapbender\CoreBundle\Element\HTMLElement
-                        content: |
-                          <div class="mb-element mb-element-searchrouter" id="940" title="Suchen"></div>
+#                    topHtml:
+#                        title: Test-Tab 1
+#                        class: Mapbender\CoreBundle\Element\HTMLElement
+#                        content: |
+#                          <div class="mb-element mb-element-searchrouter" id="940" title="Suchen"></div>
                     digitizer:
                         class: Mapbender\DigitizerBundle\Element\Digitizer
                         title: Digitalisierung
@@ -663,6 +663,7 @@ parameters:
                         # Loads JS files from "web" path.
                         # For tests only!
                         jsSrc:
+                            - /components/vis-ui.js/src/js/utils/DataUtil.js
                             - /components/vis-ui.js/src/js/elements/data.result-table.js
                             - /components/vis-ui.js/src/js/elements/geo.toolset.js
                             - /components/vis-ui.js/src/js/elements/date.selector.js
