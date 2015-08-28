@@ -44,7 +44,9 @@
         "mapbender/mapbender-icons": "dev-master",
         "components/underscore": "1.x",
         "components/joii": "*",
-        "mapbender/digitizer": "1.0.x"
+        "mapbender/digitizer": "1.0.x",
+        "components/backbone": "*",
+        "components/json2": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -155,8 +157,7 @@
                     "reference":"develop"
                 }
             }
-        },
-        {
+        },{
             "type": "package",
             "package": {
                 "name": "components/joii",
@@ -169,8 +170,47 @@
                 },
                 "extra": {
                     "component": {
-                        "scripts": ["dist/joii.min.js"],
-                        "files": ["dist/joii.js"]
+                        "files": ["dist/joii.js","dist/joii.min.js"]
+                    }
+                },
+                "require": {
+                    "robloach/component-installer": "*"
+                }
+            }
+        },{
+            "type": "package",
+            "package": {
+                "name": "components/backbone",
+                "type": "component",
+                "version": "0.9.10",
+                "source": {
+                    "url": "https://github.com/jashkenas/backbone.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "extra": {
+                    "component": {
+                        "files": ["backbone.js"]
+                    }
+                },
+                "require": {
+                    "robloach/component-installer": "*"
+                }
+            }
+        },{
+            "type": "package",
+            "package": {
+                "name": "components/json2",
+                "type": "component",
+                "version": "master",
+                "source": {
+                    "url": "https://github.com/douglascrockford/JSON-js.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "extra": {
+                    "component": {
+                        "files": ["json2.js"]
                     }
                 },
                 "require": {
