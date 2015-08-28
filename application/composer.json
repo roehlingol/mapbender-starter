@@ -46,7 +46,13 @@
         "components/joii": "*",
         "mapbender/digitizer": "1.0.x",
         "components/backbone": "*",
-        "components/json2": "dev-master"
+        "components/json2": "dev-master",
+        
+        "mnsami/composer-custom-directory-installer": "1.0.*",
+        
+        "mapbender/mapbender": "3.0.5.*",
+        "mapbender/owsproxy": "3.0.5.*",
+        "fabpot/sphinx-php": "1.0.*"
     },
     "scripts": {
         "post-install-cmd": [
@@ -72,7 +78,12 @@
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
         "ATTENTION": "Symlinks creating under MS Windows works only if composer runs with admin permissions",
-        "symfony-assets-install": "symlink"
+        "symfony-assets-install": "symlink",
+        "installer-paths":{
+            "mapbender/": ["mapbender/mapbender"],
+            "fom/": ["mapbender/fom"],
+            "owsproxy/": ["mapbender/owsproxy"]
+        }
     },
     "repositories": [
         {
@@ -215,6 +226,61 @@
                 },
                 "require": {
                     "robloach/component-installer": "*"
+                }
+            }
+        },{
+            "type": "package",
+            "package": {
+                "name": "mapbender/fom",
+                "type": "library",
+                "version": "3.0.5.1",
+                "require": {
+                    "php": ">=5.4"
+                },
+                "source": {
+                    "url": "https://github.com/mapbender/fom.git",
+                    "type": "git",
+                    "reference": "feature/submodule-los"
+                },
+                "autoload": {
+                    "psr-4": {"FOM\\": "src/FOM"}
+                }
+            }
+        },{
+            "type": "package",
+            "package": {
+                "name": "mapbender/mapbender",
+                "type": "library",
+                "version": "3.0.5.1",
+                "require": {
+                    "php": ">=5.4",
+                    "mapbender/fom": "3.0.5.*"
+                },
+                "source": {
+                    "url": "https://github.com/mapbender/mapbender.git",
+                    "type": "git",
+                    "reference": "features/submodule-los"
+                },
+                "autoload": {
+                    "psr-4": {"Mapbender\\": "src/Mapbender"}
+                }
+            }
+        },{
+            "type": "package",
+            "package": {
+                "name": "mapbender/owsproxy",
+                "type": "library",
+                "version": "3.0.5.1",
+                "require": {
+                    "php": ">=5.4"
+                },
+                "source": {
+                    "url": "https://github.com/mapbender/owsproxy3.git",
+                    "type": "git",
+                    "reference": "features/submodule-los"
+                },
+                "autoload": {
+                    "psr-4": {"OwsProxy3\\": "src/OwsProxy"}
                 }
             }
         }
