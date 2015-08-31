@@ -240,7 +240,7 @@
                 "source": {
                     "url": "https://github.com/mapbender/fom.git",
                     "type": "git",
-                    "reference": "feature/submodule-los"
+                    "reference": "feature/composer-integration"
                 },
                 "autoload": {
                     "psr-4": {"FOM\\": "src/FOM"}
@@ -259,7 +259,7 @@
                 "source": {
                     "url": "https://github.com/mapbender/mapbender.git",
                     "type": "git",
-                    "reference": "features/submodule-los"
+                    "reference": "feature/composer-integration"
                 },
                 "autoload": {
                     "psr-4": {"Mapbender\\": "src/Mapbender"}
