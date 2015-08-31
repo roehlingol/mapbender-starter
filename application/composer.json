@@ -277,10 +277,10 @@
                 "source": {
                     "url": "https://github.com/mapbender/owsproxy3.git",
                     "type": "git",
-                    "reference": "features/submodule-los"
+                    "reference": "feature/composer-integration"
                 },
                 "autoload": {
-                    "psr-4": {"OwsProxy3\\": "src/OwsProxy"}
+                    "psr-4": {"OwsProxy3\\": "src/OwsProxy3"}
                 }
             }
         }
