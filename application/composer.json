@@ -52,7 +52,9 @@
         
         "mapbender/mapbender": "3.0.5.*",
         "mapbender/owsproxy": "3.0.5.*",
-        "fabpot/sphinx-php": "1.0.*"
+        "fabpot/sphinx-php": "1.0.*",
+        "components/codemirror": "*",
+        "components/mapquery": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -281,6 +283,56 @@
                 },
                 "autoload": {
                     "psr-4": {"OwsProxy3\\": "src/OwsProxy3"}
+                }
+            }
+        },{
+            "type": "package",
+            "package": {
+                "name": "components/codemirror",
+                "type": "component",
+                "version": "4.3.0",
+                "source": {
+                    "url": "https://github.com/codemirror/CodeMirror.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "extra": {
+                    "component": {
+                        "files": [
+                            "lib/codemirror.js",
+                            "lib/codemirror.css",
+                            "keymap/sublime.js",
+                            "mode/css/css.js",
+                            "mode/yaml/yaml.js",
+                            "mode/xml/xml.js",
+                            "theme/neo.css",
+                            "addon/selection/active-line.js"
+                        ]
+                    }
+                },
+                "require": {
+                    "robloach/component-installer": "*"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "components/mapquery",
+                "type": "component",
+                "version": "master",
+                "source": {
+                    "url": "https://github.com/mapbender/mapquery.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "extra": {
+                    "component": {
+                        "files": ["src/**","lib/**"]
+                    }
+                },
+                "require": {
+                    "robloach/component-installer": "*"
                 }
             }
         }
