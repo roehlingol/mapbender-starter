@@ -54,7 +54,8 @@
         "mapbender/owsproxy": "3.0.5.*",
         "fabpot/sphinx-php": "1.0.*",
         "components/codemirror": "*",
-        "components/mapquery": "dev-master"
+        "components/mapquery": "dev-master",
+        "components/proj4js": "*"
     },
     "scripts": {
         "post-install-cmd": [
@@ -329,6 +330,29 @@
                 "extra": {
                     "component": {
                         "files": ["src/**","lib/**"]
+                    }
+                },
+                "require": {
+                    "robloach/component-installer": "*"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "components/proj4js",
+                "type": "component",
+                "version": "1.1.0",
+                "dist": {
+                    "url": "http://download.osgeo.org/proj4js/proj4js-1.1.0.zip",
+                    "type": "zip"
+                },
+                "extra": {
+                    "component": {
+                        "files": [
+                            "lib/proj4js-compressed.js",
+                            "lib/proj4js.js"
+                        ]
                     }
                 },
                 "require": {
