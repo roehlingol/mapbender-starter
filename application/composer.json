@@ -55,7 +55,8 @@
         "fabpot/sphinx-php": "1.0.*",
         "components/codemirror": "*",
         "components/mapquery": "dev-master",
-        "components/proj4js": "*"
+        "components/proj4js": "*",
+        "components/notifyjs": "*"
     },
     "scripts": {
         "post-install-cmd": [
@@ -352,6 +353,28 @@
                         "files": [
                             "lib/proj4js-compressed.js",
                             "lib/proj4js.js"
+                        ]
+                    }
+                },
+                "require": {
+                    "robloach/component-installer": "*"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "components/notifyjs",
+                "type": "component",
+                "version": "0.3.2",
+                "dist": {
+                    "url": "https://github.com/jpillora/notifyjs/archive/0.3.2.zip",
+                    "type": "zip"
+                },
+                "extra": {
+                    "component": {
+                        "files": [
+                            "dist/notify-combined.min.js"
                         ]
                     }
                 },
