@@ -45,7 +45,8 @@
         "components/underscore": "1.x",
         "components/joii": "*",
         "components/jquery": "1.11.2",
-        "mapbender/digitizer": "1.0.*",
+        "mapbender/data-source": "dev-master",
+        "mapbender/digitizer": "dev-feature/extract-data-source",
         "blueimp/jquery-file-upload": "9.*"
     },
     "scripts": {
