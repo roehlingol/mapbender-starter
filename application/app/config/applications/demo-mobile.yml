@@ -1,8 +1,8 @@
 parameters:
     applications:
-        mapbender_mobile:
+        mapbender_mobile_extra:
             title: Mapbender mobile
-            screenshot: mapbender_mobile.png
+            screenshot: ../mapbender_mobile/mapbender_mobile.png
             description: Mapbender mobile Application
             published: true
             template: Mapbender\MobileBundle\Template\Mobile

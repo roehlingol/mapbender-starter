@@ -1,8 +1,8 @@
 parameters:
     applications:
-        mapbender_user:
+        mapbender_user_extra:
             title: Mapbender Demo Map
-            screenshot: 'mapbender_user.png'
+            screenshot: ../mapbender_user/mapbender_user.png
             description: "Fullscreen style, Simple map showing WMS use."
             published: true
             template:  Mapbender\CoreBundle\Template\Fullscreen

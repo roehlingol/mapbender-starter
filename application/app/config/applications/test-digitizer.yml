@@ -1,7 +1,5 @@
 parameters:
-
     featureTypes:
-
         polyTestFeature: &polyTestFeature
            connection: search_db
            table: polygons
@@ -637,6 +635,7 @@ parameters:
             title: Digitalizer Test
             description: Digitalisierung Testumgebung
             published: true
+            screenshot: ../mapbender_user_basic/mapbender_user_basic.png
             initializeOnStart: true
             template:  Mapbender\CoreBundle\Template\Fullscreen
             regionProperties:
