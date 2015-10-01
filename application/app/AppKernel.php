@@ -31,6 +31,7 @@ class AppKernel extends Kernel
 
             // Mapbender3 bundles
             new Mapbender\CoreBundle\MapbenderCoreBundle(),
+            new Mapbender\DataSourceBundle\MapbenderDataSourceBundle(),
             new Mapbender\WmcBundle\MapbenderWmcBundle(),
             new Mapbender\WmsBundle\MapbenderWmsBundle(),
             new Mapbender\ManagerBundle\MapbenderManagerBundle(),
