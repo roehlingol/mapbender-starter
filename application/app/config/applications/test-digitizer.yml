@@ -76,7 +76,7 @@ parameters:
 
            # Nach dem die Feature auf der Karte digitalisiert ist, Datenformular eröfnen
            # Default: true
-           openFormAfterEdit: false
+           openFormAfterEdit: true
 
            # Das Löschen von einzelnen Features erlauben
            # Default: true
@@ -664,9 +664,9 @@ parameters:
                         jsSrc:
                             - /components/vis-ui.js/src/js/utils/DataUtil.js
                             - /components/vis-ui.js/src/js/elements/data.result-table.js
-                            - /components/vis-ui.js/src/js/elements/geo.toolset.js
                             - /components/vis-ui.js/src/js/elements/date.selector.js
                             - /components/vis-ui.js/src/js/elements/data.result-table.js
+                            - /components/vis-ui.js/src/js/elements/geo.toolset.js
                             - /components/vis-ui.js/src/js/utils/fn.formData.js
                             - /components/vis-ui.js/src/js/jquery.form.generator.js
 
@@ -724,7 +724,7 @@ parameters:
                     map:
                         title: Main Map
                         class: Mapbender\CoreBundle\Element\Map
-                        layersets: [main]
+                        layersets: []
                         srs: EPSG:25832
                         units: m
                         extents:
