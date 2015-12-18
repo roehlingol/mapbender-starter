@@ -1,6 +1,60 @@
 # Changelog
 
 #Release
+
+* **v3.0.5.2** - 2015-10-27
+    - Copy applications: User-Rights and groups are copied. The user who copied the application becomes owner of the copied application.
+    - FOM: Changes in behaviour of wrong logins and user locking. It is only shown that the login failed, independent if the user exists or not.
+    - Fixed error message when creating a user with a too short password.
+    - Print: Fix of replace pattern.
+    - Print: Fix if a wrong configured WMS has special characters (%26) in the legend URL.
+    - Image export in Firefox.
+    - WMC Loader: Loading WMC and Behaviour of BaseSources.
+    - BaseSourceSwitcher: Tiles of a not visible service are not pre-fetched.
+    - BaseSourceSwitcher: If a group is defined, only one theme is switched on.
+    - SearchRouter: Fix of quotes for table-names.
+    - Copy applications: Fix of the search in the copied application.
+    - Simple Search: Catch the return key.
+    - FeatureInfo: Add WMS functionality and WMS Loader.
+    - Icon Polygon is visible in the toolbar of applications.
+    - Icons, which are not based on FontAwesome also work in the mobile application.
+    - Administration of the map element: The view of the configuration dialog in the backend starts on top.
+    - Administration data source: No form data auto-complete from the browser for username and password.
+    - Mobile application: Design in Firefox for Android.
+    - Update 3.0.4.x: FeatureInfo autoopen=true is kept.
+    - Doku: FOM UserBundle translation and additional information for failed user logins.
+    - Doku: URL parameter scale in map element.
+    - Doku: WMC Loader and KeepSources.
+
+* **v3.0.5.1** - 2015-08-26
+    - Map: OpenLayers TileSize: You can set the tile-size for the map. Default: 256x256.
+    - Map: Delay before Tiles: For WMS-T, for example with temporal parameters (in future)
+    - Print: Show coordinates in PDF print
+    - Print: get print scale depending on map-scale
+    - Print: print legend_default_behaviour
+    - Print: add print templates with the + symbol
+    - Print: user-defined logo and text
+    - Layertree: loading symbol and exclamation mark symbol.
+    - Layertree: zoom Symbol not for layers without a BBOX information
+    - WMS Reload: FeatureInfo
+    - WMS Reload: some WMS couldn't be reloaded.
+    - Export/Import of application and miscellaneous bugfixes
+    - WMC-Editor and WMC-Load fixes.
+    - WMC from a Mapbender 3.0.4.1 application
+    - Tile buffer and BBOX buffer fixes
+    - FeatureInfo: Fixes in design and when shown as an Accordion Panel
+    - FeatureInfo: Print
+    - Wrong Jquery-UI link in layerset instance
+    - Save Layerset and Save Layout leaves you on the page
+    - Classic Template: SCSS corrections
+    - Mobile Template: Bootstrap message hides close button
+    - Mobile Template: close SearchRouter window
+    - Mobile Template: Mozilla Firefox Fixes on layout
+    - Backend: Layerset Filter and +-Buttons doesn't hide everything anymore
+    - composer.json upgrade version of joii to 3.1.2
+    - composer.json upgrade version of Digitizer to 1.0.*
+    - Documentation of the JS-UI Generator (Form-Generator): https://github.com/eSlider/vis-ui.js
+
 * **v3.0.5.0** - 2015-07-01
     - a map parameter "layerset" is renamed into "layersets" and represets a list of layersets
     - WMS Update
