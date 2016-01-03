@@ -8,10 +8,10 @@
         "ext-ldap": "*"
     },
     "require-dev": {
-        "satooshi/php-coveralls": "dev-master",
+        "phpunit/phpunit": ">=3.7",
+        "predis/predis": "~1.0",
         "phpunit/phpunit-selenium": ">=1.2",
-        "facebook/webdriver": "dev-master",
-        "phpunit/phpunit": "4.0.x"
+        "facebook/webdriver": "dev-master"
     },
     "require": {
         "php": ">=5.3.3",
@@ -36,18 +36,17 @@
         "arsgeografica/signing": "1.1.x",
         "phayes/geophp": "1.2",
         "viscreation/vis-ui.js": "0.0.*",
-        "igosuki/compass-mixins": "*",
-        "fontfacekit/open-sans": "*",
+        "igosuki/compass-mixins": ">=0.12 <1.0.0",
+        "fontfacekit/open-sans": ">=1.4 <2.0.0",
+        "gedmo/doctrine-extensions": ">=2.3 <3.0.0",
+        "imag/ldap-bundle":  ">=2.3 <3.0.0",
+        "components/underscore": ">=1.8 <2.0.0",
+        "components/joii": ">=3.1 <4.0.0",
+
         "eslider/sasscb":  "dev-master",
-        "gedmo/doctrine-extensions": "~2.3",
-        "imag/ldap-bundle":  "2.3.x",
         "mapbender/mapbender-icons": "dev-master",
-        "components/underscore": "1.x",
-        "components/joii": "*",
-        "components/jquery": "1.11.2",
         "mapbender/data-source": "dev-master",
-        "mapbender/digitizer": "dev-feature/extract-data-source",
-        "blueimp/jquery-file-upload": "9.*"
+        "mapbender/digitizer": "dev-feature/extract-data-source"
     },
     "scripts": {
         "post-install-cmd": [
@@ -144,18 +143,6 @@
                             "fonts/*/*"
                         ]
                     }
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "eslider/sasscb",
-                "version":"dev-master",
-                "source": {
-                    "url": "https://github.com/eSlider/sassc-binaries.git",
-                    "type": "git",
-                    "reference":"develop"
                 }
             }
         },
