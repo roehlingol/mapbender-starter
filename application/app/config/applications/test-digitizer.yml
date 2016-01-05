@@ -15,8 +15,8 @@ parameters:
 
               # File path, relative to web path or absolute. Optional.
               path: uploads/somenewpath
-#
-#              # URI relative to web path. Optional.
+
+              # URI relative to web path. Optional.
               # uri: uploads/somenewpath
               uri: /mb3/application/web/uploads/somenewpath
 
@@ -31,7 +31,8 @@ parameters:
               path: uploads/abs
               uri: uploads/abs
 
-#           filter: type LIKE 'C'
+              # SQL Filter
+              #filter: type LIKE 'C'
 
         ausstattung:
             connection: digi
@@ -110,8 +111,8 @@ parameters:
                - type: drawCircle
                - type: modifyFeature
                - type: moveFeature
-#               - type: selectFeature
-#               - type: removeSelected
+               #- type: selectFeature
+               #- type: removeSelected
 
            # Popup Definition
            popup:
@@ -141,7 +142,7 @@ parameters:
            allowDelete: true
 
            # Optin
-#           openFormAfterEdit: false
+          #openFormAfterEdit: false
 
            # Edit feature in the samge popup or great number of popup's
            # Default: true
@@ -203,11 +204,11 @@ parameters:
                                       src: https://trac.wheregroup.com/cp/images/feed.png
                                       imageCss: {width: 100%}
                                       css: {height: 92px, width: 92px}
-#                                      relative: false
+                                      #relative: false
 
                                     - type: file
                                       name: file_reference
-#                                      accept: image/*, .jpg, .txt
+                                      #accept: image/*, .jpg, .txt
                                       text: Upload image
                                       css: {width: 25%}
 
@@ -225,64 +226,6 @@ parameters:
                               formats: [jpg,png,gif,pdf]
                               text: Upload image
                               css: {width: 25%}
-
-
-#                                - type: file
-#                                  path: digitizer #(anfangsort ist "web/uploads", so werden daten unter "web/uploads/digitizer" gespeichert )
-#                                  format: data.gid + '-' + data.name #(name ist file1, gid - ist ID Feld name)
-#                                  url:  /baume/ # optional
-#                                  name: file
-#                                  css: {width: 25%}
-#                                  allowedFormats: [jpg,png,gif,pdf]
-#                                  title: Screenshot 2
-#
-#                                - type: image
-#                                  name: file
-#                                  src: https://trac.wheregroup.com/cp/images/feed.png
-##                                  path:  bundles/mapbendercore/
-##                                  path:  uploads/featureTypes/polygons/
-#                                  imageCss: {width: 100%}
-#                                  css: {height: 92px, width: 92px}
-#                                  relative: true
-
-#                            - type: breakLine
-#                            - type: file
-#                              path: digitizer #(anfangsort ist "web/uploads", so werden daten unter "web/uploads/digitizer" gespeichert )
-#                              format: data.gid + '-' + data.name #(name ist file1, gid - ist ID Feld name)
-#                              url:  /baume/ # optional
-##                              name: file3
-#                              allowedFormats: [jpg,png,gif,pdf]
-#                              title: Screenshot 3
-#
-#                            - type: breakLine
-#
-#                            - type: file
-#                              path: digitizer #(anfangsort ist "web/uploads", so werden daten unter "web/uploads/digitizer" gespeichert )
-#                              format: data.gid + '-' + data.name #(name ist file1, gid - ist ID Feld name)
-#                              url:  /baume/ # optional
-##                              name: file4
-#                              allowedFormats: [jpg,png,gif,pdf]
-#
-#                            - type: fieldSet
-#                              children:
-#
-#                                - type: file
-#                                  path: digitizer #(anfangsort ist "web/uploads", so werden daten unter "web/uploads/digitizer" gespeichert )
-#                                  format: data.gid + '-' + data.name #(name ist file1, gid - ist ID Feld name)
-#                                  url:  /baume/ # optional
-##                                  name: file5
-#                                  css: {width: 50%}
-#                                  allowedFormats: [jpg,png,gif,pdf]
-#                                  title: Screenshot 6
-#
-#                                - type: file
-#                                  path: digitizer #(anfangsort ist "web/uploads", so werden daten unter "web/uploads/digitizer" gespeichert )
-#                                  format: data.gid + '-' + data.name #(name ist file1, gid - ist ID Feld name)
-#                                  url:  /baume/ # optional
-##                                  name: file2
-#                                  css: {width: 50%}
-#                                  allowedFormats: [jpg,png,gif,pdf]
-#                                  title: Screenshot 7
 
                        - type: form
                          title: Text
@@ -457,7 +400,7 @@ parameters:
                                    name: name
                                    css: {width: 33%}
                                    mandatoryText: Please give a name to the new object.
-    #                               infoText: You need to give a name to the new object.
+                                   #infoText: You need to give a name to the new object.
                                    mandatory: true
 
                                  - type: select
@@ -570,11 +513,11 @@ parameters:
                 srid: 4326
             openFormAfterEdit: true
             # Tool set
-    #        toolset:
-    #            - type: drawPoint
-    #            - type: moveFeature
-    #            - type: selectFeature
-    #            - type: removeSelected
+            #toolset:
+                #- type: drawPoint
+                #- type: moveFeature
+                #- type: selectFeature
+                #- type: removeSelected
             popup:
                 title: POI Test Suite
                 width: 500px
@@ -646,11 +589,11 @@ parameters:
                     #osm: *osm_overview
             elements:
                 sidepane:
-#                    topHtml:
-#                        title: Test-Tab 1
-#                        class: Mapbender\CoreBundle\Element\HTMLElement
-#                        content: |
-#                          <div class="mb-element mb-element-searchrouter" id="940" title="Suchen"></div>
+                #topHtml:
+                #    title: Test-Tab 1
+                #    class: Mapbender\CoreBundle\Element\HTMLElement
+                #    content: |
+                #      <div class="mb-element mb-element-searchrouter" id="940" title="Suchen"></div>
                     digitizer:
                         class: Mapbender\DigitizerBundle\Element\Digitizer
                         title: Digitalisierung
@@ -672,47 +615,49 @@ parameters:
 
                         # custom SCSS at "web" directory
                         css: /stadt_theme.scss
-#
-#                        # Table translation
-#                        tableTranslation:
-#
-#                            # Details the actions that will be taken when the user  into the filtering input text box. The variable "INPUT",
-#                            # if used in the string, is replaced with the HTML text box for the filtering input allowing control over where it appears in the string.
-#                            # If "INPUT" is not given then the input box is appended to the string automatically.
-#                            # Default:	Search:
-#                            sSearch: mb.digitizer.search.title
-#
-#                            # This string is shown in preference to sZeroRecords when the table is empty of data (regardless of filtering).
-#                            # Note that this is an optional parameter
-#                            # - if it is not given, the value of sZeroRecords will be used instead (either the default or given value).
-#                            # Default:	No data available in table
-#                            sEmptyTable:   mb.digitizer.search.table.empty #Keine Ergebnisse
-#
-#                            # Text shown inside the table records when the is no information to be displayed after filtering.
-#                            # sEmptyTable is shown when there is simply no information in the table at all (regardless of filtering).
-#                            sZeroRecords:  mb.digitizer.search.table.zerorecords # Nichts gefunden!
-#
-#                            # This string gives information to the end user about the information that is current on display on the page.
-#                            # The START, END and TOTAL variables are all dynamically replaced as the table display updates,
-#                            # and can be freely moved or removed as the language requirements change.
-#                            # Default:	No matching records found
-#                            sInfo:        mb.digitizer.search.table.info.status # _START_ bis _END_ von _TOTAL_
-#
-#                            # Display information string for when the table is empty.
-#                            # Typically the format of this string should match sInfo.
-#                            # Default:	Showing 0 to 0 of 0 entries
-#                            sInfoEmpty:   mb.digitizer.search.table.info.empty # Keine Ergebnisse
-#
-#                            # When a user filters the information in a table, this string is appended to the information (sInfo)
-#                            # to give an idea of how strong the filtering is. The variable MAX is dynamically updated.
-#                            # Default:	(filtered from _MAX_ total entries)
-#                            sInfoFiltered:  mb.digitizer.search.table.info.filtered #(gefiltert aus _MAX_ Objekte.)
+
+                        # Table translation
+                        #tableTranslation:
+
+                            # Details the actions that will be taken when the user  into the filtering input text box. The variable "INPUT",
+                            # if used in the string, is replaced with the HTML text box for the filtering input allowing control over where it appears in the string.
+                            # If "INPUT" is not given then the input box is appended to the string automatically.
+                            # Default:	Search:
+                            #sSearch: mb.digitizer.search.title
+
+                            # This string is shown in preference to sZeroRecords when the table is empty of data (regardless of filtering).
+                            # Note that this is an optional parameter
+                            # - if it is not given, the value of sZeroRecords will be used instead (either the default or given value).
+                            # Default:	No data available in table
+                            #sEmptyTable:   mb.digitizer.search.table.empty #Keine Ergebnisse
+
+                            # Text shown inside the table records when the is no information to be displayed after filtering.
+                            # sEmptyTable is shown when there is simply no information in the table at all (regardless of filtering).
+                            #sZeroRecords:  mb.digitizer.search.table.zerorecords # Nichts gefunden!
+
+                            # This string gives information to the end user about the information that is current on display on the page.
+                            # The START, END and TOTAL variables are all dynamically replaced as the table display updates,
+                            # and can be freely moved or removed as the language requirements change.
+                            # Default:	No matching records found
+                            #sInfo:        mb.digitizer.search.table.info.status # _START_ bis _END_ von _TOTAL_
+
+                            # Display information string for when the table is empty.
+                            # Typically the format of this string should match sInfo.
+                            # Default:	Showing 0 to 0 of 0 entries
+                            #sInfoEmpty:   mb.digitizer.search.table.info.empty # Keine Ergebnisse
+
+                            # When a user filters the information in a table, this string is appended to the information (sInfo)
+                            # to give an idea of how strong the filtering is. The variable MAX is dynamically updated.
+                            # Default:	(filtered from _MAX_ total entries)
+                            #sInfoFiltered:  mb.digitizer.search.table.info.filtered #(gefiltert aus _MAX_ Objekte.)
 
                         schemes:
-                            polygon: *polygoneScheme
+                            polygon:
+                              <<: *polygoneScheme
+                              label: Poly's
                             line: *lineScheme
                             featureInfo: *featureInfo1
-#                            poi: *poiScheme
+                            #poi: *poiScheme
 
                     bottomHtml:
                         title: Test-Tab
