@@ -60,14 +60,40 @@ parameters:
             position: [200, 40]
             draggable: false
         sidepane:
-          dataStore:
-            title: Data Store
+          dataGrid:
+            title: SQL Abfragen
             class: Mapbender\DataSourceBundle\Element\DataStoreElement
-            content: |
-              <div style="color: #6FB536; font-weight:bold">DataStore</div>
-              TEST
-              | - .. s
-            classes: html-element-inline
+
+            # Allow edit
+            allowEdit: true
+
+            # Allow edit SQL
+            allowSql: true
+
+            # Data source name or ID, defined in "parameters.yml"
+            source: elements
+
+            # Field name this contains SQL to be executed
+            sqlFieldName: sql_definition
+
+            # Field name this contains doctrine connection name
+            connectionFieldName: connection_name
+
+            formItems:
+              - type: resultTable
+                name: queries
+                lengthChange: false
+                pageLength: 10
+                info: true
+                processing: false
+                ordering: true
+                paging: true
+                selectable: false
+                autoWidth: false
+                columns:
+                  - {data: 'id', title: 'ID'}
+                  - {data: 'name', title: 'Title'}
+                #data: [{id: 1, label: 'example'}]
           layertree:
             title: Layertree
             class: Mapbender\CoreBundle\Element\Layertree
@@ -87,6 +113,15 @@ parameters:
             activityClass: mb-activity
             ajaxActivityClass: mb-activity-ajax
             tileActivityClass: mb-activity-tile
+          coordinates:
+              class: Mapbender\CoreBundle\Element\CoordinatesDisplay
+              title: Coordinates Display
+              tooltip: Coordinates Display
+              target: map
+              label: false
+              empty:  "x: - y: -"
+              prefix: "x: "
+              separator:  " y: "
           srs:
             class: Mapbender\CoreBundle\Element\SrsSelector
             title: SRS Selector
