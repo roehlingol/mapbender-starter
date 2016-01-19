@@ -53,6 +53,28 @@ doctrine:
                 charset:  UTF8
                 logging: %kernel.debug%
                 profiling: %kernel.debug%
+            geometries:
+                driver:   %database2_driver%
+                host:     %database2_host%
+                port:     %database2_port%
+                dbname:   %database2_name%
+                path:     %database2_path%
+                user:     %database2_user%
+                password: %database2_password%
+                charset:  UTF8
+                logging: %kernel.debug%
+                profiling: %kernel.debug%
+            search_db:
+                driver:   %search_db_driver%
+                host:     %search_db_host%
+                port:     %search_db_port%
+                dbname:   %search_db_name%
+                path:     %search_db_path%
+                user:     %search_db_user%
+                password: %search_db_password%
+                charset:  UTF8
+                logging: %kernel.debug%
+                profiling: %kernel.debug%
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true

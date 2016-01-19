@@ -61,14 +61,29 @@ parameters:
             draggable: false
         sidepane:
           dataGrid:
-            title: SQL Abfragen
-            class: Mapbender\DataSourceBundle\Element\DataStoreElement
+            title: Abfragen
+            class: Mapbender\DataSourceBundle\Element\QueryBuilderElement
 
             # Allow edit
             allowEdit: true
 
-            # Allow edit SQL
-            allowSql: true
+            # Allow edit
+            allowCreate: false
+
+            # Allow save
+            allowSave: true
+
+            # Allow remove
+            allowRemove: false
+
+            # Allow execute button
+            allowExecute: true
+
+            # Allow data export as excel file
+            allowExport: true
+
+            # Allow search
+            allowSearch: true
 
             # Data source name or ID, defined in "parameters.yml"
             source: elements
@@ -79,21 +94,11 @@ parameters:
             # Field name this contains doctrine connection name
             connectionFieldName: connection_name
 
-            formItems:
-              - type: resultTable
-                name: queries
-                lengthChange: false
-                pageLength: 10
-                info: true
-                processing: false
-                ordering: true
-                paging: true
-                selectable: false
-                autoWidth: false
-                columns:
-                  - {data: 'id', title: 'ID'}
-                  - {data: 'name', title: 'Title'}
-                #data: [{id: 1, label: 'example'}]
+            # Queries field definitions
+            tableColumns:
+              - {title: "Title", data: "name"}
+
+
           layertree:
             title: Layertree
             class: Mapbender\CoreBundle\Element\Layertree

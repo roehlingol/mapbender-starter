@@ -157,6 +157,7 @@ parameters:
                                                infoText: 'Pflichtfeld'
                                                connection: geometries
                                                sql: "SELECT obj_id, coalesce(objektbezeichnung,'') || ' (' || coalesce(objektartbezeichnung,'') || ')' as objekt from verkehr.objekte left join verkehr.objektart on objekte.objektartnr = objektart.objektart_id where objekt_zustand = 1 order by objektbezeichnung"
+
                                              - type: input
                                                title: Standort Bemerkung
                                                name: bemerkungen_standort
@@ -184,6 +185,7 @@ parameters:
                                                    D - Jungbäume (bis 15. Jahr nach Pflanzung - Pflegekontrolle
                                                    E - Bäume, die aufgrund besonderer Umstände, zu einem bestimmten Zeitpunkt kontrolliert werden müssen - anlassbezogen'
                                              - type: breakLine
+
                                              - type: date
                                                title: Datum letzte Kontrolle
                                                infoText: Bitte geben Sie das Datum der letzten Kontrolle an.
@@ -192,6 +194,7 @@ parameters:
                                                infoText: 'Feld zeigt die letzte Kontrolle an.'
                                                name: letzte_kontrolle_datum
                                                css: {width: 100%}
+
                                              - type: input
                                                title: Bestandsaufnahme Bemerkung
                                                name: letzte_kontrolle_bestandsaufnahme_bemerkung

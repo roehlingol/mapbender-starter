@@ -36,16 +36,18 @@
         "toooni/fpdf": "dev-master",
         "arsgeografica/signing": "1.1.x",
         "phayes/geophp": "1.2",
-        "viscreation/vis-ui.js": "0.0.x",
-        "igosuki/compass-mixins": "*",
-        "fontfacekit/open-sans": "*",
+        "igosuki/compass-mixins": "0.*",
+        "fontfacekit/open-sans": "1.4.*",
         "eslider/sasscb":  "dev-master",
         "gedmo/doctrine-extensions": "~2.3",
         "imag/ldap-bundle":  "2.3.x",
-        "mapbender/mapbender-icons": "dev-master",
         "components/underscore": "1.x",
-        "components/joii": "*",
-        "mapbender/digitizer": "1.0.x"
+        "components/joii": "3.1.x",
+
+        "viscreation/vis-ui.js": "dev-master",
+        "mapbender/mapbender-icons": "dev-master",
+        "mapbender/data-source": "dev-master",
+        "mapbender/digitizer": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
