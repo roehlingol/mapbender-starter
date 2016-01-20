@@ -43,7 +43,7 @@
         "imag/ldap-bundle":  "2.3.x",
         "components/underscore": "1.x",
         "components/joii": "3.1.x",
-
+        "components/jquery": "1.*",
         "viscreation/vis-ui.js": "dev-master",
         "mapbender/mapbender-icons": "dev-master",
         "mapbender/data-source": "dev-master",
