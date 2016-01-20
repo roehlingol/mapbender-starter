@@ -51,14 +51,59 @@ parameters:
 
                         schemes:
                             baumkataster:
+                                # Die Beschriftung (Wird in Auswahl-Box angezeigt)
                                 label: Bäume
-                                inlineSearch: true
+
+                                # Default: 1000
                                 maxResults: 5000
+
+                                # Features Digitalisieren auf der Karte (Verändern und Erstellen)
+                                # Default: true
+                                allowDigitize: true
+
+                                # Formular Daten Änderungen
+                                # Default: true
                                 allowEditData: true
+
+                                # Die Definition und die Reinfolge einzelne Werkzeuge für das Digitalisieren.
+                                # Deafult: alle vorhandene wernde angezeigt.
+                                toolset:
+                                  - type: drawPoint
+                                  - type: modifyFeature
+                                  - type: moveFeature
+                                  - type: selectFeature
+                                  # - type: drawRectangle
+                                  # - type: drawEllipse
+                                  # - type: drawDonut
+                                  # - type: drawCircle
+                                  # - type: modifyFeature
+                                  # - type: moveFeature
+                                  # - type: selectFeature
+                                  # - type: removeSelected
 
                                 # Allow to use context menu for the map
                                 # and side pane data table
+                                # TODO: remove if false from map
                                 useContextMenu: true
+
+                                # Den Layer dauerhaft anzeigen.
+                                # Oder nur wenn explicit über Select gewählt und nur wenn active ist
+                                # Default: false
+                                displayPermanent: false
+
+                                # Layer Features erst wenn das Element active ist und Schema selectiert ist zeigen.
+                                # Wenn auf "false" ist und Schema active ist, werden die Features, obwohl der Element selbst
+                                # nicht aktiv ist troztdem angezeigt.
+                                # Default: false
+                                displayOnInactive: false
+
+                                # Allow search directly in the digitizer element table. Optional. Default = false
+                                inlineSearch: true
+
+                                # Zoom scale denominator
+                                # Used for zoomToScale
+                                # Default: null
+                                zoomScaleDenominator: 100
 
                                 # Clustering
                                 # http://dev.openlayers.org/examples/strategy-cluster-extended.html
@@ -77,23 +122,52 @@ parameters:
                                     geomType: point
                                     geomField: the_geom
                                     srid: 31466
+
+                                # Display edit popup after create
                                 openFormAfterEdit: true
-                                allowEditData: true
-                                allowDelete: true
-                                allowDigitize: true
-                                displayPermanent: false
+
+                                # Display remove button
+                                # Default: true
+                                allowDelete: false
+
                                 displayOnSelect: true
-                                searchType: currentExtent # currentExtent|all - default is currentExtent
-                                toolset:
-                                  - type: drawPoint
-                                  - type: modifyFeature
-                                  - type: moveFeature
-                                  - type: selectFeature
+
+                                # Search methods:
+                                # * currentExtent: search only by current extent geometry
+                                # * all: get all
+                                # Default: currentExtent
+                                searchType: currentExtent
+
+                                # Popup Definition
                                 popup:
                                     title: Bäume
                                     width: 500px
+                                    # resizible: true
+
+                                    # Edit dialog buttons
+                                    buttons:
+                                      # Translation or text
+                                      - text: Print
+
+                                        # JavaScript called by click on the button
+                                        # There are special variables avaible:
+                                        # * wideget   - Digitizer widget
+                                        # * data      - Form current data
+                                        # * olFeature - OpenLayer feature and original data inside
+                                        click: |
+                                          console.log("PRINT");
+                                          console.log(widget);
+                                          console.log(form);
+                                          console.log(olFeature);
+                                          console.log(data);
+
+                                # Edit feature in the samge popup or great number of popup's
+                                # Default: true
+                                oneInstanceEdit: true
+
+                                # Feature list table
                                 tableFields:
-                                    ausst_id: {label: Nr.}
+                                    ausst_id: {label: Nr., width: 50px}
                                     info: {label: Baum}
 
                                 # Feature styles
@@ -106,6 +180,7 @@ parameters:
                                        fillWidth: 2
                                        pointRadius: 10
 
+                                    # on mouse over
                                     select:
                                        strokeWidth: 3
                                        strokeColor: "#0e6a9e"
@@ -113,13 +188,13 @@ parameters:
                                        strokeColor: "#0e6a9e"
                                        pointRadius: 10
 
+                                # Feature form elements (in popup)
                                 formItems:
                                    - type: tabs
                                      children:
                                        - type: form
                                          title: Kontrolle
                                          css: {padding: 10px}
-
                                          children:
                                              - type: fieldSet
                                                children:

@@ -60,6 +60,7 @@ parameters:
             position: [200, 40]
             draggable: false
         sidepane:
+
           dataGrid:
             title: Abfragen
             class: Mapbender\DataSourceBundle\Element\QueryBuilderElement
@@ -83,7 +84,7 @@ parameters:
             allowExport: true
 
             # Allow search
-            allowSearch: true
+            #allowSearch: true
 
             # Data source name or ID, defined in "parameters.yml"
             source: elements
