@@ -196,22 +196,6 @@ parameters:
                                          title: Kontrolle
                                          css: {padding: 10px}
                                          children:
-                                             - type: fieldSet
-                                               children:
-                                                   - type: input
-                                                     css: {width: "50%"}
-                                                     name: info
-
-                                                   - type: select
-                                                     tile:
-                                                     options: ["a","b","c"]
-                                                     css: {width: "50%"}
-
-                                             - type: text
-                                               text: data.info
-
-                                             - type: breakLine
-
                                              - type: select
                                                title: Baumart
                                                name: a_id
@@ -286,9 +270,8 @@ parameters:
                                                    name: ug_id
                                                    connection: geometries
                                                    sql: "SELECT ug_id, ug_bez FROM verkehr.untergrund order by ug_id"
-                                                 - type: input
-                                                   title: Pflanzgröße (STU)
-                                                   name: ausst_merkmal_1
+                                                 - {type: input, title: Pflanzgröße (STU), name: ausst_merkmal_1}
+
                                        - type: form
                                          title: Pflege
                                          css: {padding: 10px}
