@@ -69,15 +69,17 @@ parameters:
                                 # Deafult: alle vorhandene wernde angezeigt.
                                 toolset:
                                   - type: drawPoint
-                                  - type: modifyFeature
-                                  - type: moveFeature
-                                  - type: selectFeature
+                                  # - type: modifyFeature
                                   # - type: drawRectangle
                                   # - type: drawEllipse
                                   # - type: drawDonut
                                   # - type: drawCircle
                                   # - type: modifyFeature
-                                  # - type: moveFeature
+                                  - type: moveFeature
+
+                                    # TODO: implement conventional field set
+                                    select: |
+                                        $.notify("Nein, darfst du nicht!")
                                   # - type: selectFeature
                                   # - type: removeSelected
 
@@ -146,7 +148,15 @@ parameters:
 
                                     # Edit dialog buttons
                                     buttons:
-                                      # Translation or text
+                                      - text: Test
+                                        # TODO: check
+                                        click: |
+                                          if(data.a_id > 0){
+                                              form.disableForm();
+                                              $.notify(data.a_id);
+                                          }
+
+                                        # Translation or text
                                       - text: Print
 
                                         # JavaScript called by click on the button
@@ -276,17 +286,17 @@ parameters:
                                          title: Pflege
                                          css: {padding: 10px}
                                          children:
-                                            # noch pruefen
+                                             # noch pruefen
                                              - type: select
                                                title: Vitalität
                                                name: schadensmerkmal_id
                                                options:  ['1 xx']
-                                            #klaeren         - type: select
-                                            #   multiple: true
-                                            #   title: Pflegemaßnahme
-                                            #   name: pflegemassnahme
-                                            #   connection: geometries
-                                            #   sql: "SELECT pflegemassnahme_id, pflegemassnahme_beschreibung FROM verkehr.ausstattung_pflegemassnahme order by pflegemassnahme_beschreibung"
+                                               #klaeren         - type: select
+                                               #   multiple: true
+                                               #   title: Pflegemaßnahme
+                                               #   name: pflegemassnahme
+                                               #   connection: geometries
+                                               #   sql: "SELECT pflegemassnahme_id, pflegemassnahme_beschreibung FROM verkehr.ausstattung_pflegemassnahme order by pflegemassnahme_beschreibung"
                                              - type: checkbox
                                                title: Totholz
                                                name: totholz
@@ -537,7 +547,7 @@ parameters:
                                            text: data.info + ' : ' + data.massnahmen + ' (erstellt am: ' + data.erstellt_am + ')'
                                          - type: label
                                            text: 'Bitte quittieren Sie die Pflegemaßnahme.'
-                                         #- type: breakLine
+                                           #- type: breakLine
                                          - type: date
                                            title: erledigt am
                                            infoText: Bitte geben Sie das Datum der Maßnahme an.
