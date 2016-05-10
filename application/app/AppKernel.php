@@ -62,4 +62,18 @@ class AppKernel extends Kernel
     {
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
     }
+
+    /**
+     * Gets a new ContainerBuilder instance used to build the service container.
+     *
+     * @return \Symfony\Component\DependencyInjection\ContainerBuilder
+     */
+    protected function getContainerBuilder()
+    {
+        $container = new \Symfony\Component\DependencyInjection\ContainerBuilder(new \Mapbender\CoreBundle\Component\ParameterBag($this->getKernelParameters()));
+        if (class_exists('ProxyManager\Configuration') && class_exists('Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator')) {
+            $container->setProxyInstantiator(new \Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator());
+        }
+        return $container;
+    }
 }

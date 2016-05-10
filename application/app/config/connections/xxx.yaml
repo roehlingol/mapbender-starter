@@ -1,0 +1,5 @@
+driver:     pdo_sqlite
+path:       %kernel.root_dir%/db/demo.sqlite
+charset:    UTF8
+logging:    false
+profiling:  false
