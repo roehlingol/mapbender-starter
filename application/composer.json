@@ -62,7 +62,9 @@
         "components/jquery": "1.11.2",
         "components/underscore": "1.x",
         "components/joii": "3.1.x",
-        "mapbender/digitizer": "1.0.x"
+        "mapbender/digitizer": "1.0.x",
+        "klokantech/tileserver": "^2.0",
+        "components/world-vector-tiles": "^1.0"
     },
     "scripts": {
         "post-install-cmd": [
@@ -192,6 +194,41 @@
                 },
                 "require": {
                     "robloach/component-installer": "*"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "components/world-vector-tiles",
+                "type": "component",
+                "version": "1.0",
+                "dist": {
+                    "url": "https://osm2vectortiles-downloads.os.zhdk.cloud.switch.ch/v1.0/extracts/world_z0-z5.mbtiles",
+                    "type": "file"
+                },
+                "extra": {
+                    "component": {
+                        "files": ["*"]
+                    }
+                },
+                "require": {
+                    "robloach/component-installer": "*"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "klokantech/tileserver",
+                "type": "library",
+                "version": "2.0",
+                "dist": {
+                    "url": "https://github.com/klokantech/tileserver-php/archive/v2.0.zip",
+                    "type": "zip"
+                },
+                "autoload": {
+                    "psr-0": {"": "."}
                 }
             }
         }
