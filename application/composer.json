@@ -63,6 +63,7 @@
         "components/underscore": "1.x",
         "components/joii": "3.1.x",
         "mapbender/digitizer": "1.0.x",
+        "r": "dev-module/print",
         "setasign/fpdi-fpdf": "1.6.*"
     },
     "scripts": {
@@ -88,6 +89,9 @@
         ],
         "clean": [
             "ComposerBootstrap::clearCache"
+        ],
+        "version": [
+            "ComposerBootstrap::displayVersion"
         ]
     },
     "config": {
@@ -103,6 +107,10 @@
         "symfony-assets-install": "symlink"
     },
     "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/mapbender/mapbender"
+        },
         {
             "type": "package",
             "package": {

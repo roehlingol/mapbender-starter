@@ -203,8 +203,7 @@ class ComposerBootstrap
             return;
         }
 
-        $parameters     = \Symfony\Component\Yaml\Yaml::parse(file_get_contents("app/config/parameters.yml"));
-        $version        = $parameters["parameters"]["fom"]["server_version"];
+        $version        = self::getVersion();
         $title          = escapeshellarg("Mapbender " . $version . " API documenation");
         $configFilePath = "../apigen.conf";
         $config         = parse_ini_file($configFilePath);
@@ -223,5 +222,26 @@ class ComposerBootstrap
         }else{
             echo "Documentation isn't generated, please install python sphinx documentation generator.";
         }
+    }
+
+    /**
+     * Get version
+     *
+     * @return mixed
+     */
+    public static function getVersion()
+    {
+        $parameters = \Symfony\Component\Yaml\Yaml::parse(file_get_contents("app/config/parameters.yml"));
+        return $parameters["parameters"]["fom"]["server_version"];
+    }
+
+    /**
+     * Display version
+     *
+     * @return mixed
+     */
+    public static function displayVersion()
+    {
+        echo self::getVersion()."\n";
     }
 }
