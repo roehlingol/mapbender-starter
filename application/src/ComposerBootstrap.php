@@ -43,7 +43,7 @@ class ComposerBootstrap
      *
      * @return bool
      */
-    protected static function isWindows()
+    public static function isWindows()
     {
         static $isWindows;
         if ($isWindows === null) {
@@ -55,7 +55,7 @@ class ComposerBootstrap
     /**
      * Clear cache but let sessions alive
      */
-    protected static function clearCache()
+    public static function clearCache()
     {
         $isWindows = self::isWindows();
         $cachePath = "app/cache";
@@ -74,9 +74,22 @@ class ComposerBootstrap
     }
 
     /**
+     * Installs bundle assets into a given dierectory (for details s. Symfony app/console assets:install).
+     */
+    public static function installAssets()
+    {
+        $isWindows = self::isWindows();
+        if (!$isWindows) {
+            echo `php app/console assets:install --symlink --relative web`;
+        } else {
+            echo `php app/console assets:install web`;
+        }
+    }
+
+    /**
      * Enable write cache, logs and upload folder by user and group
      */
-    protected static function allowWriteLogs()
+    public static function allowWriteLogs()
     {
         if (!self::isWindows()) {
             self::printStatus("Enable write cache, logs and upload for user and user group");
@@ -90,7 +103,7 @@ class ComposerBootstrap
     /**
      * Crate database, schema and force update
      */
-    protected static function createDatabase()
+    public static function createDatabase()
     {
         self::printStatus("Create and prepare database");
 
@@ -123,7 +136,7 @@ class ComposerBootstrap
     /**
      * Update submodules
      */
-    protected static function updateSubmodules()
+    public static function updateSubmodules()
     {
         $rootPath                = self::getSymfonyRootPath();
         $hasApplicationSubFolder = is_dir($rootPath . "/../.git");
@@ -158,7 +171,7 @@ class ComposerBootstrap
     /**
      * Import or update EPSG codes
      */
-    protected static function updateEpsgCodes()
+    public static function updateEpsgCodes()
     {
         self::printStatus("Update EPSG codes");
         echo `php app/console doctrine:fixtures:load --fixtures=mapbender/src/Mapbender/CoreBundle/DataFixtures/ORM/Epsg/ --append`;
@@ -167,7 +180,7 @@ class ComposerBootstrap
     /**
      * Import example applications from "app/config/mapbender.yml" file
      */
-    protected static function importExampleApplications()
+    public static function importExampleApplications()
     {
         self::printStatus("Import example mapbender applications");
         echo `php app/console doctrine:fixtures:load --fixtures=mapbender/src/Mapbender/CoreBundle/DataFixtures/ORM/Application/ --append`;
@@ -179,5 +192,36 @@ class ComposerBootstrap
     protected static function printStatus($title)
     {
         echo "\n[$title]\n";
+    }
+
+    /**
+     * Generate API documentation
+     */
+    public static function genApiDocumentation()
+    {
+        if (is_file("bin/apigen")) {
+            return;
+        }
+
+        $parameters     = \Symfony\Component\Yaml\Yaml::parse(file_get_contents("app/config/parameters.yml"));
+        $version        = $parameters["parameters"]["fom"]["server_version"];
+        $title          = escapeshellarg("Mapbender " . $version . " API documenation");
+        $configFilePath = "../apigen.conf";
+        $config         = parse_ini_file($configFilePath);
+        self::printStatus("Generate Mapbender {$version} API documenation to '{$config['destination']}'");
+        echo `bin/apigen -c $configFilePath --title $title`;
+    }
+
+    public static function genDocumentation()
+    {
+        if (self::isWindows()) {
+            return;
+        };
+        $sphinxPath = preg_replace("/^.* |\\s*$/s", "", `type sphinx-build`);
+        if (strpos($sphinxPath, "sphinx-build") !== false) {
+            `$sphinxPath ../documentation/ web/docs`;
+        }else{
+            echo "Documentation isn't generated, please install python sphinx documentation generator.";
+        }
     }
 }
