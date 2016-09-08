@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f0840c5fb08e3d7bdd352fa475b03c9c",
-    "content-hash": "71006c09229a1a97b4453b4fc2e81eaf",
+    "hash": "dc0056e2c3c2668fd47aa917cf471268",
+    "content-hash": "795be6210f8d878b6dee9a0bec112ffe",
     "packages": [
         {
             "name": "afarkas/html5shiv",
@@ -1393,6 +1393,39 @@
             "time": "2016-01-28 19:50:13"
         },
         {
+            "name": "fabpot/sphinx-php",
+            "version": "v1.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fabpot/sphinx-php.git",
+                "reference": "f1b69df331217d34425aa09821449e08fa219d38"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fabpot/sphinx-php/zipball/f1b69df331217d34425aa09821449e08fa219d38",
+                "reference": "f1b69df331217d34425aa09821449e08fa219d38",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Sphinx extension for PHP projects",
+            "time": "2016-07-18 09:43:42"
+        },
+        {
             "name": "fontfacekit/open-sans",
             "version": "1.4.0",
             "dist": {
@@ -1473,16 +1506,16 @@
         },
         {
             "name": "gedmo/doctrine-extensions",
-            "version": "v2.4.21",
+            "version": "v2.4.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Atlantic18/DoctrineExtensions.git",
-                "reference": "dcaab46a25e1baeb5142c3e25d5b6fd495ced504"
+                "reference": "b8188801bafc420b86908ee5229a5e92143ce514"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/dcaab46a25e1baeb5142c3e25d5b6fd495ced504",
-                "reference": "dcaab46a25e1baeb5142c3e25d5b6fd495ced504",
+                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/b8188801bafc420b86908ee5229a5e92143ce514",
+                "reference": "b8188801bafc420b86908ee5229a5e92143ce514",
                 "shasum": ""
             },
             "require": {
@@ -1548,7 +1581,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2016-08-17 16:52:00"
+            "time": "2016-08-30 18:42:36"
         },
         {
             "name": "igosuki/compass-mixins",
@@ -2237,17 +2270,17 @@
         },
         {
             "name": "mapbender/digitizer",
-            "version": "1.0.40",
+            "version": "1.0.42",
             "target-dir": "Mapbender/DigitizerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mapbender/mapbender-digitizer.git",
-                "reference": "666d4f3c9074990f47d1f028ac7253a5065df8ed"
+                "reference": "6548c4fefd8447e26b306ceefb5afb29dd6bb5d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mapbender/mapbender-digitizer/zipball/666d4f3c9074990f47d1f028ac7253a5065df8ed",
-                "reference": "666d4f3c9074990f47d1f028ac7253a5065df8ed",
+                "url": "https://api.github.com/repos/mapbender/mapbender-digitizer/zipball/6548c4fefd8447e26b306ceefb5afb29dd6bb5d6",
+                "reference": "6548c4fefd8447e26b306ceefb5afb29dd6bb5d6",
                 "shasum": ""
             },
             "require": {
@@ -2279,7 +2312,42 @@
                 "digitizing",
                 "mapbender"
             ],
-            "time": "2016-03-10 10:47:19"
+            "time": "2016-08-31 11:05:09"
+        },
+        {
+            "name": "mapbender/documentation",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mapbender/mapbender-documentation.git",
+                "reference": "34118caa1b8f16a8174c092815745c54d6ca8382"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mapbender/mapbender-documentation/zipball/34118caa1b8f16a8174c092815745c54d6ca8382",
+                "reference": "34118caa1b8f16a8174c092815745c54d6ca8382",
+                "shasum": ""
+            },
+            "require": {
+                "fabpot/sphinx-php": "1.0.*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Astrid Emde"
+                }
+            ],
+            "description": "Mapbender3 documentation",
+            "keywords": [
+                "documentation",
+                "mapbender"
+            ],
+            "time": "2016-09-02 11:42:12"
         },
         {
             "name": "mapbender/mapbender-icons",
@@ -3570,16 +3638,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.24.1",
+            "version": "v1.24.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512"
+                "reference": "33093f6e310e6976baeac7b14f3a6ec02f2d79b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3566d311a92aae4deec6e48682dc5a4528c4a512",
-                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/33093f6e310e6976baeac7b14f3a6ec02f2d79b7",
+                "reference": "33093f6e310e6976baeac7b14f3a6ec02f2d79b7",
                 "shasum": ""
             },
             "require": {
@@ -3627,7 +3695,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-05-30 09:11:59"
+            "time": "2016-09-01 17:50:53"
         },
         {
             "name": "viscreation/vis-ui.js",
@@ -5379,9 +5447,18 @@
             "time": "2014-02-10 02:34:57"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "3.0.5.4",
+            "alias_normalized": "3.0.5.4",
+            "version": "9999999-dev",
+            "package": "mapbender/documentation"
+        }
+    ],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "mapbender/documentation": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
