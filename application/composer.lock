@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dc0056e2c3c2668fd47aa917cf471268",
-    "content-hash": "795be6210f8d878b6dee9a0bec112ffe",
+    "hash": "f588aba8421abbc45df600e55ad2f568",
+    "content-hash": "37ed0357ee2a991a1bdab27885450cff",
     "packages": [
         {
             "name": "afarkas/html5shiv",
@@ -1346,6 +1346,53 @@
             "time": "2015-10-26 10:10:37"
         },
         {
+            "name": "eslider/hkv-storage",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eSlider/hkv-storage.git",
+                "reference": "aad99d2917aa53d103474e005267509befba042f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eSlider/hkv-storage/zipball/aad99d2917aa53d103474e005267509befba042f",
+                "reference": "aad99d2917aa53d103474e005267509befba042f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.1",
+                "zumba/json-serializer": "*"
+            },
+            "require-dev": {
+                "eslider/spatialite": "*",
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eslider\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andriy Oblivantsev",
+                    "email": "eslider@gmail.com",
+                    "homepage": "https://github.com/eSlider"
+                }
+            ],
+            "description": "Hierarchy key-value data storage manager",
+            "keywords": [
+                "key-value",
+                "no-sql",
+                "sqlite"
+            ],
+            "time": "2016-09-13 09:26:55"
+        },
+        {
             "name": "eslider/sasscb",
             "version": "3.1.2",
             "source": {
@@ -2269,6 +2316,49 @@
             "time": "2015-06-25 17:26:56"
         },
         {
+            "name": "mapbender/data-source",
+            "version": "0.0.32",
+            "target-dir": "Mapbender/DataSourceBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mapbender/data-source.git",
+                "reference": "82decc3efbf2b8654b0177e13ff9463bc4b346e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mapbender/data-source/zipball/82decc3efbf2b8654b0177e13ff9463bc4b346e9",
+                "reference": "82decc3efbf2b8654b0177e13ff9463bc4b346e9",
+                "shasum": ""
+            },
+            "require": {
+                "phayes/geophp": "1.2",
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mapbender\\DataSourceBundle": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andriy Oblivantsev",
+                    "email": "andriy.oblivantsev@wheregroup.com"
+                }
+            ],
+            "description": "Mapbender data source handler",
+            "keywords": [
+                "data",
+                "data source",
+                "mapbender"
+            ],
+            "time": "2016-07-19 07:45:34"
+        },
+        {
             "name": "mapbender/digitizer",
             "version": "1.0.42",
             "target-dir": "Mapbender/DigitizerBundle",
@@ -2320,12 +2410,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mapbender/mapbender-documentation.git",
-                "reference": "34118caa1b8f16a8174c092815745c54d6ca8382"
+                "reference": "d064205693a71f0e69d15214a3e70f3203750cfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mapbender/mapbender-documentation/zipball/34118caa1b8f16a8174c092815745c54d6ca8382",
-                "reference": "34118caa1b8f16a8174c092815745c54d6ca8382",
+                "url": "https://api.github.com/repos/mapbender/mapbender-documentation/zipball/d064205693a71f0e69d15214a3e70f3203750cfa",
+                "reference": "d064205693a71f0e69d15214a3e70f3203750cfa",
                 "shasum": ""
             },
             "require": {
@@ -2347,7 +2437,7 @@
                 "documentation",
                 "mapbender"
             ],
-            "time": "2016-09-02 11:42:12"
+            "time": "2016-09-05 10:51:02"
         },
         {
             "name": "mapbender/mapbender-icons",
@@ -2395,6 +2485,51 @@
                 "mapbender3"
             ],
             "time": "2015-10-21 08:43:30"
+        },
+        {
+            "name": "mapbender/search",
+            "version": "dev-master",
+            "target-dir": "Mapbender/SearchBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mapbender/search.git",
+                "reference": "d931f3a22d3423ba489f5074c8b6a657f01b4a2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mapbender/search/zipball/d931f3a22d3423ba489f5074c8b6a657f01b4a2d",
+                "reference": "d931f3a22d3423ba489f5074c8b6a657f01b4a2d",
+                "shasum": ""
+            },
+            "require": {
+                "eslider/hkv-storage": "*",
+                "mapbender/data-source": "*",
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mapbender\\SearchBundle": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andriy Oblivantsev",
+                    "email": "andriy.oblivantsev@wheregroup.com"
+                }
+            ],
+            "description": "Mapbender search element",
+            "keywords": [
+                "gis",
+                "mapbender",
+                "search",
+                "searching"
+            ],
+            "time": "2016-09-13 11:37:27"
         },
         {
             "name": "medialize/jquery-context-menu",
@@ -3801,6 +3936,60 @@
             ],
             "description": "JSONP callback validator.",
             "time": "2014-01-20 22:35:06"
+        },
+        {
+            "name": "zumba/json-serializer",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zumba/json-serializer.git",
+                "reference": "61cb3a9458146b2b91e8f7700cee80cad1bf9279"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zumba/json-serializer/zipball/61cb3a9458146b2b91e8f7700cee80cad1bf9279",
+                "reference": "61cb3a9458146b2b91e8f7700cee80cad1bf9279",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "suggest": {
+                "ext-mbstring": "To support unescaped unicode characters in PHP 5.3."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Zumba\\Util": "src/",
+                    "Zumba\\Exception": "src/",
+                    "Zumba\\Util\\Test": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Juan Basso",
+                    "email": "juan.basso@zumba.com"
+                },
+                {
+                    "name": "Zumba Fitness, LLC",
+                    "email": "engineering@zumba.com"
+                }
+            ],
+            "description": "Serialize PHP variables, including objects, in JSON format. Support to unserialize it too.",
+            "homepage": "http://tech.zumba.com",
+            "keywords": [
+                "json",
+                "serialize",
+                "serializer"
+            ],
+            "time": "2014-07-05 20:09:27"
         }
     ],
     "packages-dev": [
@@ -5453,11 +5642,25 @@
             "alias_normalized": "3.0.5.4",
             "version": "9999999-dev",
             "package": "mapbender/documentation"
+        },
+        {
+            "alias": "0.0.1",
+            "alias_normalized": "0.0.1.0",
+            "version": "9999999-dev",
+            "package": "eslider/hkv-storage"
+        },
+        {
+            "alias": "0.0.1",
+            "alias_normalized": "0.0.1.0",
+            "version": "9999999-dev",
+            "package": "mapbender/search"
         }
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "mapbender/documentation": 20
+        "mapbender/documentation": 20,
+        "eslider/hkv-storage": 20,
+        "mapbender/search": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
